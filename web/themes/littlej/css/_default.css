@@ -42,9 +42,12 @@ h5, h4 {
 }
 
 /* structural divs */
-body#page { background:#e4e1dd url(../images/bg_transparent-lines.png) repeat; }
+body#page { background:#e4e1dd; height:100%; }
 
-div#middle { background:transparent url(../images/bg_top-cap.png) top no-repeat; }
+div#middle { }
+
+div#righty { width:85%; float:right; }
+div#lefty { width:15%; float:left; background:#cccccc; height:560px; }
 
 .big-block {   }
 .page-main #main { padding:0px 10px; }
@@ -129,7 +132,7 @@ div.submit-incident a, .btn_submit {
 }
 
 /* primary nav */
-div#mainmenu { background:none; border:none; float:left;}
+div#mainmenu { background:transparent; border:none; }
 div#mainmenu ul {
   
 }
@@ -146,7 +149,8 @@ div#mainmenu ul li a:hover, div#mainmenu a.active {
 
 
 
-div#right { position:absolute; z-index:1000; }
+div#right { //position:absolute; 
+z-index:1000; }
 
 .map-menu-box {
   position:absolute;
@@ -231,7 +235,7 @@ table.table-list thead th.date { width:20%; }
 
 /* single report page */
 div#main { padding:15px 10px; }
-#main .left-col { background:#EEEDEA; position:relative; padding:35px 10px 10px; margin:4px 0 0 18px; width:525px; }
+#main .left-col { background:#EEEDEA; position:relative; padding:35px 10px 10px; margin:4px 0 0 18px; width:125px; float:right; }
 
 
 .left-col h1.report-title { float:left; position:absolute; top:-18px; left:-18px; padding:5px; border:7px solid #fff; background:#529bf5; color:#fff; }

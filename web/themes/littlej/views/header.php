@@ -37,50 +37,25 @@
 <?php echo $header_nav; ?>
 
   <!-- top bar-->
-  <div id="top-bar">
-    <!-- searchbox -->
-		<div id="searchbox">
-
-			<!-- languages -->
-			<?php echo $languages;?>
-			<!-- / languages -->
-
-			<!-- searchform -->
-			<?php echo $search; ?>
-			<!-- / searchform -->
-
-	    </div>
-  </div>
   <!-- / searchbox -->
-
 
 	<!-- wrapper -->
 	<div class="rapidxwpr floatholder">
 
+	  <div id="lefty">
+
+	  <!-- mainmenu -->
+	  <div id="mainmenu" class="clearingfix">
+	    <ul>
+	      <?php nav::main_tabs($this_page); ?>
+	    </ul>
+	    
+	  </div>
+	  <!-- / mainmenu -->
+	  </div>
+
+	  <div id="righty">
 		<!-- header -->
-		<div id="header">
-
-			<!-- logo -->
-			<?php if ($banner == NULL): ?>
-			<div id="logo">
-				<h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>
-				<span><?php echo $site_tagline; ?></span>
-			</div>
-			<?php else: ?>
-			<a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
-			<?php endif; ?>
-			<!-- / logo -->
-
-			<!-- submit incident -->
-			<?php echo $submit_btn; ?>
-			<!-- / submit incident -->
-
-			<?php
-				// Action::main_sidebar - Add Items to the Entry Page Sidebar
-				Event::run('ushahidi_action.main_sidebar');
-			?>
-
-		</div>
 		<!-- / header -->
          <!-- / header item for plugins -->
         <?php
@@ -97,12 +72,3 @@
 		<!-- main body -->
 		<div id="middle">
 			<div class="background layoutleft">
-
-				<!-- mainmenu -->
-				<div id="mainmenu" class="clearingfix">
-					<ul>
-						<?php nav::main_tabs($this_page); ?>
-					</ul>
-
-				</div>
-				<!-- / mainmenu -->
