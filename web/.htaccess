@@ -6,7 +6,7 @@ Redirect /open http://boskoi.org/page/index/2
 	RewriteEngine On
 
 	# Installation directory
-	RewriteBase /
+	RewriteBase /littlej
 
 	# Protect application and system files from being viewed
 	RewriteRule ^(application|modules|system) - [F,L]
