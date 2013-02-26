@@ -7,10 +7,11 @@ $.ajaxSetup({
 });
 
 function send_to(url) {    
+    
     var g=$.post("/api", {
         task:"report",
-        incident_title: "from fb",
-        incident_description: "helloooo",
+        incident_title: document.getElementById("entry").value,
+        incident_description: document.getElementById("desc").value,
         incident_date: "02/26/2013",
         incident_hour: "9",
         incident_minute: "31",
