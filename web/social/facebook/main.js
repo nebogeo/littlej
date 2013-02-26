@@ -7,7 +7,7 @@ $.ajaxSetup({
 });
 
 function send_to(url) {    
-    var g=$.post("../littlej/api", {
+    var g=$.post("/api", {
         task:"report",
         incident_title: "from fb",
         incident_description: "helloooo",
