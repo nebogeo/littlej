@@ -21,7 +21,8 @@ function send_to(url) {
         longitude: "0",
         location_name: "home"
     }, function (data) {
-        alert(JSON.stringify(data));
+        alert("sent...");
+        //alert(JSON.stringify(data));
     });
 }
                 
