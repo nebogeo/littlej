@@ -6,6 +6,7 @@ function fb_interface(appid)
     {
         $(document).ready(function() {
 	        FB.init({appId: appid, status: true, cookie: true, xfbml: true});
+            fb.login(); // should be logged in already
 	    });
     }
     
@@ -44,7 +45,6 @@ $.ajaxSetup({
 });
 
 var fb = new fb_interface(api_key);
-fb.login(); // should be logged in already
 
 function send_to(url) {    
     
