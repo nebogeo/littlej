@@ -4,9 +4,9 @@ function fb_interface(appid)
 {   
     if (appid!="") 
     {
+        console.log(appid);
         $(document).ready(function() {
 	        FB.init({appId: appid, status: true, cookie: true, xfbml: true});
-            fb.login(); // should be logged in already
 	    });
     }
     
