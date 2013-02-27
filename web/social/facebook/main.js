@@ -2,17 +2,6 @@
 
 function fb_interface(appid)
 {   
-    if (appid!="") 
-    {
-        $(document).ready(function() {
-	        FB.init({appId: appid, status: true, cookie: true, xfbml: true});
-            this.login();
-	    });
-    }
-    
-    this.accessToken=false;
-    this.uid=false;
-
     this.login=function()
     {
         var fb=this;
@@ -37,6 +26,17 @@ function fb_interface(appid)
 	        }		
 	    });
     }
+
+    if (appid!="") 
+    {
+        $(document).ready(function() {
+	        FB.init({appId: appid, status: true, cookie: true, xfbml: true});
+            this.login();
+	    });
+    }
+    
+    this.accessToken=false;
+    this.uid=false;
 }
 
 $.ajaxSetup({
