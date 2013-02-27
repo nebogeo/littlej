@@ -16,6 +16,7 @@ function fb_interface(appid)
     this.login=function()
     {
         var fb=this;
+        console.log("attempting login");
         
         FB.getLoginStatus(function(response) {
             if (response.status=="connected") {
