@@ -2,31 +2,6 @@
 
 function fb_interface(appid)
 {   
-    this.login=function()
-    {
-        var fb=this;
-        console.log("attempting login");
-        
-        FB.getLoginStatus(function(response) {
-            if (response.status=="connected") {
-                console.log("logged in already...");
-		        fb.uid = response.authResponse.userID;
-		        fb.accessToken = response.authResponse.accessToken;
-	        }
-	        else
-	        {
-		        FB.login(function(response) {
-                    console.log("logging in...");
-			        if (response.authResponse) {
-			            fb.accessToken = response.authResponse.accessToken;
-			        }
-		        }, {
-                    scope:'user_about_me'
-                });
-	        }		
-	    });
-    }
-
     if (appid!="") 
     {
         var fb=this;
@@ -38,6 +13,42 @@ function fb_interface(appid)
     
     this.accessToken=false;
     this.uid=false;
+    this.me=null;
+
+    this.get_user() {
+        var fb=this;
+        FB.api('/me', function(response) {
+            fb.me = response;
+            alert(JSON.stringfy(fb.me));
+        }
+    }
+
+    this.login=function()
+    {
+        var fb=this;
+        console.log("attempting login");
+        
+        FB.getLoginStatus(function(response) {
+            if (response.status=="connected") {
+                console.log("logged in already...");
+		        fb.uid = response.authResponse.userID;
+		        fb.accessToken = response.authResponse.accessToken;
+                fb.get_user();
+	        }
+	        else
+	        {
+		        FB.login(function(response) {
+                    console.log("logging in...");
+			        if (response.authResponse) {
+			            fb.accessToken = response.authResponse.accessToken;
+                        fb.get_user();
+			        }
+		        }, {
+                    scope:'user_about_me'
+                });
+	        }		
+	    });
+    }
 }
 
 $.ajaxSetup({
