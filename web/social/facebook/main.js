@@ -29,9 +29,10 @@ function fb_interface(appid)
 
     if (appid!="") 
     {
+        var fb=this;
         $(document).ready(function() {
 	        FB.init({appId: appid, status: true, cookie: true, xfbml: true});
-            this.login();
+            fb.login();
 	    });
     }
     
