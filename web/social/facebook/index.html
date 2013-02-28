@@ -9,8 +9,13 @@
     <script type="text/javascript" src="key.js"></script>
     <script type="text/javascript" src="main.js"></script>
 
-    Title: <input id="entry" type="text"> <br/>
-    Description: <input id="desc" type="text"> <br/>
+    Title: <br />
+    <input id="entry" type="text" size="44"> <br/>
+    Description <br/> 
+    <textarea id="desc" rows="7" cols="50"></textarea> <br/>
+
+    <input type="checkbox" id="identity">Use my facebook identity<br>
+    <input type="checkbox" id="location">Use my current location<br>
 
     <input type="button" value="send" onClick="send_to('http://littlej.borrowed-scenery.com/api');">
 

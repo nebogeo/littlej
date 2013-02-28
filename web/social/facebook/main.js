@@ -150,7 +150,9 @@ $.ajaxSetup({
 var fb = new fb_interface(api_key);
 
 function send_to(url) {       
-    if (navigator.geolocation) {
+
+    if (navigator.geolocation && 
+        document.getElementById("location").checked) {
         navigator.geolocation.getCurrentPosition(function (pos) {
             send(pos);
         });
@@ -184,6 +186,14 @@ function send(pos) {
         loc = pos.address.city;
     }
 
+    var first_name="";
+    var last_name="";
+
+    if (document.getElementById("identity").checked) {
+        first_name=fb.me.first_name;
+        last_name=fb.me.last_name;
+    }
+
     var g=$.post("/api", {
         task:"report",
         incident_title: document.getElementById("entry").value,
@@ -196,8 +206,8 @@ function send(pos) {
         latitude: pos.coords.latitude,
         longitude: pos.coords.longitude,
         location_name: loc,
-        person_first: fb.me.first_name, 
-        person_last: fb.me.last_name
+        person_first: first_name, 
+        person_last: last_name
         
     }, function (data) {
         alert("sent...");
