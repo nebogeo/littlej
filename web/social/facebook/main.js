@@ -19,7 +19,7 @@ function fb_interface(appid)
         var fb=this;
         FB.api('/me', function(response) {
             fb.me = response;
-            alert(JSON.stringfy(fb.me));
+            alert(JSON.stringify(fb.me));
         });
     }
 
