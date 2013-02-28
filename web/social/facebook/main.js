@@ -20,7 +20,7 @@ function fb_interface(appid)
         FB.api('/me', function(response) {
             fb.me = response;
             alert(JSON.stringfy(fb.me));
-        }
+        });
     }
 
     this.login=function()
