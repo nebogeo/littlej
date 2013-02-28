@@ -161,7 +161,7 @@ function send_to(url) {
         send({
             coords: 
             {
-                latitide:0, 
+                latitude:0, 
                 longitude:0 
             },
             address:
