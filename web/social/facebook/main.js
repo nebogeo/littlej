@@ -19,7 +19,6 @@ function fb_interface(appid)
         var fb=this;
         FB.api('/me', function(response) {
             fb.me = response;
-            alert(JSON.stringify(fb.me));
         });
     }
 
@@ -70,7 +69,6 @@ $.ajaxSetup({
     }
 });
 
-
 var fb = new fb_interface(api_key);
 get_location();
 
@@ -80,13 +78,17 @@ function send_to(url) {
     var hours = now.getHours();
     var ampm = hours >= 12 ? 'pm' : 'am';
     
+    var date = now.format("m/d/Y");
+    var hour = now.format("H");
+    var min = now.format("M");
+
     var g=$.post("/api", {
         task:"report",
         incident_title: document.getElementById("entry").value,
         incident_description: document.getElementById("desc").value,
-        incident_date: now.format("m/d/Y"),
-        incident_hour: now.format("H"),
-        incident_minute: now.format("M"),
+        incident_date: date,
+        incident_hour: hour,
+        incident_minute: min,
         incident_ampm: ampm,
         incident_category: "1",
         latitude: latlon[0],
