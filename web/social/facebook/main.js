@@ -163,7 +163,7 @@ function send_to(url) {
             {
                 latitide:0, 
                 longitude:0 
-            }
+            },
             address:
             {
                 city: "unknown"
