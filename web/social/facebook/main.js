@@ -51,28 +51,50 @@ function fb_interface(appid)
     }
 }
 
+var latlon=[0,0];
+
+function get_location() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position);
+    }
+}
+
+function position() {
+    latlon[0]=position.coords.latitude;
+    latlon[1]=position.coords.longitude; 
+}
+
 $.ajaxSetup({
     error: function(xhr, status, error) {
         alert("An AJAX error occured: " + status + "\nError: " + error);
     }
 });
 
+
 var fb = new fb_interface(api_key);
+get_location();
 
 function send_to(url) {    
+    
+    var now = new Date();
+    var hours = now.getHours();
+    var ampm = hours >= 12 ? 'pm' : 'am';
     
     var g=$.post("/api", {
         task:"report",
         incident_title: document.getElementById("entry").value,
         incident_description: document.getElementById("desc").value,
-        incident_date: "02/26/2013",
-        incident_hour: "9",
-        incident_minute: "31",
-        incident_ampm: "pm",
+        incident_date: now.format("m/d/Y"),
+        incident_hour: now.format("H"),
+        incident_minute: now.format("M"),
+        incident_ampm: ampm,
         incident_category: "1",
-        latitude: "0",
-        longitude: "0",
-        location_name: "home"
+        latitude: latlon[0],
+        longitude: latlon[1],
+        location_name: "unknown",
+        person_first: fb.me.first_name, 
+        person_last: fb.me.last_name
+        
     }, function (data) {
         alert("sent...");
         //alert(JSON.stringify(data));
