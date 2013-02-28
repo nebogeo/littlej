@@ -152,8 +152,6 @@ var fb = new fb_interface(api_key);
 function send_to(url) {       
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (pos) {
-            alert(pos);
-            alert(JSON.stringify(pos));
             send(pos);
         });
     }
