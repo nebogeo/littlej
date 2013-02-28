@@ -58,9 +58,9 @@ function get_location() {
     }
 }
 
-function position() {
-    latlon[0]=position.coords.latitude;
-    latlon[1]=position.coords.longitude; 
+function position(pos) {
+    latlon[0]=pos.coords.latitude;
+    latlon[1]=pos.coords.longitude; 
 }
 
 $.ajaxSetup({
