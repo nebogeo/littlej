@@ -158,7 +158,17 @@ function send_to(url) {
         });
     }
     else {
-        send({coords: {latitide:0, longitude:0}});
+        send({
+            coords: 
+            {
+                latitide:0, 
+                longitude:0 
+            }
+            address:
+            {
+                city: "unknown"
+            }
+        });
     }
 }
 
@@ -182,7 +192,7 @@ function send(pos) {
         incident_category: "1",
         latitude: pos.coords.latitude,
         longitude: pos.coords.longitude,
-        location_name: "unknown",
+        location_name: pos.address.city,
         person_first: fb.me.first_name, 
         person_last: fb.me.last_name
         
