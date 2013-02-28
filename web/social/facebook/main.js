@@ -15,7 +15,7 @@ function fb_interface(appid)
     this.uid=false;
     this.me=null;
 
-    this.get_user() {
+    this.get_user=function() {
         var fb=this;
         FB.api('/me', function(response) {
             fb.me = response;
