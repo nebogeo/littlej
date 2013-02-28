@@ -181,6 +181,11 @@ function send(pos) {
     var hour = now.format("H");
     var min = now.format("i");
     
+    var loc = "unknown";
+    if (pos.address) {
+        loc = pos.address.city;
+    }
+
     var g=$.post("/api", {
         task:"report",
         incident_title: document.getElementById("entry").value,
@@ -192,7 +197,7 @@ function send(pos) {
         incident_category: "1",
         latitude: pos.coords.latitude,
         longitude: pos.coords.longitude,
-        location_name: pos.address.city,
+        location_name: loc,
         person_first: fb.me.first_name, 
         person_last: fb.me.last_name
         
