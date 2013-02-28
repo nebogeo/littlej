@@ -78,9 +78,9 @@ function send_to(url) {
     var hours = now.getHours();
     var ampm = hours >= 12 ? 'pm' : 'am';
     
-    var date = now.format("m/d/Y");
-    var hour = now.format("H");
-    var min = now.format("M");
+    var date = dateFormat(date,"m/d/Y");
+    var hour = dateFormat(date,"H");
+    var min = dateFormat(date,"M");
 
     var g=$.post("/api", {
         task:"report",
