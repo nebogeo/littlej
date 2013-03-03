@@ -11,7 +11,7 @@ html, body {
     background: url(images/bg.jpg);
     font-family: "Rokkitt";
     color: #fff;
-    font-size:  20;
+    font-size:  15;
 }
 
 .content {
@@ -27,12 +27,12 @@ html, body {
 }   
 
 .small_print {
-    font-size: 15;
+    font-size: 12;
 }
 
 .content_left {
     text-align: left;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .regular_checkbox {
