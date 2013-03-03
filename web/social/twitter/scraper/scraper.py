@@ -29,7 +29,7 @@ def send(tweet,time):
     if tweet["geo"]!=None and tweet["geo"]["type"]=='Point':
         latlon=tweet["geo"]["coordinates"]
 
-    url="localhost/api"+param("task", "report")+\
+    url="http://localhost/api"+param("task", "report")+\
         param("incident_title", tweet["text"])+\
         param("incident_description", "From Twitter")+\
         param("incident_date", str(time.month)+"/"+str(time.day)+"/"+str(time.year))+\
