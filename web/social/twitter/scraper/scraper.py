@@ -44,8 +44,9 @@ def send(tweet,time):
 
     print url
 
-    print urllib.urlopen(url,"POST")
-    print "sent..."
+    sock = urllib.urlopen(url,"POST")
+    print sock.read()
+    sock.close()
 
 
 def main():
