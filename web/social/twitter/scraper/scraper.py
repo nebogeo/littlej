@@ -1,9 +1,10 @@
+# littlej tweet scanner, looks for a hashtag, sends them to ushahidi
+
 import urllib
 import simplejson
 import datetime
 import dateutil.parser as parser
 import time
-
 
 def search_tweets(last,query):
     search = urllib.urlopen("http://search.twitter.com/search.json?q="+query)
@@ -15,6 +16,7 @@ def search_tweets(last,query):
             #if tweet["geo"]!=None and tweet["geo"]["type"]=='Point':
             send(tweet,time)
             latest=time
+    update_latest(latest)
     return latest
 
 
@@ -27,24 +29,24 @@ def send(tweet,time):
     latlon=[0,0]
     if tweet["geo"]!=None and tweet["geo"]["type"]=='Point':
         latlon=tweet["geo"]["coordinates"]
-
-    url="http://littlej.borrowed-scenery.com/api?task=report"+\
-        param("incident_title", tweet["text"])+\
-        param("incident_description", "From Twitter")+\
-        param("incident_date", str(time.month)+"/"+str(time.day)+"/"+str(time.year))+\
-        param("incident_hour", str(time.hour))+\
-        param("incident_minute", str(time.minute))+\
-        param("incident_ampm", ampm)+\
-        param("incident_category", "1")+\
-        param("latitude", str(latlon[0]))+\
-        param("longitude", str(latlon[1]))+\
-        param("location_name", "No location")+\
-        param("person_first", tweet["from_user_name"])+\
-        param("person_last", "");
-
+    date="%02d"%time.month+"/"+"%02d"%time.day+"/"+str(time.year)
+    url="http://littlej.borrowed-scenery.com/api"
+    data=urllib.urlencode({"task":"report",
+                           "incident_title": tweet["text"],
+                           "incident_description": "From Twitter",
+                           "incident_date": date,
+                           "incident_hour": time.hour%12,
+                           "incident_minute": time.minute,
+                           "incident_ampm": ampm,
+                           "incident_category": "1",
+                           "latitude": str(latlon[0]),
+                           "longitude": str(latlon[1]),
+                           "location_name": "No location",
+                           "person_first": tweet["from_user_name"],
+                           "person_last": ""});
     print url
-
-    sock = urllib.urlopen(url,"POST")
+    print data
+    sock = urllib.urlopen(url,data)
     print sock.read()
     sock.close()
 
