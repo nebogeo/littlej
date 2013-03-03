@@ -20,7 +20,7 @@ def search_tweets(last,query):
 
 
 def param(a,b):
-    return "?"+a+"="+b;
+    return "?"+a+"=\""+b+"\"";
 
 def send(tweet,time):
     ampm="pm"
@@ -45,7 +45,8 @@ def send(tweet,time):
 
     print url
 
-    urllib.urlopen(url,"POST")
+    print urllib.urlopen(url,"POST")
+    print "sent..."
 
 
 def main():
