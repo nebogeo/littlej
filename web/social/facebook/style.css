@@ -1,0 +1,199 @@
+@font-face {
+    font-family: 'Rokkitt';
+    src: url('images/Rokkitt.otf');
+}
+
+html, body {
+    text-align: center;
+    width:  100%;
+    height: 100%;
+    margin: 0px;
+    background: url(images/bg.jpg);
+    font-family: "Rokkitt";
+    color: #fff;
+    font-size:  20;
+}
+
+.content {
+    text-align: center;
+    min-width: 5em;
+    width:90%;
+    max-width: 600px;
+    width: auto !important;
+    width: 500px; /* IE6 ignores the !important tag */
+    /* would help for expanding content if it blows past 500px; */
+    overflow:auto; 
+    display: inline-block;
+}   
+
+.small_print {
+    font-size: 15;
+}
+
+.content_left {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.regular_checkbox {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 10px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 18px;
+    border-radius: 30px;
+    display: inline-block;
+    position: relative;
+}
+
+.regular_checkbox:active, .regular_checkbox:checked:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+ 
+.regular_checkbox:checked {
+    background-color: #e9ecee;
+    border: 1px solid #adb8c0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+    color: #99a1a7;
+}
+
+.regular_checkbox:checked:after {
+    content: '\2714';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: #99a1a7;
+}
+
+.big_checkbox {
+    padding: 18px;
+}
+ 
+.big_checkbox:checked:after {
+    font-size: 28px;
+    left: 6px;
+}
+
+input.text_input {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #FFFFFF;
+    border-color: black -moz-use-text-color #000000 black;
+    border-image: none;
+    border-left: 1px solid black;
+    border-radius: 0 0 0 0;
+    border-right: 0 none;
+    border-style: solid none solid solid;
+    border-width: 1px 0 1px 1px;
+    color: #5C5C5C;
+    float: left;
+    font-size: 12px;
+    height: 38px;
+    left: 0;
+    line-height: 18px;
+    margin: 0;
+    padding: 10px 12px 8px !important;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+textarea.text_input {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #FFFFFF;
+    border-color: black -moz-use-text-color #000000 black;
+    border-image: none;
+    border-left: 1px solid black;
+    border-radius: 0 0 0 0;
+    border-right: 0 none;
+    border-style: solid none solid solid;
+    border-width: 1px 0 1px 1px;
+    color: #5C5C5C;
+    float: left;
+    font-size: 12px;
+    height: 138px;
+    left: 0;
+    line-height: 18px;
+    margin: 0;
+    padding: 10px 12px 8px !important;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+input.button {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #ec008c;
+    background-image: -moz-linear-gradient(center top , #ff50cc, #ec008c);
+    background-repeat: repeat-x;
+    border-color: #000000 #000000 #000000 rgba(0, 0, 0, 0.1);
+    border-image: none;
+    border-left: medium none rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #000000;
+    border-style: solid solid solid none;
+    border-width: 1px 1px 1px medium;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 38px;
+    margin: 0;
+    max-height: 38px;
+    min-width: 48px;
+    padding: 9px 12px !important;
+    right: 0;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+input.button:hover {
+    background-color: #168B47;
+    background-image: -moz-linear-gradient(center top , #bc105c, #ac004c);
+    color: #FFFFFF;
+}
+input.button:active {
+    background-image: -moz-linear-gradient(center top , #ec008c, #ec008c);
+}
+
+select.littlej {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #FFFFFF;
+    border-color: black -moz-use-text-color #000000 black;
+    border-image: none;
+    border-left: 1px solid black;
+    border-radius: 0 0 0 0;
+    border-right: 0 none;
+    border-style: solid none solid solid;
+    border-width: 1px 0 1px 1px;
+    color: #5C5C5C;
+    float: left;
+    font-size: 12px;
+    height: 38px;
+    left: 0;
+    line-height: 18px;
+    margin: 0;
+    padding: 10px 12px 8px !important;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}

@@ -1,23 +1,62 @@
 <html>
-  <title>little l</title>
-  <body>
-    <div id="fb-root"></div>
+  <head>
+  <LINK href="style.css" rel="stylesheet" type="text/css">
+  </head>
 
-    <h2>Little J</h2>
+  <title>little l</title>
+
+  <body>
     <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
     <script type="text/javascript" src="jquery-1.9.1.js"></script>
     <script type="text/javascript" src="key.js"></script>
     <script type="text/javascript" src="main.js"></script>
 
-    Title: <br />
-    <input id="entry" type="text" size="44"> <br/>
-    Description <br/> 
-    <textarea id="desc" rows="7" cols="50"></textarea> <br/>
 
-    <input type="checkbox" id="identity">Use my facebook identity<br>
-    <input type="checkbox" id="location">Use my current location<br>
+    <div id="fb-root"></div>
+    <div class="content">
+      <img src="images/logo.png"><br/>
+      <p>
+      Have you seen an incident, got an event to promote, have an opinion on local news, have unseen 
+      photos of Port Talbot you want to share or other stories you want to appear in the Port Talbot Magnet?
+      We've made it easier for you to send in reports directly to our journalists through this Facebook app.
+      </p>
+      <div class="content_left">
+        Give your report a short, snappy title:
+        <input id="entry" type="text" size="44" class="text_input" placeholder="your title">
+      </div>
+      <div class="content_left">
+        What category is your report about?
+        <select class="littlej">
+          <option value="one">One</option>
+          <option value="two">Two</option>
+          <option value="three">Three</option>
+          <option value="four">Four</option>
+        </select> 
+      </div>
+      
+      <div class="content_left">
+        What do you want to tell us?<br/>
+        <div class="small_print">
+          It's really good to know if anyone else whas involved and if you know their details.
+          Did anyone else witness this, do you know their details?
+          If you can put as much detail as possible it will help confirm your report.
+        </div>
+        <textarea id="desc" rows="7" cols="50" class="text_input" placeholder="your story"></textarea>
+      </div>
+      
+      <div class="content_left">
+        <input type="checkbox" class="regular_checkbox big_checkbox" id="location" checked="">Untick to not use your location to help locate the report<br>
+        <input type="checkbox" id="identity" checked="">Untick here to not use your Facebook identity to send the report<br>
+      </div>
+      
+      <div class="content_left">
+        <div class="small_print">
+          By submitting a report through this app you are agreeing that it may appear in full
+          or part in the Port Talbot Magnet
+        </div>      
+        <input class="button" type="button" value="send" onClick="send_to('http://littlej.borrowed-scenery.com/api');">
+      </div>
 
-    <input type="button" value="send" onClick="send_to('http://littlej.borrowed-scenery.com/api');">
-
+    </div>
   </body>
 </html>
