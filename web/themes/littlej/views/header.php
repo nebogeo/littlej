@@ -39,6 +39,8 @@
   <!-- top bar-->
   <!-- / searchbox -->
 
+<a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
+
 	<!-- wrapper -->
 	<div class="rapidxwpr floatholder">
 
