@@ -1,5 +1,9 @@
 # littlej tweet scanner, looks for a hashtag, sends them to ushahidi
 
+# todo: 
+# * record time of last tweet persistently
+# * upload photographs
+
 import urllib
 import simplejson
 import datetime
@@ -13,15 +17,11 @@ def search_tweets(last,query):
     for tweet in dict["results"]: # result is a list of dictionaries
         time = parser.parse(tweet["created_at"])
         if time>last:
-            #if tweet["geo"]!=None and tweet["geo"]["type"]=='Point':
             send(tweet,time)
             latest=time
     update_latest(latest)
     return latest
 
-
-def param(a,b):
-    return "&"+a+"=\""+b+"\"";
 
 def send(tweet,time):
     ampm="pm"
