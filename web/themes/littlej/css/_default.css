@@ -26,9 +26,12 @@ Author Email: caleb@ushahidi.com
   div.submit-incident a:hover, .btn_submit:hover,
   div.search-form input.searchbtn,
   div#mainmenu ul li a:hover,
-  div#mainmenu a.active { background-color:#d25e4f; }
+  div#mainmenu a.active { background-color:#ec008c; }
 
-
+@font-face {
+    font-family: 'Rokkitt';
+    src: url('../images/Rokkitt.otf');
+}
 
 /* general styles */
 h1 {
@@ -42,15 +45,19 @@ h5, h4 {
 }
 
 /* structural divs */
-body#page { background:#e4e1dd; height:100%; }
+body#page {
+    background: url(../images/bg.jpg); 
+    height:100%; 
+    font-family: "Rokkitt";
+}
 
-div#middle { }
+div#middle { background: url(../images/t.png); }
 
 div#righty { width:85%; float:right; }
-div#lefty { width:15%; float:left; background:#cccccc; height:560px; }
+div#lefty { width:15%; float:left; background:#cccccc77; height:560px; }
 
 .big-block {   }
-.page-main #main { padding:0px 10px; }
+.page-main #main { padding:0px 10px; background: url(../images/t.jpg); }
 
 /* top-bar */
 #top-bar {
@@ -118,9 +125,9 @@ div#logo h1 a {
   font-size: 28px;
 }
 div#logo span {
-  font-style: italic;
+  //font-style: italic;
   color: #999;
-  font-family: 'Georgia', serif;
+  //font-family: 'Georgia', serif;
 }
 
 /* submit report button */
@@ -217,17 +224,20 @@ div.graph-holder { display:none; }
 div.additional-content { display:none; }
 
 /* Home Page Twitter / Mainstream News blocks */
-div.content-container { background:transparent; padding:10px; }
+div.content-container { 
+    background:transparent; 
+    padding:10px; 
+}
 
-div.content-block { position:relative; margin:0 18px; background:#eeedea; }
-div.content-block h5 { float:left; position:absolute; top:-18px; left:-18px; padding:5px; border:7px solid #fff; background:#529bf5; }
-div.content-block h5 span { display:none; }
+div.content-block { font-family: "Rokkitt"; position:relative; margin:0 18px; background:#eeedea; }
+div.content-block h5 { font-family: "Rokkitt"; float:left; position:absolute; top:-18px; left:-18px; padding:5px; border:7px solid #fff; background:#529bf5; }
+div.content-block h5 span { font-family: "Rokkitt"; display:none; }
 div.content-block .table-list { margin-top:18px; }
 table.table-list thead th.date { width:20%; }
 
 
 /* reports listing page */
-#content .big-block { border:1px solid #fff; border-top:0; margin:0 10px; background:#EEEDEA; padding:18px; }
+#content .big-block { border:1px solid #fff; border-top:0; margin:0 10px; background: transparent; padding:18px; }
 #reports-box { }
 #rb_list-view .rb_report {
   background: #fff;
@@ -244,7 +254,9 @@ div#main { padding:15px 10px; }
 
 div.report-additional-reports { background:#EEEDEA; position:relative; padding:35px 10px 10px; margin-left:18px; }
 div.report-additional-reports h4 { position:absolute; float:left; top:-18px; left:-18px; padding:5px; border:7px solid #fff; background:#529bf5; color:#fff; }
-div.report-additional-reports h5 { font-family: Arial, sans-serif;  }
+div.report-additional-reports h5 { 
+//    font-family: Arial, sans-serif;  
+}
 
 /* reports page */
 .report_right { width:450px;}
