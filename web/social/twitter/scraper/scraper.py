@@ -14,13 +14,12 @@ def search_tweets(last,query):
         if time>last:
             #if tweet["geo"]!=None and tweet["geo"]["type"]=='Point':
             send(tweet,time)
-            print tweet
             latest=time
     return latest
 
 
 def param(a,b):
-    return "?"+a+"=\""+b+"\"";
+    return "&"+a+"=\""+b+"\"";
 
 def send(tweet,time):
     ampm="pm"
@@ -29,7 +28,7 @@ def send(tweet,time):
     if tweet["geo"]!=None and tweet["geo"]["type"]=='Point':
         latlon=tweet["geo"]["coordinates"]
 
-    url="http://localhost/api"+param("task", "report")+\
+    url="http://localhost/api?task=report"+\
         param("incident_title", tweet["text"])+\
         param("incident_description", "From Twitter")+\
         param("incident_date", str(time.month)+"/"+str(time.day)+"/"+str(time.year))+\
