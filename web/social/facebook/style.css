@@ -134,9 +134,15 @@ input.button {
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
+    -webkit-box-align: center;
     background-color: #ec008c;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff50cc), to(#ec008c));
+    background-image: -webkit-linear-gradient(top, #ff50cc, #ec008c);
+    background-image: -o-linear-gradient(top, #ff50cc, #ec008c);
+    background-image: linear-gradient(to bottom, #ff50cc, #ec008c);
     background-image: -moz-linear-gradient(center top , #ff50cc, #ec008c);
     background-repeat: repeat-x;
+//    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
     border-color: #000000 #000000 #000000 rgba(0, 0, 0, 0.1);
     border-image: none;
     border-left: medium none rgba(0, 0, 0, 0.1);
@@ -148,7 +154,7 @@ input.button {
     float: left;
     font-size: 15px;
     letter-spacing: 1px;
-    line-height: 38px;
+    line-height: 18px;
     margin: 0;
     max-height: 38px;
     min-width: 48px;
@@ -164,6 +170,10 @@ input.button {
 
 input.button:hover {
     background-color: #168B47;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bc105c), to(#ac004c));
+    background-image: -webkit-linear-gradient(top, #bc105c, #ac004c);
+    background-image: -o-linear-gradient(top, #bc105c, #ac004c);
+    background-image: linear-gradient(to bottom, #bc105c, #ac004c);
     background-image: -moz-linear-gradient(center top , #bc105c, #ac004c);
     color: #FFFFFF;
 }
