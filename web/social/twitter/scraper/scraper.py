@@ -69,7 +69,7 @@ def main():
 #    last=parser.parse("2013-01-01 12:00:00 +0000");
     last=load_latest();
     while 1:
-        last=search_tweets(last,"port talbot")#"#littlejporttalbot")
+        last=search_tweets(last,"#littlejporttalbot")
         save_latest(last)
 #        print last
         time.sleep(20)

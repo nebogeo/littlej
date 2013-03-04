@@ -245,10 +245,11 @@ table.table-list thead th.date { width:20%; }
 
 /* single report page */
 div#main { padding:15px 10px; }
-#main .left-col { background:#EEEDEA; position:relative; padding:35px 10px 10px; margin:4px 0 0 18px; width:125px; float:right; }
+#main .left-col { background:#EEEDEA; position:relative; padding:10px 10px 10px; margin:4px 0 0 18px; width:400px; 
+		  float:left; }
 
 
-.left-col h1.report-title { float:left; position:absolute; top:-18px; left:-18px; padding:5px; border:7px solid #fff; background:#529bf5; color:#fff; }
+.left-col h1.report-title { float:left; top:-18px; left:-18px; padding:5px; border:7px solid #fff; background:#529bf5; color:#fff; }
 
 .report_detail .r_verified { position:absolute; top:10px; right:18px;  }
 
