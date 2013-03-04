@@ -23,6 +23,7 @@ import android.support.v4.view.MenuItem;
 import android.support.v4.view.SubMenu;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.ActionProvider;
 
 /**
  * <p>Interface for direct access to a previously created menu item.</p>
@@ -306,6 +307,20 @@ public final class MenuItemWrapper implements MenuItem {
         mMenuItem.setTitleCondensed(title);
         return this;
     }
+
+    @Override
+    public MenuItem setOnActionExpandListener(OnActionExpandListener onActionExpandListener) {
+        // Noop
+        return this;
+    }
+
+    @Override public boolean isActionViewExpanded () { return false; }
+    @Override public boolean collapseActionView() { return false; }
+    @Override public boolean expandActionView() { return false; }
+    @Override public ActionProvider getActionProvider() { return null; }
+//    @Override public ActionProvider getActionProvider() { return null; }
+    @Override public MenuItem setActionProvider (ActionProvider actionProvider) { return this; }
+    @Override public MenuItem setShowAsActionFlags (int actionEnum) { return this; }
 
     @Override
     public MenuItem setVisible(boolean visible) {

@@ -18,7 +18,7 @@
  **
  **/
 
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import java.util.Date;
 import java.util.List;
@@ -48,26 +48,26 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.ushahidi.android.app.ImageManager;
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.Settings;
-import com.ushahidi.android.app.activities.BaseListActivity;
-import com.ushahidi.android.app.adapters.ListMapAdapter;
-import com.ushahidi.android.app.models.ListCheckinModel;
-import com.ushahidi.android.app.models.ListCommentModel;
-import com.ushahidi.android.app.models.ListMapModel;
-import com.ushahidi.android.app.models.ListReportModel;
-import com.ushahidi.android.app.net.CategoriesHttpClient;
-import com.ushahidi.android.app.net.CheckinHttpClient;
-import com.ushahidi.android.app.net.MapsHttpClient;
-import com.ushahidi.android.app.net.ReportsHttpClient;
-import com.ushahidi.android.app.services.FetchReports;
-import com.ushahidi.android.app.services.SyncServices;
-import com.ushahidi.android.app.tasks.ProgressTask;
-import com.ushahidi.android.app.util.ApiUtils;
-import com.ushahidi.android.app.views.AddMapView;
-import com.ushahidi.android.app.views.ListMapView;
+import foam.littlej.android.app.ImageManager;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.Settings;
+import foam.littlej.android.app.activities.BaseListActivity;
+import foam.littlej.android.app.adapters.ListMapAdapter;
+import foam.littlej.android.app.models.ListCheckinModel;
+import foam.littlej.android.app.models.ListCommentModel;
+import foam.littlej.android.app.models.ListMapModel;
+import foam.littlej.android.app.models.ListReportModel;
+import foam.littlej.android.app.net.CategoriesHttpClient;
+import foam.littlej.android.app.net.CheckinHttpClient;
+import foam.littlej.android.app.net.MapsHttpClient;
+import foam.littlej.android.app.net.ReportsHttpClient;
+import foam.littlej.android.app.services.FetchReports;
+import foam.littlej.android.app.services.SyncServices;
+import foam.littlej.android.app.tasks.ProgressTask;
+import foam.littlej.android.app.util.ApiUtils;
+import foam.littlej.android.app.views.AddMapView;
+import foam.littlej.android.app.views.ListMapView;
 
 /**
  * @author eyedol

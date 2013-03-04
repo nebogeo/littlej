@@ -1,4 +1,4 @@
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 public interface ListMapFragmentListener {
     void onMapSelected();

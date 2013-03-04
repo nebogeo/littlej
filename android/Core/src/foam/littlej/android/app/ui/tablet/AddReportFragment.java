@@ -17,15 +17,15 @@
  ** Ushahidi developers at team@ushahidi.com.
  **
  **/
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.fragments.BaseFragment;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.fragments.BaseFragment;
 
 /**
  * @author eyedol

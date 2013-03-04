@@ -17,7 +17,7 @@
  ** Ushahidi developers at team@ushahidi.com.
  **
  **/
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -31,14 +31,14 @@ import android.support.v4.view.MenuItem;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.activities.BaseEditActivity;
-import com.ushahidi.android.app.models.ListCommentModel;
-import com.ushahidi.android.app.services.SyncServices;
-import com.ushahidi.android.app.services.UploadComments;
-import com.ushahidi.android.app.util.Util;
-import com.ushahidi.android.app.views.AddCommentView;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.activities.BaseEditActivity;
+import foam.littlej.android.app.models.ListCommentModel;
+import foam.littlej.android.app.services.SyncServices;
+import foam.littlej.android.app.services.UploadComments;
+import foam.littlej.android.app.util.Util;
+import foam.littlej.android.app.views.AddCommentView;
 
 /**
  * @author eyedol
@@ -226,7 +226,7 @@ public class AddCommentActivity extends
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.ushahidi.android.app.activities.BaseEditMapActivity#onSaveChanges()
+	 * foam.littlej.android.app.activities.BaseEditMapActivity#onSaveChanges()
 	 */
 	@Override
 	protected boolean onSaveChanges() {
@@ -262,7 +262,7 @@ public class AddCommentActivity extends
 	};
 
 	/* (non-Javadoc)
-	 * @see com.ushahidi.android.app.activities.BaseEditActivity#onDiscardChanges()
+	 * @see foam.littlej.android.app.activities.BaseEditActivity#onDiscardChanges()
 	 */
 	@Override
 	protected boolean onDiscardChanges() {

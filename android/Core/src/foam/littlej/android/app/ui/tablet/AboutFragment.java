@@ -1,14 +1,14 @@
 
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.util.Util;
-import com.ushahidi.android.app.views.AboutView;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.util.Util;
+import foam.littlej.android.app.views.AboutView;
 
 public class AboutFragment extends DialogFragment {
 

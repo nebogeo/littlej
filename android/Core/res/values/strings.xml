@@ -98,7 +98,7 @@
     <string name="less_report_title">The title field must be at least 3 and no more 200 characters long.</string>
     <string name="less_report_location">The location name must be at least 3 characters.</string>
     <!-- new strings -->
-    <string name="app_name">Ushahidi</string>
+    <string name="app_name">LittleJ</string>
     <string name="load">Load</string>
     <string name="loading_">Loading...</string>
     <string name="loaded">Loaded</string>

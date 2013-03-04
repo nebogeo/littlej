@@ -18,7 +18,7 @@
  **
  **/
 
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import java.io.File;
 import java.text.ParseException;
@@ -62,25 +62,25 @@ import android.widget.ListView;
 import android.widget.TimePicker;
 import android.widget.ViewSwitcher;
 
-import com.ushahidi.android.app.ImageManager;
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.activities.BaseEditMapActivity;
-import com.ushahidi.android.app.adapters.UploadPhotoAdapter;
-import com.ushahidi.android.app.database.Database;
-import com.ushahidi.android.app.database.IOpenGeoSmsSchema;
-import com.ushahidi.android.app.database.OpenGeoSmsDao;
-import com.ushahidi.android.app.entities.Category;
-import com.ushahidi.android.app.entities.Media;
-import com.ushahidi.android.app.entities.Photo;
-import com.ushahidi.android.app.entities.Report;
-import com.ushahidi.android.app.entities.ReportCategory;
-import com.ushahidi.android.app.models.AddReportModel;
-import com.ushahidi.android.app.models.ListReportModel;
-import com.ushahidi.android.app.tasks.GeocoderTask;
-import com.ushahidi.android.app.util.PhotoUtils;
-import com.ushahidi.android.app.util.Util;
-import com.ushahidi.android.app.views.AddReportView;
+import foam.littlej.android.app.ImageManager;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.activities.BaseEditMapActivity;
+import foam.littlej.android.app.adapters.UploadPhotoAdapter;
+import foam.littlej.android.app.database.Database;
+import foam.littlej.android.app.database.IOpenGeoSmsSchema;
+import foam.littlej.android.app.database.OpenGeoSmsDao;
+import foam.littlej.android.app.entities.Category;
+import foam.littlej.android.app.entities.Media;
+import foam.littlej.android.app.entities.Photo;
+import foam.littlej.android.app.entities.Report;
+import foam.littlej.android.app.entities.ReportCategory;
+import foam.littlej.android.app.models.AddReportModel;
+import foam.littlej.android.app.models.ListReportModel;
+import foam.littlej.android.app.tasks.GeocoderTask;
+import foam.littlej.android.app.util.PhotoUtils;
+import foam.littlej.android.app.util.Util;
+import foam.littlej.android.app.views.AddReportView;
 
 /**
  * @author eyedol
@@ -1167,7 +1167,7 @@ public class AddReportActivity extends
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.ushahidi.android.app.activities.BaseEditMapActivity#onDiscardChanges
+	 * foam.littlej.android.app.activities.BaseEditMapActivity#onDiscardChanges
 	 * ()
 	 */
 	@Override

@@ -23,6 +23,7 @@ import android.support.v4.view.MenuItem;
 import android.support.v4.view.SubMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
+import android.view.ActionProvider;
 
 /**
  * @hide
@@ -241,6 +242,28 @@ public class ActionMenuItem implements MenuItem {
     public View getActionView() {
         return null;
     }
+
+/*    public boolean onMenuItemActionCollapse(MenuItem item) {
+        return true;
+    }
+
+    public boolean onMenuItemActionExpand(MenuItem item) {
+        return true;
+    }
+*/
+
+    @Override
+    public MenuItem setOnActionExpandListener(OnActionExpandListener onActionExpandListener) {
+        // Noop
+        return this;
+    }
+
+    @Override public boolean collapseActionView() { return false; }
+    @Override public boolean isActionViewExpanded () { return false; }
+    @Override public boolean expandActionView() { return false; }
+    @Override public ActionProvider getActionProvider() { return null; }
+    @Override public MenuItem setActionProvider (ActionProvider actionProvider) { return this; }
+    @Override public MenuItem setShowAsActionFlags (int actionEnum) { return this; }
 
     @Override
     public MenuItem setActionView(int resId) {

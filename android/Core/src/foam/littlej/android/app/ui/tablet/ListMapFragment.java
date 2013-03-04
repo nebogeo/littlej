@@ -1,4 +1,4 @@
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import java.util.Date;
 import java.util.List;
@@ -25,21 +25,21 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.Settings;
-import com.ushahidi.android.app.adapters.ListMapAdapter;
-import com.ushahidi.android.app.fragments.BaseListFragment;
-import com.ushahidi.android.app.helpers.ActionModeHelper;
-import com.ushahidi.android.app.models.ListMapModel;
-import com.ushahidi.android.app.net.MapsHttpClient;
-import com.ushahidi.android.app.services.FetchReports;
-import com.ushahidi.android.app.services.SyncServices;
-import com.ushahidi.android.app.tasks.ProgressTask;
-import com.ushahidi.android.app.ui.phone.AboutActivity;
-import com.ushahidi.android.app.util.Util;
-import com.ushahidi.android.app.views.AddMapView;
-import com.ushahidi.android.app.views.ListMapView;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.Settings;
+import foam.littlej.android.app.adapters.ListMapAdapter;
+import foam.littlej.android.app.fragments.BaseListFragment;
+import foam.littlej.android.app.helpers.ActionModeHelper;
+import foam.littlej.android.app.models.ListMapModel;
+import foam.littlej.android.app.net.MapsHttpClient;
+import foam.littlej.android.app.services.FetchReports;
+import foam.littlej.android.app.services.SyncServices;
+import foam.littlej.android.app.tasks.ProgressTask;
+import foam.littlej.android.app.ui.phone.AboutActivity;
+import foam.littlej.android.app.util.Util;
+import foam.littlej.android.app.views.AddMapView;
+import foam.littlej.android.app.views.ListMapView;
 
 public class ListMapFragment extends
 		BaseListFragment<ListMapView, ListMapModel, ListMapAdapter> implements
@@ -80,7 +80,7 @@ public class ListMapFragment extends
 
 	private String errorMessage = "";
 
-	static private final String STATE_CHECKED = "com.ushahidi.android.app.activity.STATE_CHECKED";
+	static private final String STATE_CHECKED = "foam.littlej.android.app.activity.STATE_CHECKED";
 
 	private Intent fetchReports;
 
@@ -654,7 +654,7 @@ public class ListMapFragment extends
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.ushahidi.android.app.fragments.BaseListFragment#headerView()
+	 * @see foam.littlej.android.app.fragments.BaseListFragment#headerView()
 	 */
 	@Override
 	protected View headerView() {

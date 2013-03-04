@@ -18,17 +18,17 @@
  **
  **/
 
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import java.util.List;
 
 import android.os.Bundle;
 import android.support.v4.view.MenuItem;
 
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.activities.BaseViewActivity;
-import com.ushahidi.android.app.models.ListReportVideoModel;
-import com.ushahidi.android.app.views.ReportVideoView;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.activities.BaseViewActivity;
+import foam.littlej.android.app.models.ListReportVideoModel;
+import foam.littlej.android.app.views.ReportVideoView;
 
 /**
  * @author eyedol

@@ -18,7 +18,7 @@
  **
  **/
 
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -49,19 +49,19 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
-import com.ushahidi.android.app.ImageManager;
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.activities.BaseEditMapActivity;
-import com.ushahidi.android.app.adapters.UploadPhotoAdapter;
-import com.ushahidi.android.app.entities.Checkin;
-import com.ushahidi.android.app.entities.Photo;
-import com.ushahidi.android.app.models.AddCheckinModel;
-import com.ushahidi.android.app.services.SyncServices;
-import com.ushahidi.android.app.services.UploadCheckins;
-import com.ushahidi.android.app.util.PhotoUtils;
-import com.ushahidi.android.app.util.Util;
-import com.ushahidi.android.app.views.AddCheckinView;
+import foam.littlej.android.app.ImageManager;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.activities.BaseEditMapActivity;
+import foam.littlej.android.app.adapters.UploadPhotoAdapter;
+import foam.littlej.android.app.entities.Checkin;
+import foam.littlej.android.app.entities.Photo;
+import foam.littlej.android.app.models.AddCheckinModel;
+import foam.littlej.android.app.services.SyncServices;
+import foam.littlej.android.app.services.UploadCheckins;
+import foam.littlej.android.app.util.PhotoUtils;
+import foam.littlej.android.app.util.Util;
+import foam.littlej.android.app.views.AddCheckinView;
 
 /**
  * @author eyedol
@@ -697,7 +697,7 @@ public class AddCheckinActivity extends
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.ushahidi.android.app.activities.BaseEditMapActivity#onDiscardChanges
+	 * foam.littlej.android.app.activities.BaseEditMapActivity#onDiscardChanges
 	 * ()
 	 */
 	@Override

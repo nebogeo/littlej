@@ -18,7 +18,7 @@
  **
  **/
 
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -44,33 +44,33 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.ushahidi.android.app.ImageManager;
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.Settings;
-import com.ushahidi.android.app.adapters.CategorySpinnerAdater;
-import com.ushahidi.android.app.adapters.ListFetchedReportAdapter;
-import com.ushahidi.android.app.adapters.ListPendingReportAdapter;
-import com.ushahidi.android.app.adapters.ListReportAdapter;
-import com.ushahidi.android.app.adapters.UploadPhotoAdapter;
-import com.ushahidi.android.app.database.Database;
-import com.ushahidi.android.app.database.IOpenGeoSmsSchema;
-import com.ushahidi.android.app.database.OpenGeoSmsDao;
-import com.ushahidi.android.app.entities.Photo;
-import com.ushahidi.android.app.fragments.BaseSectionListFragment;
-import com.ushahidi.android.app.models.AddReportModel;
-import com.ushahidi.android.app.models.ListPhotoModel;
-import com.ushahidi.android.app.models.ListReportModel;
-import com.ushahidi.android.app.net.CategoriesHttpClient;
-import com.ushahidi.android.app.net.ReportsHttpClient;
-import com.ushahidi.android.app.opengeosms.OpenGeoSMSSender;
-import com.ushahidi.android.app.tasks.ProgressTask;
-import com.ushahidi.android.app.ui.phone.AboutActivity;
-import com.ushahidi.android.app.ui.phone.AddReportActivity;
-import com.ushahidi.android.app.ui.phone.ViewReportActivity;
-import com.ushahidi.android.app.util.ApiUtils;
-import com.ushahidi.android.app.util.Util;
-import com.ushahidi.android.app.views.ListReportView;
+import foam.littlej.android.app.ImageManager;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.Settings;
+import foam.littlej.android.app.adapters.CategorySpinnerAdater;
+import foam.littlej.android.app.adapters.ListFetchedReportAdapter;
+import foam.littlej.android.app.adapters.ListPendingReportAdapter;
+import foam.littlej.android.app.adapters.ListReportAdapter;
+import foam.littlej.android.app.adapters.UploadPhotoAdapter;
+import foam.littlej.android.app.database.Database;
+import foam.littlej.android.app.database.IOpenGeoSmsSchema;
+import foam.littlej.android.app.database.OpenGeoSmsDao;
+import foam.littlej.android.app.entities.Photo;
+import foam.littlej.android.app.fragments.BaseSectionListFragment;
+import foam.littlej.android.app.models.AddReportModel;
+import foam.littlej.android.app.models.ListPhotoModel;
+import foam.littlej.android.app.models.ListReportModel;
+import foam.littlej.android.app.net.CategoriesHttpClient;
+import foam.littlej.android.app.net.ReportsHttpClient;
+import foam.littlej.android.app.opengeosms.OpenGeoSMSSender;
+import foam.littlej.android.app.tasks.ProgressTask;
+import foam.littlej.android.app.ui.phone.AboutActivity;
+import foam.littlej.android.app.ui.phone.AddReportActivity;
+import foam.littlej.android.app.ui.phone.ViewReportActivity;
+import foam.littlej.android.app.util.ApiUtils;
+import foam.littlej.android.app.util.Util;
+import foam.littlej.android.app.views.ListReportView;
 
 /**
  * @author eyedol

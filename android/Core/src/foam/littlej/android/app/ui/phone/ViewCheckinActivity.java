@@ -17,7 +17,7 @@
  ** Ushahidi developers at team@ushahidi.com.
  **
  **/
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import java.util.List;
 
@@ -33,13 +33,13 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.activities.BaseMapViewActivity;
-import com.ushahidi.android.app.models.ListCheckinModel;
-import com.ushahidi.android.app.models.ViewCheckinModel;
-import com.ushahidi.android.app.services.FetchCheckinsComments;
-import com.ushahidi.android.app.services.SyncServices;
-import com.ushahidi.android.app.views.ViewCheckinView;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.activities.BaseMapViewActivity;
+import foam.littlej.android.app.models.ListCheckinModel;
+import foam.littlej.android.app.models.ViewCheckinModel;
+import foam.littlej.android.app.services.FetchCheckinsComments;
+import foam.littlej.android.app.services.SyncServices;
+import foam.littlej.android.app.views.ViewCheckinView;
 
 /**
  * @author eyedol

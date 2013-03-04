@@ -1,4 +1,4 @@
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TabHost;
 
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.helpers.LocalActivityManagerFragment;
-import com.ushahidi.android.app.ui.phone.ReportMapActivity;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.helpers.LocalActivityManagerFragment;
+import foam.littlej.android.app.ui.phone.ReportMapActivity;
 
 public class ReportTabFragment extends LocalActivityManagerFragment {
 

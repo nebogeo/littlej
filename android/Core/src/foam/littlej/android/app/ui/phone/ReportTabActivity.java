@@ -1,17 +1,17 @@
 
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import android.os.Bundle;
 import android.support.v4.app.ActionBar;
 import android.support.v4.app.FragmentMapActivity;
 import android.text.TextUtils;
 
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.helpers.ReportViewPager;
-import com.ushahidi.android.app.helpers.TabsAdapter;
-import com.ushahidi.android.app.ui.tablet.ListReportFragment;
-import com.ushahidi.android.app.ui.tablet.MapFragment;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.helpers.ReportViewPager;
+import foam.littlej.android.app.helpers.TabsAdapter;
+import foam.littlej.android.app.ui.tablet.ListReportFragment;
+import foam.littlej.android.app.ui.tablet.MapFragment;
 
 public class ReportTabActivity extends FragmentMapActivity {
 

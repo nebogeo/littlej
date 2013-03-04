@@ -1,4 +1,4 @@
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import java.util.List;
 
@@ -20,23 +20,23 @@ import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
-import com.ushahidi.android.app.ImageManager;
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.ReportMapItemizedOverlay;
-import com.ushahidi.android.app.ReportMapOverlayItem;
-import com.ushahidi.android.app.adapters.CategorySpinnerAdater;
-import com.ushahidi.android.app.adapters.ListFetchedReportAdapter;
-import com.ushahidi.android.app.entities.Photo;
-import com.ushahidi.android.app.fragments.BaseFragment;
-import com.ushahidi.android.app.models.ListPhotoModel;
-import com.ushahidi.android.app.models.ListReportModel;
-import com.ushahidi.android.app.net.CategoriesHttpClient;
-import com.ushahidi.android.app.net.ReportsHttpClient;
-import com.ushahidi.android.app.tasks.ProgressTask;
-import com.ushahidi.android.app.ui.phone.AddReportActivity;
-import com.ushahidi.android.app.util.ApiUtils;
-import com.ushahidi.android.app.util.Util;
+import foam.littlej.android.app.ImageManager;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.ReportMapItemizedOverlay;
+import foam.littlej.android.app.ReportMapOverlayItem;
+import foam.littlej.android.app.adapters.CategorySpinnerAdater;
+import foam.littlej.android.app.adapters.ListFetchedReportAdapter;
+import foam.littlej.android.app.entities.Photo;
+import foam.littlej.android.app.fragments.BaseFragment;
+import foam.littlej.android.app.models.ListPhotoModel;
+import foam.littlej.android.app.models.ListReportModel;
+import foam.littlej.android.app.net.CategoriesHttpClient;
+import foam.littlej.android.app.net.ReportsHttpClient;
+import foam.littlej.android.app.tasks.ProgressTask;
+import foam.littlej.android.app.ui.phone.AddReportActivity;
+import foam.littlej.android.app.util.ApiUtils;
+import foam.littlej.android.app.util.Util;
 
 public class MapFragment<ReportMapItemOverlay> extends BaseFragment {
 

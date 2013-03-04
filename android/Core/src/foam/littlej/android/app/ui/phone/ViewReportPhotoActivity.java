@@ -18,7 +18,7 @@
  **
  **/
 
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import java.util.List;
 
@@ -33,13 +33,13 @@ import android.widget.AdapterView;
 import android.widget.ImageSwitcher;
 import android.widget.ViewSwitcher;
 
-import com.ushahidi.android.app.ImageManager;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.activities.BaseViewActivity;
-import com.ushahidi.android.app.entities.Photo;
-import com.ushahidi.android.app.models.ListPhotoModel;
-import com.ushahidi.android.app.util.ImageSwitchWorker;
-import com.ushahidi.android.app.views.ReportPhotoView;
+import foam.littlej.android.app.ImageManager;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.activities.BaseViewActivity;
+import foam.littlej.android.app.entities.Photo;
+import foam.littlej.android.app.models.ListPhotoModel;
+import foam.littlej.android.app.util.ImageSwitchWorker;
+import foam.littlej.android.app.views.ReportPhotoView;
 
 /**
  * @author eyedol

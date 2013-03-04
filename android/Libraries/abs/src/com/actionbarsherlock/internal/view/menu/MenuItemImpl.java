@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewDebug;
 import android.widget.LinearLayout;
+import android.view.ActionProvider;
 
 /**
  * @hide
@@ -565,6 +566,19 @@ public final class MenuItemImpl implements MenuItem {
         setActionView(inflater.inflate(resId, new LinearLayout(context), false));
         return this;
     }
+
+    @Override
+    public MenuItem setOnActionExpandListener(OnActionExpandListener onActionExpandListener) {
+        // Noop
+        return this;
+    }
+
+    @Override public boolean isActionViewExpanded () { return false; }
+    @Override public boolean collapseActionView() { return false; }
+    @Override public boolean expandActionView() { return false; }
+    @Override public ActionProvider getActionProvider() { return null; }
+    @Override public MenuItem setActionProvider (ActionProvider actionProvider) { return this; }
+    @Override public MenuItem setShowAsActionFlags (int actionEnum) { return this; }
 
     public View getActionView() {
         if (mActionView != null) {

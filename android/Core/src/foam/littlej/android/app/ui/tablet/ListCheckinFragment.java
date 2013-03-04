@@ -18,7 +18,7 @@
  **
  **/
 
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -41,20 +41,20 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.Settings;
-import com.ushahidi.android.app.adapters.ListCheckinAdapter;
-import com.ushahidi.android.app.adapters.ListFetchedCheckinAdapter;
-import com.ushahidi.android.app.adapters.ListPendingCheckinAdapter;
-import com.ushahidi.android.app.adapters.UserSpinnerAdater;
-import com.ushahidi.android.app.fragments.BaseSectionListFragment;
-import com.ushahidi.android.app.models.ListCheckinModel;
-import com.ushahidi.android.app.services.FetchCheckins;
-import com.ushahidi.android.app.services.SyncServices;
-import com.ushahidi.android.app.ui.phone.AboutActivity;
-import com.ushahidi.android.app.ui.phone.AddCheckinActivity;
-import com.ushahidi.android.app.ui.phone.ViewCheckinActivity;
-import com.ushahidi.android.app.views.ListCheckinView;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.Settings;
+import foam.littlej.android.app.adapters.ListCheckinAdapter;
+import foam.littlej.android.app.adapters.ListFetchedCheckinAdapter;
+import foam.littlej.android.app.adapters.ListPendingCheckinAdapter;
+import foam.littlej.android.app.adapters.UserSpinnerAdater;
+import foam.littlej.android.app.fragments.BaseSectionListFragment;
+import foam.littlej.android.app.models.ListCheckinModel;
+import foam.littlej.android.app.services.FetchCheckins;
+import foam.littlej.android.app.services.SyncServices;
+import foam.littlej.android.app.ui.phone.AboutActivity;
+import foam.littlej.android.app.ui.phone.AddCheckinActivity;
+import foam.littlej.android.app.ui.phone.ViewCheckinActivity;
+import foam.littlej.android.app.views.ListCheckinView;
 
 /**
  * @author eyedol

@@ -17,7 +17,7 @@
  ** Ushahidi developers at team@ushahidi.com.
  **
  **/
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -28,13 +28,13 @@ import android.support.v4.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.activities.BaseListActivity;
-import com.ushahidi.android.app.adapters.CommentAdapter;
-import com.ushahidi.android.app.models.ListCommentModel;
-import com.ushahidi.android.app.services.FetchReportsComments;
-import com.ushahidi.android.app.services.SyncServices;
-import com.ushahidi.android.app.views.ListCommentView;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.activities.BaseListActivity;
+import foam.littlej.android.app.adapters.CommentAdapter;
+import foam.littlej.android.app.models.ListCommentModel;
+import foam.littlej.android.app.services.FetchReportsComments;
+import foam.littlej.android.app.services.SyncServices;
+import foam.littlej.android.app.views.ListCommentView;
 
 /**
  * @author eyedol
@@ -130,7 +130,7 @@ public class ListReportCommentActivity extends
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.ushahidi.android.app.activities.BaseListActivity#onLoaded(boolean)
+	 * foam.littlej.android.app.activities.BaseListActivity#onLoaded(boolean)
 	 */
 	@Override
 	protected void onLoaded(boolean success) {
@@ -140,7 +140,7 @@ public class ListReportCommentActivity extends
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.ushahidi.android.app.activities.BaseListActivity#headerView()
+	 * @see foam.littlej.android.app.activities.BaseListActivity#headerView()
 	 */
 	@Override
 	protected View headerView() {

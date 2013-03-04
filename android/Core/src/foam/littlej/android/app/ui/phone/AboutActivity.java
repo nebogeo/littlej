@@ -1,13 +1,13 @@
 
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.view.MenuItem;
 
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.activities.BaseActivity;
-import com.ushahidi.android.app.views.AboutView;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.activities.BaseActivity;
+import foam.littlej.android.app.views.AboutView;
 
 public class AboutActivity extends BaseActivity<AboutView> {
 

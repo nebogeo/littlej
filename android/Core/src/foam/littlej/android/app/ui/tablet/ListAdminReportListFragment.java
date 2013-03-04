@@ -18,20 +18,20 @@
  **
  **/
 
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.adapters.ListFetchedReportAdapter;
-import com.ushahidi.android.app.adapters.ListReportAdapter;
-import com.ushahidi.android.app.fragments.BaseListFragment;
-import com.ushahidi.android.app.models.ListReportModel;
-import com.ushahidi.android.app.tasks.ProgressTask;
-import com.ushahidi.android.app.views.ListReportView;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.adapters.ListFetchedReportAdapter;
+import foam.littlej.android.app.adapters.ListReportAdapter;
+import foam.littlej.android.app.fragments.BaseListFragment;
+import foam.littlej.android.app.models.ListReportModel;
+import foam.littlej.android.app.tasks.ProgressTask;
+import foam.littlej.android.app.views.ListReportView;
 
 /**
  * @author eyedol
@@ -109,7 +109,7 @@ public class ListAdminReportListFragment extends
 	}
 
 	/* (non-Javadoc)
-	 * @see com.ushahidi.android.app.fragments.BaseListFragment#headerView()
+	 * @see foam.littlej.android.app.fragments.BaseListFragment#headerView()
 	 */
 	@Override
 	protected View headerView() {

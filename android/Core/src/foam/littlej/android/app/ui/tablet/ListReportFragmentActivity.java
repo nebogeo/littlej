@@ -1,9 +1,9 @@
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-import com.ushahidi.android.app.R;
+import foam.littlej.android.app.R;
 
 public class ListReportFragmentActivity extends FragmentActivity {
     

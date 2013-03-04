@@ -18,7 +18,7 @@
  **
  **/
 
-package com.ushahidi.android.app.ui.phone;
+package foam.littlej.android.app.ui.phone;
 
 import java.util.List;
 
@@ -34,15 +34,15 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.activities.BaseMapViewActivity;
-import com.ushahidi.android.app.adapters.ListFetchedReportAdapter;
-import com.ushahidi.android.app.models.ListReportModel;
-import com.ushahidi.android.app.models.ViewReportModel;
-import com.ushahidi.android.app.services.FetchReportsComments;
-import com.ushahidi.android.app.services.SyncServices;
-import com.ushahidi.android.app.views.ViewReportView;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.activities.BaseMapViewActivity;
+import foam.littlej.android.app.adapters.ListFetchedReportAdapter;
+import foam.littlej.android.app.models.ListReportModel;
+import foam.littlej.android.app.models.ViewReportModel;
+import foam.littlej.android.app.services.FetchReportsComments;
+import foam.littlej.android.app.services.SyncServices;
+import foam.littlej.android.app.views.ViewReportView;
 
 /**
  * @author eyedol
@@ -290,7 +290,7 @@ public class ViewReportActivity extends
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.ushahidi.android.app.MapUserLocation#locationChanged(double,
+	 * @see foam.littlej.android.app.MapUserLocation#locationChanged(double,
 	 * double)
 	 */
 	@Override

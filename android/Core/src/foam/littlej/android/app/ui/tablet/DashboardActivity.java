@@ -1,4 +1,4 @@
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -14,12 +14,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 
-import com.ushahidi.android.app.MainApplication;
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.Settings;
-import com.ushahidi.android.app.ui.phone.CheckinTabActivity;
-import com.ushahidi.android.app.ui.phone.ReportTabActivity;
+import foam.littlej.android.app.MainApplication;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.Settings;
+import foam.littlej.android.app.ui.phone.CheckinTabActivity;
+import foam.littlej.android.app.ui.phone.ReportTabActivity;
 
 public class DashboardActivity extends FragmentMapActivity implements
 		ListMapFragmentListener, ActionBar.OnNavigationListener {

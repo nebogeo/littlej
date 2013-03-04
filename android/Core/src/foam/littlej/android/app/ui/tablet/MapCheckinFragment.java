@@ -1,4 +1,4 @@
-package com.ushahidi.android.app.ui.tablet;
+package foam.littlej.android.app.ui.tablet;
 
 import java.util.List;
 
@@ -22,17 +22,17 @@ import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
-import com.ushahidi.android.app.CheckinMapItemizedOverlay;
-import com.ushahidi.android.app.CheckinMapOverlayItem;
-import com.ushahidi.android.app.Preferences;
-import com.ushahidi.android.app.R;
-import com.ushahidi.android.app.adapters.UserSpinnerAdater;
-import com.ushahidi.android.app.fragments.BaseFragment;
-import com.ushahidi.android.app.models.ListCheckinModel;
-import com.ushahidi.android.app.services.FetchCheckins;
-import com.ushahidi.android.app.services.SyncServices;
-import com.ushahidi.android.app.ui.phone.AddCheckinActivity;
-import com.ushahidi.android.app.util.Util;
+import foam.littlej.android.app.CheckinMapItemizedOverlay;
+import foam.littlej.android.app.CheckinMapOverlayItem;
+import foam.littlej.android.app.Preferences;
+import foam.littlej.android.app.R;
+import foam.littlej.android.app.adapters.UserSpinnerAdater;
+import foam.littlej.android.app.fragments.BaseFragment;
+import foam.littlej.android.app.models.ListCheckinModel;
+import foam.littlej.android.app.services.FetchCheckins;
+import foam.littlej.android.app.services.SyncServices;
+import foam.littlej.android.app.ui.phone.AddCheckinActivity;
+import foam.littlej.android.app.util.Util;
 
 public class MapCheckinFragment<CheckinMapItemOverlay> extends BaseFragment {
 
