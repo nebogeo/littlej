@@ -1,19 +1,19 @@
 <resources>
 
     <!-- DEPLOYMENT INFORMATION -->
-    <string name="app_title">Ushahidi</string>
-    <string name="deployment_url" />
-    <string name="team_url">http://ushahidi.com/about-us/team</string>
-    <string name="media_url">http://www.ushahidi.com</string>
-    <string name="twitter_url">http://twitter.com/ushahidi</string>
-    <string name="facebook_url">http://www.facebook.com/ushahidi</string>
-    <string name="contact_url">http://ushahidi.com/contact-us</string>
+    <string name="app_title">LittleJ</string>
+    <string name="deployment_url">http://littlej.borrowed-scenery.com</string>
+    <string name="team_url">http://littlej.borrowed-scenery.com</string>
+    <string name="media_url">http://littlej.borrowed-scenery.com</string>
+    <string name="twitter_url">http://twitter.com/iamlittlej</string>
+    <string name="facebook_url">http://www.facebook.com/littlej</string>
+    <string name="contact_url">http://littlej.borrowed-scenery.com</string>
 
-    <!-- DEPLOYMENT PROVIDER AUTHORITIES. USUALLY PACKAGE NAME AND CLASS NAME Eg. com.ushahidi.android.app.data.deploymentprovider -->
-    <string name="provider_authorities">com.ushahidi.android.app.data.deploymentprovider</string>
+    <!-- DEPLOYMENT PROVIDER AUTHORITIES. USUALLY PACKAGE NAME AND CLASS NAME Eg. foam.littlej.android.app.data.deploymentprovider -->
+    <string name="provider_authorities">foam.littlej.android.app.data.deploymentprovider</string>
 
     <!-- NAMESPACE  -->
-    <string name="rounded_corner">http://schemas.android.com/apk/res/com.ushahidi.android.app</string>
+    <string name="rounded_corner">http://schemas.android.com/apk/res/foam.littlej.android.app</string>
     <!-- ICON IMAGES -->
     <drawable name="app_icon">@drawable/icon</drawable>
     <drawable name="logo_icon">@drawable/logo</drawable>
@@ -87,10 +87,6 @@
     
 
     <!-- DEPLOYMENT TEXT -->
-    <string name="about_text">Ushahidi is a non-profit tech company that develops
-		free and open source software for information collection,
-		visualization and interactive mapping. We built the Ushahidi platform
-		as a tool to easily crowdsource information using multiple channels,
-		including SMS, email, Twitter and the web.</string>
+    <string name="about_text">LittleJ, Hyperlocal news for Port Talbot.</string>
 
 </resources>

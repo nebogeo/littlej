@@ -11,7 +11,7 @@
 	at team@ushahidi.com.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ushahidi.android.app"
+    package="foam.littlej.android.app"
     android:versionCode="30"
     android:versionName="3.1.5" >
 
