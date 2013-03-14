@@ -60,6 +60,9 @@ public class PhotoUtils {
 	// folder to save pending photos.
 	private static final String PENDING = "/pending";
 
+    private static final Boolean mExternalStorageAvailable = false;
+    private static final Boolean mExternalStorageWriteable = false;
+
 	public static int getScreenOrientation(Activity context) {
 		Display display = context.getWindowManager().getDefaultDisplay();
 		if (display.getWidth() == display.getHeight()) {
@@ -187,7 +190,7 @@ public class PhotoUtils {
 		return null;
 	}
 
-    public CheckExternalStorage() {
+    public void CheckExternalStorage() {
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             mExternalStorageAvailable = mExternalStorageWriteable = true;
