@@ -187,6 +187,18 @@ public class PhotoUtils {
 		return null;
 	}
 
+    public CheckExternalStorage() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            mExternalStorageAvailable = mExternalStorageWriteable = true;
+        } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            mExternalStorageAvailable = true;
+            mExternalStorageWriteable = false;
+        } else {
+            mExternalStorageAvailable = mExternalStorageWriteable = false;
+        }
+    }
+
 	public static boolean savePhoto(Activity activity, Bitmap bitmap,
 			String fileName) {
 		try {
