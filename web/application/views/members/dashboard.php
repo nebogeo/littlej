@@ -201,10 +201,7 @@
 								<div class="member_info_row"><span class="member_info_label"><?php echo Kohana::lang('ui_main.profile_color');?></span>:
 									<span style="background-color:#<?php echo $user->color; ?>;width:150px;height:10px;display:inline-block;"></span>
 								</div>
-                                     
-                                     test
-
-                                     // NOTE: Not calculating reputation yet
+                                    
 								<div class="member_info_row"><span class="member_info_label"><?php echo Kohana::lang('ui_admin.reputation');?>:</span> <span class="member_reputation"><?php echo $reputation; ?></span></div> 
 
 							</div>
