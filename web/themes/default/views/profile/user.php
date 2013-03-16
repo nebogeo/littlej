@@ -52,6 +52,13 @@
 
 			</div>
 			<?php } ?>
+                 
+                 
+
+                 
+                 <?php echo Kohana::lang('ui_admin.reputation');?>:</span> <span class="member_reputation"><?php echo $reputation; ?></span>
+
+
 
 			<div style="clear:both;"></div>
 
