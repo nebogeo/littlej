@@ -8,13 +8,13 @@
 				<?php if($logged_in_user){ ?>
 					<div><?php echo Kohana::lang('ui_main.this_is_your_profile'); ?><br/><a href="<?php echo url::site();?>members/"><?php echo Kohana::lang('ui_main.manage_your_account'); ?></a></div>
 				<?php }else{ ?>
-					<div><?php echo Kohana::lang('ui_main.is_this_your_profile'); ?>
+			<!--		<div><?php echo Kohana::lang('ui_main.is_this_your_profile'); ?>
 					<?php if($logged_in_id){ ?>
 						<a href="<?php echo url::site();?>logout/front"><?php echo Kohana::lang('ui_admin.logout');?></a>
 					<?php }else{ ?>
 						<a href="<?php echo url::site();?>members/"><?php echo Kohana::lang('ui_main.login'); ?></a>
 					<?php } ?>
-					</div>
+					</div> -->
 				<?php } ?>
 			</div>
 
