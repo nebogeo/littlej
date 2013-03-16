@@ -90,6 +90,15 @@ class nav_Core {
 			}
 		}
 
+		// Reports List
+		if( ! in_array('reporters',$dontshow))
+		{
+			$menu .= "<li><a href=\"".url::site()."profile\" ";
+			$menu .= ($this_page == 'profile') ? " class=\"active\"" : "";
+		 	$menu .= ">".Kohana::lang('ui_main.browse_profiles')."</a></li>";
+		 }
+
+
 		echo $menu;
 		
 		// Action::nav_admin_reports - Add items to the admin reports navigation tabs
