@@ -58,6 +58,7 @@
 					<?php } ?>
 
 					<!-- box -->
+<!--
 					<div class="box">
 						<h3><?php echo Kohana::lang('ui_main.reports');?> <?php echo Kohana::lang('ui_main.reports_timeline');?></h3>
 						<ul class="inf" style="margin-bottom:10px;">
@@ -76,7 +77,7 @@
 							<?php } ?>
 						</div>
 					</div>
-
+-->
 					<!-- info-container -->
 					<div class="info-container">
 						<div class="i-c-head">
@@ -236,6 +237,7 @@
 					</div>
 
 					<!-- box -->
+<!--
 					<div class="box">
 						<h3><?php echo Kohana::lang('ui_main.quick_stats');?></h3>
 						<ul class="nav-list">
@@ -269,6 +271,7 @@
 							</li>
 						</ul>
 					</div>
+-->
 				</div>
 			</div>
 
