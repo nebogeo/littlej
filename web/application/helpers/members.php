@@ -17,10 +17,10 @@ class members_Core {
 	{
 		return array(
 			'dashboard' => Kohana::lang('ui_admin.dashboard'),
-			'reports' => Kohana::lang('ui_admin.my_reports'),
-			'checkins' => Kohana::lang('ui_admin.my_checkins'),
-			'alerts' => Kohana::lang('ui_admin.my_alerts'),
-			'private' => Kohana::lang('ui_admin.private_messages')
+			'reports' => Kohana::lang('ui_admin.my_reports')
+            // 'checkins' => Kohana::lang('ui_admin.my_checkins'),
+			// 'alerts' => Kohana::lang('ui_admin.my_alerts'),
+			// 'private' => Kohana::lang('ui_admin.private_messages')
 		);
 	}
 	

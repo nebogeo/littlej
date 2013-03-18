@@ -179,7 +179,7 @@
 							</div>			
 						</div>
 						<!-- f-col-1 -->
-						<div class="f-col-1">
+						<!-- div class="f-col-1" -->
 							<div class="incident-location">
 								<h4><?php echo Kohana::lang('ui_main.incident_location');?></h4>
 								<div class="location-info">
@@ -418,7 +418,7 @@
 								print "<input type=\"hidden\" name=\"$this_startid\" value=\"$i\" id=\"$this_startid\">";
 								?>
 							</div>
-						</div>
+						<!--/div -->
 						<!-- f-col-bottom -->
 						<div class="f-col-bottom-container">
 							<div class="f-col-bottom">

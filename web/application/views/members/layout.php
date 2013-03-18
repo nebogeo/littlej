@@ -159,31 +159,30 @@
 </head>
 <body>
 
-	<?php echo $header_nav; ?>
+    <?php echo $header_nav; ?>
 
 	<div class="holder">
 		<!-- header -->
 		<div id="header">
 
 			<!-- info-nav -->
-			<div class="info-nav">
+<!--			<div class="info-nav">
 				<ul>
 					<li><a href="http://forums.ushahidi.com/"><?php echo Kohana::lang('ui_admin.forum');?></a></li>
 				</ul>
 				<div class="info-search"><?php echo form::open('members/reports', array('id' => 'info-search', 'method' => 'get')); ?><input type="text" name="k" class="info-keyword" value=""> <a href="javascript:info_search();" class="btn"><?php echo Kohana::lang('ui_admin.search');?></a><?php echo form::close(); ?></div>
 				<div style="clear:both"></div>
-			</div>
+			</div> -->
 			<!-- title -->
-			<h1><?php echo $site_name ?></h1>
+<!--			<h1><?php echo $site_name ?></h1> -->
 			<!-- nav-holder -->
 			<div class="nav-holder">
-				<!-- main-nav -->
 				<ul class="main-nav">
 					<?php foreach($main_tabs as $page => $tab_name): ?>
 						<li><a href="<?php echo url::site(); ?>members/<?php echo $page; ?>" <?php if($this_page==$page) echo 'class="active"' ;?>><?php echo $tab_name; ?></a></li>
 					<?php endforeach; ?>
 				</ul>
-			</div>
+			</div> 
 		</div>
 		<!-- content -->
 		<div id="content">
@@ -192,6 +191,7 @@
 			</div>
 		</div>
 	</div>
+<!--
 	<div id="footer">
 		<div class="holder">
 			<strong>
@@ -201,5 +201,6 @@
 			</strong>
 		</div>
 	</div>
+-->
 </body>
 </html>

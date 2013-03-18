@@ -1,9 +1,15 @@
+@font-face {
+    font-family: 'Rokkitt';
+    src: url('../../../themes/littlej/images/Rokkitt.otf');
+}
+
 body{
 	margin:0;
-	font:12px/16px "Trebuchet MS",sans-serif;
+    font-family: "Rokkitt";
 	color:#555;
 	min-width:960px;
 	padding:0;
+	background:url(../../../themes/littlej/images/bg.jpg);
 }
 form{
 	margin:0;
@@ -17,7 +23,7 @@ h1, h2 ,h3, h4{margin:0;}
 h1{
 	padding:16px 0 0 2px;
 	color:#000;
-	font:28px/30px Georgia, "Times New Roman", Times, serif;
+    font-family: "Rokkitt";
 }
 h2{
 	padding:12px 18px 0;
@@ -187,21 +193,21 @@ ul.main-nav{
 	float:left;
 }
 ul.main-nav li{
-	padding:0 5px 0 0;
-	list-style:none;
-	float:left;
+	padding: 0 5px 0 0;
+	list-style: none;
+	float: left;
 }
 ul.main-nav li a{
 	height:25px;
 	float:left;
 	padding:12px 15px 0;
 	font-size:17px;
-	color:#555;
+	color:#fff;
 	text-decoration:none;
 }
 
-ul.main-nav li a:hover{background:#f5f5f5;}
-ul.main-nav li a.active{ background:#eee !important;}
+ul.main-nav li a:hover{background:#EC008C;}
+ul.main-nav li a.active{ background:#EC008C !important;}
 ul.sub-nav {
 	margin:0;
 	padding:13px 2px 0 0;
@@ -222,15 +228,15 @@ ul.sub-nav  li a:hover{ text-decoration:underline;}
 
 /*-- content --*/
 #content{
-	background:url(../../img/admin/content-bg.gif) repeat-x;
 	width:940px;
 	padding:10px 10px 0;
+	background:url(../../../themes/littlej/images/t.png);
 	overflow:hidden;
 	clear:both;
 }
 .bg{
 	width:940px;
-	background:#fff;
+//	background:#fff;
 	clear:both;
 	overflow:hidden;
 	padding-bottom:29px;
@@ -245,7 +251,8 @@ ul.sub-nav  li a:hover{ text-decoration:underline;}
 .box {
 	margin:20px 0 0;
 	padding:0 0 20px;
-	border:4px solid #f5f5f5;
+	//border:4px solid #f5f5f5;
+    background: #fff;
 	clear:both;
 	overflow:hidden;
 }
