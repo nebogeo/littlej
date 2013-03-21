@@ -61,10 +61,15 @@ class Mission_Model extends ORM
 	 * Returns an array of completed missions for a specific user
 	 * @return array
 	 */
-	public static function users_completed_missions($user_id)
+	public static function users_completed_missions($user)
 	{
-		// Get assigned badge ids
-		$completed_missions = ORM::factory('mission_user')->where(array('user_id'=>$user_id))->find_all();
+		// Get completed missions
+		$completed_missions = ORM::factory('mission_user')
+            ->join('mission','id','mission_id')
+            ->where(array('user_id'=>$user->id))
+            ->where(array('level'=>$user->level))
+            ->find_all();
+
 		$missions = array();
 		foreach($completed_missions as $completed_mission)
 		{
@@ -87,16 +92,16 @@ class Mission_Model extends ORM
 		return $arr;
 	}
 
-	public static function users_pending_missions($user_id)
+	public static function users_pending_missions($user)
 	{
+
+        $query="select * from mission 
+            left join mission_users 
+            on mission_id = id 
+            where (mission_id is null or user_id != ".$user->id.") and level = ".$user->level;
+
         // Get assigned badge ids 
-		$pending_missions = Database::instance()->query("select * from mission
-                                                       left join mission_users
-                                                       on mission_id = id
-                                                       where mission_id is null");
-
-//        echo Kohana::debug($pending_missions);
-
+		$pending_missions = Database::instance()->query($query);
 
         $missions = array();
 		foreach($pending_missions as $pending_mission)

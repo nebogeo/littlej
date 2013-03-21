@@ -35,9 +35,11 @@ class Dashboard_Controller extends Members_Controller {
 		// Get Badges
 		$this->template->content->badges = Badge_Model::users_badges($this->user->id);
 
+        missions::calculate($this->user);
+
 		// Get Missions
-		$this->template->content->completed_missions = Mission_Model::users_completed_missions($this->user->id);
-		$this->template->content->pending_missions = Mission_Model::users_pending_missions($this->user->id);
+		$this->template->content->completed_missions = Mission_Model::users_completed_missions($this->user);
+		$this->template->content->pending_missions = Mission_Model::users_pending_missions($this->user);
 
 		// Retrieve Dashboard Counts...
 		// Total Reports
