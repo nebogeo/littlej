@@ -39,7 +39,8 @@ class missions_Core {
                 ->where('media_type', 1)
                 ->find_all();
             
-            echo Kohana::debug(count($photos));
+//            echo Kohana::debug(count($photos));
+
             if (count($photos)>0) return true;
         }
 
