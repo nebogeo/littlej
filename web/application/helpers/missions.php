@@ -25,54 +25,82 @@ class missions_Core {
                                            'mission_id'=>$mission_id));        
     }
 
-	public static function calculate($user)	
-	{
+    public static function update_user_level($user_id,$level)
+    {
+        Database::instance()->update('users',array('level'=>$level),array('id'=>$user_id));
+    }
+
+    public static function check_photos($reports)
+    {
+        foreach($reports as $report) 
+        {
+            $photos = ORM::factory('media')
+                ->where('incident_id', $report->id)
+                ->where('media_type', 1)
+                ->find_all();
+            
+            echo Kohana::debug(count($photos));
+            if (count($photos)>0) return true;
+        }
+
+        return false;
+    }
+
+    public static function check_missions($user, $pending_missions, $reports) 
+    {
+        // check each one
+		foreach($pending_missions as $pending_mission)
+		{
+            // write new ones that have been completed
+            switch ($pending_mission->code)
+            {
+                // level 1
+            case "login": missions_Core::mission_complete($user->id,$pending_mission->id); break;
+            case "first_report": if (count($reports)>0)
+                    missions_Core::mission_complete($user->id,$pending_mission->id); break;
+            case "report_photo": if (missions_Core::check_photos($reports)) 
+                    missions_Core::mission_complete($user->id,$pending_mission->id); break;
+
+                // level 2
+            case "three_reports": if (count($reports)>2) 
+                    missions_Core::mission_complete($user->id,$pending_mission->id); break;
+            case "ten_reports": if (count($reports)>9) 
+                    missions_Core::mission_complete($user->id,$pending_mission->id); break;
+            }
+        }
+    }
+
+	public static function get_pending_missions($user) 
+    {
         // get pending missions for the user's current level
         $query="select * from mission 
             left join mission_users 
             on mission_id = id 
             where (mission_id is null or user_id != ".$user->id.") and level = ".$user->level;
-		$pending_missions = Database::instance()->query($query);
+		return Database::instance()->query($query);
+    }
 
+
+
+	public static function calculate($user)	
+	{
+        $pending_missions = missions_Core::get_pending_missions($user);
+        
         // get the reports whatever
         $reports = ORM::factory("incident")
             ->where("user_id", $user->id)
             ->find_all();
         
+        missions_Core::check_missions($user, $pending_missions, $reports);
 
-//		$photos = ORM::factory('media')
-//				      ->where('incident_id', $this->id)
-//				      ->where('media_type', 1)
-//				      ->find_all();
-
-
-        // check each one
-		foreach($pending_missions as $pending_mission)
-		{
-            switch ($pending_mission->code)
-            {
-            case "first_report": if (count($reports)>0) mission_complete($user->id,$pending_mission->id); break;
-            case "three_reports": if (count($reports)>2) mission_complete($user->id,$pending_mission->id); break;
-            }
+        // update user level when complete
+        if (count($pending_missions)==0 && $user->level<2) 
+        {
+            $user->level=$user->level+1;
+            missions_Core::update_user_level($user->id,$user->level);
+            missions_Core::check_missions($user, $pending_missions, $reports);
         }
-
             
-            
-      
-            // write new ones that have been completed
-        
-
-            // update user level when complete
-	
-        
-
-
-        /*       foreach($pending_missions as $pending_mission)
-		{
-			
-            
-
-		}*/
         
 
 /*

@@ -67,7 +67,17 @@
 
                  Your progress on level <?php echo $user->level+1 ?>
                  <div id="progressbar">
-                 <div id='indicator' style='width:<?php echo (count($completed_missions)/(count($completed_missions)+count($pending_missions))*100)?>%' >
+                 <div id='indicator' style='width:<?php
+                     $total=count($completed_missions)+count($pending_missions);
+                     if ($total>0) 
+                     {
+                         echo (count($completed_missions)/$total*100);
+                     }
+                     else
+                     {
+                         echo 0;
+                     }
+                     ?>%' >
                  </div></div>
 
                  <?php echo count($pending_missions)?> mission to go till level <?php echo $user->level+2 ?>! 
