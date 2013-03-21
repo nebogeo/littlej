@@ -179,3 +179,24 @@ body {
 form#header_nav_userforgot_form {
 	display:none;
 }
+
+/* progress bar */
+
+#progressbar
+{
+  width:95%;
+  padding:1px;
+  background-color:white;
+  border:1px solid black;
+  height:28px;
+  margin:10px;
+}
+#indicator
+{
+//  width:50%;
+  background-color:#EC008C;  
+  height:28px;
+  margin:0;
+}
+
+

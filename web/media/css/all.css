@@ -1494,3 +1494,49 @@ ul.pager li a.active {background:#f2f7fa;}
 	font:14px/17px Arial, Helvetica, sans-serif;
 	text-decoration :none;
 }
+
+
+/* progress bar */
+
+#progress_text {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin: 0px 0px 0px -150px;
+  font-size: 18px;
+  text-align: center;
+  width: 300px;
+}
+#progress_barbox_a {
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  margin: 0px 0px 0px -160px;
+  width: 304px;
+  height: 24px;
+  background-color: black;
+}
+.progress_per {
+  position: absolute;
+  top: 130px;
+  font-size: 18px;
+  left: 50%;
+  margin: 1px 0px 0px 150px;
+  background-color: #FFFFFF;
+}
+
+.progress_bar {
+  position: absolute;
+  top: 132px;
+  left: 50%;
+  margin: 0px 0px 0px -158px;
+  width: 50px;
+  height: 20px;
+  background-color: #0099FF;
+}
+
+.progress_blank {
+  background-color: white;
+  width: 300px;
+}
+

@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 /**
-* Model for Badge
+* Model for Mission
  *
  * PHP version 5
  * LICENSE: This source file is subject to LGPL license
@@ -29,19 +29,19 @@ class Mission_Model extends ORM
 	 */
 	public static function missions()
 	{
-		$badges = ORM::factory('mission')->find_all();
+		$missions = ORM::factory('mission')->find_all();
 		$arr = array();
-		foreach($badges as $badge){
-			$arr[$badge->id] = array('id'=>$badge->id,
-									'name'=>$badge->name,
-									'description'=>$badge->description,
-									'users'=>array());
-			foreach($badge->users as $user)
+		foreach($missions as $mission){
+			$arr[$mission->id] = array('id'=>$mission->id,
+                                       'name'=>$mission->name,
+                                       'description'=>$mission->description,
+                                       'users'=>array());
+			foreach($mission->users as $user)
 			{
-				$arr[$badge->id]['users'][$user->id] = $user->username;
+				$arr[$mission->id]['users'][$user->id] = $user->username;
 			}
 
-			asort($arr[$badge->id]['users']);
+			asort($arr[$mission->id]['users']);
 		}
 
 		return $arr;
@@ -53,8 +53,8 @@ class Mission_Model extends ORM
 	 */
 	public static function mission_names()
 	{
-		$badges = ORM::factory('mission')->select_list('id','name');
-		return $badges;
+		$missions = ORM::factory('mission')->select_list('id','name');
+		return $missions;
 	}
 
 	/**
@@ -72,10 +72,10 @@ class Mission_Model extends ORM
 		}
 		
 		$arr = array();
-		if(count($assigned) > 0)
+		if(count($missions) > 0)
 		{
 			// Get missions with those ids
-			$missions = ORM::factory('mission')->in('id', $assigned)->find_all();
+			$missions = ORM::factory('mission')->in('id', $missions)->find_all();
 			foreach($missions as $mission)
 			{
 				$arr[$mission->id] = array('id'=>$mission->id,
@@ -86,4 +86,41 @@ class Mission_Model extends ORM
 
 		return $arr;
 	}
+
+	public static function users_pending_missions($user_id)
+	{
+        // Get assigned badge ids 
+		$pending_missions = Database::instance()->query("select * from mission
+                                                       left join mission_users
+                                                       on mission_id = id
+                                                       where mission_id is null");
+
+//        echo Kohana::debug($pending_missions);
+
+
+        $missions = array();
+		foreach($pending_missions as $pending_mission)
+		{
+
+			$missions[] = $pending_mission->id;
+		}
+		
+		$arr = array();
+		if(count($missions) > 0)
+		{
+			// Get missions with those ids
+			$missions = ORM::factory('mission')->in('id', $missions)->find_all();
+			foreach($missions as $mission)
+			{
+				$arr[$mission->id] = array('id'=>$mission->id,
+									  	   'name'=>$mission->name,
+                                           'description'=>$mission->description);
+			}
+		}
+
+		return $arr;
+	}
+
+
+
 }

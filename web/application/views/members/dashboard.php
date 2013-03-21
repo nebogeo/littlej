@@ -57,7 +57,41 @@
 					</div>
 					<?php } ?>
 
-					<!-- box -->
+                                        <!-- missions -->
+                 
+                 <div class="box">
+                 
+                 <h3><?php echo Kohana::lang('ui_main.missions');?></h3>
+                 <div style="clear:both;"></div>
+                 <div style="text-align:center;">
+
+                 Your progress
+                 <div id="progressbar">
+                 <div id='indicator' style='width:<?php echo (count($completed_missions)/(count($completed_missions)+count($pending_missions))*100)?>%' >
+                 </div></div>
+
+                 <?php echo count($pending_missions)?> missions to go! 
+                 
+                 <?php
+                 if(count($pending_missions) > 0) {
+                     $mission = reset($pending_missions);
+                     ?>
+                     
+                     <div>
+                     <br/>Next mission: <strong><?php echo $mission['name']; ?></strong> <?php echo $mission['description']; ?>
+                     </div>
+                         
+                     <?php
+                 }
+                    
+                 ?>
+
+                 </div>
+                 <div style="clear:both;"></div>
+                 
+                 </div>
+
+
 <!--
 					<div class="box">
 						<h3><?php echo Kohana::lang('ui_main.reports');?> <?php echo Kohana::lang('ui_main.reports_timeline');?></h3>

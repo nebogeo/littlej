@@ -35,6 +35,10 @@ class Dashboard_Controller extends Members_Controller {
 		// Get Badges
 		$this->template->content->badges = Badge_Model::users_badges($this->user->id);
 
+		// Get Missions
+		$this->template->content->completed_missions = Mission_Model::users_completed_missions($this->user->id);
+		$this->template->content->pending_missions = Mission_Model::users_pending_missions($this->user->id);
+
 		// Retrieve Dashboard Counts...
 		// Total Reports
 		$this->template->content->reports_total = ORM::factory('incident')
