@@ -41,6 +41,9 @@ class Dashboard_Controller extends Members_Controller {
 		$this->template->content->completed_missions = Mission_Model::users_completed_missions($this->user);
 		$this->template->content->pending_missions = Mission_Model::users_pending_missions($this->user);
 
+		$this->template->content->level_name = Level_Names_Model::get_level_name($this->user->level);
+		$this->template->content->next_level_name = Level_Names_Model::get_level_name($this->user->level+1);
+
 		// Retrieve Dashboard Counts...
 		// Total Reports
 		$this->template->content->reports_total = ORM::factory('incident')

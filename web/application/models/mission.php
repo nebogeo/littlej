@@ -106,7 +106,6 @@ class Mission_Model extends ORM
         $missions = array();
 		foreach($pending_missions as $pending_mission)
 		{
-
 			$missions[] = $pending_mission->id;
 		}
 		
