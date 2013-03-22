@@ -80,7 +80,9 @@
                      ?>%' >
                  </div></div>
 
-                 <?php echo count($pending_missions)?> mission to go till you are a <?php echo $next_level_name ?>! 
+                 <?php echo count($pending_missions)?> 
+                 <?php if (count($pending_missions)>1) { echo missions; } else { echo mission; } ?>
+                 to go till you are a <?php echo $next_level_name ?>! 
                  
                  <?php
                  if(count($pending_missions) > 0) {
