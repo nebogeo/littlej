@@ -114,7 +114,7 @@
                  </div>
 
                  <div class="dash-stats">
-                 <div class="dash-number">2</div>
+                 <div class="dash-number"><?php echo $total_photos; ?></div>
                  Photos
                  </div>
                  

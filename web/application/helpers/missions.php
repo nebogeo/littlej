@@ -30,7 +30,7 @@ class missions_Core {
         Database::instance()->update('users',array('level'=>$level),array('id'=>$user_id));
     }
 
-    public static function check_photos($reports)
+    public static function count_photos($reports)
     {
         foreach($reports as $report) 
         {
@@ -39,12 +39,10 @@ class missions_Core {
                 ->where('media_type', 1)
                 ->find_all();
             
-//            echo Kohana::debug(count($photos));
-
-            if (count($photos)>0) return true;
+            return count($photos);
         }
 
-        return false;
+        return 0;
     }
 
     public static function check_missions($user, $pending_missions, $reports) 
@@ -59,7 +57,7 @@ class missions_Core {
             case "login": missions_Core::mission_complete($user->id,$pending_mission->id); break;
             case "first_report": if (count($reports)>0)
                     missions_Core::mission_complete($user->id,$pending_mission->id); break;
-            case "report_photo": if (missions_Core::check_photos($reports)) 
+            case "report_photo": if (missions_Core::count_photos($reports)>0) 
                     missions_Core::mission_complete($user->id,$pending_mission->id); break;
 
                 // level 2
