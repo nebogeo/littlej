@@ -190,6 +190,7 @@ form#header_nav_userforgot_form {
   border:1px solid black;
   height:28px;
   margin:10px;
+  border-radius: 5px;
 }
 
 #indicator
@@ -198,21 +199,25 @@ form#header_nav_userforgot_form {
   background-color:#EC008C;  
   height:28px;
   margin:0;
+  border-radius: 5px;
 }
 
 .dash-container {
     clear: right;
     float: left;
+    width: 100%;
+    background: #fff;
 //    border: 1px solid #f00; 
 }
 
 .dash-stats {
     font-size: 150%;
-    width: 150px;
+    width: 16.72%;
     float: left;
     text-align: center;
     border: 1px solid #fff;
     background: #ddd;
+	border-radius: 5px;
 }
 
 .dash-number {
