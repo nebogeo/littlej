@@ -89,9 +89,8 @@
        <?php
        if(count($pending_missions) > 0) {
            $mission = reset($pending_missions); ?>
-           Next mission: <strong><?php echo $mission['name']; ?></strong> 
-           (<?php echo $mission['description']; ?>)
-                                                                              
+           Next mission: <span style="color:#ec008c;"><?php echo $mission['name']; ?></span> 
+           <i>Hint: <?php echo $mission['description']; ?></i>                       
            <?php } ?>
 
        </div>
