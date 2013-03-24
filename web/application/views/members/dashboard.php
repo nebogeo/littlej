@@ -15,12 +15,12 @@
 ?>
 
      
-     <div class="bg">
-     <h2><?php echo $title; ?></h2>
+     <div>
+
      
      <!-- missions -->
      
-     <div class="box" style="padding:10px;">
+     <div class="box" style="padding:10px; margin: 0px;">
 
        <div style="float:left; width:50%"">
         <div class="member_profile">
