@@ -191,6 +191,7 @@ form#header_nav_userforgot_form {
   height:28px;
   margin:10px;
 }
+
 #indicator
 {
 //  width:50%;
@@ -199,4 +200,22 @@ form#header_nav_userforgot_form {
   margin:0;
 }
 
+.dash-container {
+    clear: right;
+    float: left;
+//    border: 1px solid #f00; 
+}
+
+.dash-stats {
+    font-size: 150%;
+    width: 150px;
+    float: left;
+    text-align: center;
+    border: 1px solid #fff;
+    background: #ddd;
+}
+
+.dash-number {
+    font-size: 200%;
+}
 

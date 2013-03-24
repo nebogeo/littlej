@@ -77,7 +77,9 @@ Author Email: caleb@ushahidi.com
   width: 300px;
 }
 
-
+.dash-stats {
+    border: 1px solid #000; 
+}
 
 /* general styles */
 h1 {

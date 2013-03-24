@@ -13,10 +13,82 @@
  * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
  */
 ?>
-			<div class="bg">
-				<h2><?php echo $title; ?></h2>
+<div class="column">
+     
+     <div class="bg">
+     <h2><?php echo $title; ?></h2>
+     
+     <!-- missions -->
+     
+     <div class="box" style="padding:20px;">
+     <div>
+     
+     You are a <span style="font-size:150%"><?php echo $level_name ?></span>
+     <div id="progressbar">
+     <div id='indicator' style='width:<?php
+                     $total=count($completed_missions)+count($pending_missions);
+                     if ($total>0) 
+                     {
+                         echo (count($completed_missions)/$total*100);
+                     }
+                     else
+                     {
+                         echo 0;
+                     }
+                     ?>%' >
+     </div></div>
+
+     <?php echo count($pending_missions)?> 
+     <?php if (count($pending_missions)>1) { echo "missions"; } else { echo "mission"; } ?>
+     to go till you are a <?php echo $next_level_name ?>! 
+     
+     <?php
+     if(count($pending_missions) > 0) {
+         $mission = reset($pending_missions); ?>
+         Next mission: <strong><?php echo $mission['name']; ?></strong> 
+         (<?php echo $mission['description']; ?>)
+                                                                              
+         <?php } ?>
+
+     </div>
+     <div style="clear:both;"></div>                
+     </div>
+
+
+
 				<!-- column -->
-				<div class="column">
+
+                 <div class="dash-container">
+
+                 <div class="dash-stats" style="width:310px; background: #aaa;">
+                 <div class="dash-number">200</div>
+                 Reputation
+                 </div>
+
+                 <div class="dash-stats">
+                 <div class="dash-number">44</div>
+                 Reports
+                 </div>
+
+                 <div class="dash-stats">
+                 <div class="dash-number">2</div>
+                 Photos
+                 </div>
+                 
+                 <div class="dash-stats">
+                 <div class="dash-number">0</div>
+                 Video
+                 </div>
+
+                 <div class="dash-stats">
+                 <div class="dash-number">0</div>
+                 Audio
+                 </div>
+
+
+                 </div>
+                 <br/>
+
 
 					<!-- welcome box -->
 					<?php if($hidden_welcome_fields['needinfo']) { ?>
@@ -57,51 +129,7 @@
 					</div>
 					<?php } ?>
 
-                                        <!-- missions -->
-                 
-                 <div class="box">
-                 
-                 <h3><?php echo Kohana::lang('ui_main.missions');?></h3>
-                 <div style="clear:both;"></div>
-                 <div style="text-align:center;">
 
-                 You are a <?php echo $level_name ?>
-                 <div id="progressbar">
-                 <div id='indicator' style='width:<?php
-                     $total=count($completed_missions)+count($pending_missions);
-                     if ($total>0) 
-                     {
-                         echo (count($completed_missions)/$total*100);
-                     }
-                     else
-                     {
-                         echo 0;
-                     }
-                     ?>%' >
-                 </div></div>
-
-                 <?php echo count($pending_missions)?> 
-                 <?php if (count($pending_missions)>1) { echo "missions"; } else { echo "mission"; } ?>
-                 to go till you are a <?php echo $next_level_name ?>! 
-                 
-                 <?php
-                 if(count($pending_missions) > 0) {
-                     $mission = reset($pending_missions);
-                     ?>
-                     
-                     <div>
-                     <br/>Next mission: <strong><?php echo $mission['name']; ?></strong> (<?php echo $mission['description']; ?>)
-                     </div>
-                         
-                     <?php
-                 }
-                    
-                 ?>
-
-                 </div>
-                 <div style="clear:both;"></div>
-                 
-                 </div>
 
 
 <!--
