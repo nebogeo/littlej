@@ -20,7 +20,7 @@
      
      <!-- missions -->
      
-     <div class="box" style="padding:20px;">
+     <div class="box" style="padding:10px;">
 
        <div style="float:left; width:50%"">
         <div class="member_profile">
