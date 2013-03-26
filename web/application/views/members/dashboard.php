@@ -72,15 +72,14 @@
             ?>%' >
          </div>
      </div>
-
      <?php echo count($pending_missions)?> 
-     <?php if (count($pending_missions)>1) { echo "missions"; } else { echo "mission"; } ?>
-     to go till you are a <?php echo $next_level_name ?>! 
+     <?php if (count($pending_missions)>1) { echo "goals"; } else { echo "goal"; } ?>
+             to promotion! <!-- <?php echo $next_level_name ?>! -->  <br/>
      
      <?php
      if(count($pending_missions) > 0) {
          $mission = reset($pending_missions); ?>
-         Next mission: <span style="color:#ec008c;"><?php echo $mission['name']; ?></span> 
+         Next goal: <span style="color:#ec008c;"><?php echo $mission['name']; ?></span> <br/> 
          <i>Hint: <?php echo $mission['description']; ?></i>                       
      <?php } ?>
 
@@ -136,40 +135,53 @@
 <div style="width:50%; float:left; background:#fff;">
     <div>
         <h3>Your assignments</h3><br/>
-        <div class="assignments-container">
-            <div style="float:left;">
-                <h3>something</h3>
-                <div style="clear:both"></div>
-                <span>blah blah</span>
-                <div style="clear:both"></div>
-                <span>Ends: 00/00/00</span>
-            </div>
-            <div style="float:right;">
-                <a href="">Add report</a>
-            </div>
-         </div>
-    </div>
-
-    <div>
-    <h3>Open assignments</h3>
-    <?php
-    $categories = Category_Model::get_categories(13,false,false);
-    foreach($categories as $category) 
-    {?>
-        <div class="assignments-container">
-            <div style="float:left;">
-                <h3><?php echo $category->category_title?></h3>
-                <div style="clear:both"></div>
-                <span><?php echo $category->category_description; ?></span>
-                <div style="clear:both"></div>
-                <span>Ends: 00/00/00</span>
-            </div>
-            <div style="float:right;">
-                <a href="take_assignment">Accept</a>
-            </div>
-        </div>
         <?php 
-    } ?>
+        $categories = Assignment_Model::get_assignments($user->id);
+        if (count($categories)==0){
+            echo "<div class=\"assignments-container\">No assignments yet...</div>";
+        }
+        else
+        {
+            foreach($categories as $category) 
+            { ?>
+                <div class="assignments-container">
+                    <div style="float:left;">
+                        <h3><?php echo $category->category_title?></h3>
+                        <div style="clear:both"></div>
+                        <span><?php echo $category->category_description; ?></span>
+                        <div style="clear:both"></div>
+                        <span>Ends: XX/XX/XX</span>
+                    </div>
+                    <div style="float:right;">
+                        <a href="reports/edit">Submit story</a>
+                    </div>
+                </div>
+            <?php 
+            }
+        } ?>
+        <div style="clear:both;"></div>
+   
+        <h3>Open assignments for you</h3>
+        <?php
+        $open_categories = Assignment_Model::get_unjoined_open_assignments($user->id);
+
+        foreach($open_categories as $category) 
+        { ?>
+            <div class="assignments-container">
+                <div style="float:left;">
+                    <h3><?php echo $category->category_title?></h3>
+                    <div style="clear:both"></div>
+                    <span><?php echo $category->category_description; ?></span>
+                    <div style="clear:both"></div>
+                    <span>Ends: XX/XX/XX</span>
+                </div>
+                <div style="float:right;">
+                    <a href="<?php echo "assignment/join/".$category->id ?>" >Join in</a>
+                </div>
+            </div>
+            <?php 
+        } ?>
+        </div>
     </div>
 </div>
 
