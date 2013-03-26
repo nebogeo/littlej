@@ -181,6 +181,8 @@ function send(pos) {
     var hour = now.format("H")%12;
     var min = now.format("i");
     
+    alert(hour);
+
     var loc = "unknown";
     if (pos.address) {
         loc = pos.address.city;
