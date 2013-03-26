@@ -178,7 +178,7 @@ function send(pos) {
     var ampm = hours >= 12 ? 'pm' : 'am';
     
     var date = now.format("m/d/Y");
-    var hour = now.format("H");
+    var hour = now.format("H")%12;
     var min = now.format("i");
     
     var loc = "unknown";
