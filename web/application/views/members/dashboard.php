@@ -151,7 +151,7 @@
                         <h3><?php echo $category->category_title?></h3>
                         <div style="clear:both"></div>
                         <span><?php echo $category->category_description; ?></span>
-                        <div style="clear:both"></div>
+                        <div style="clear:both; padding: 5px;"></div>
                         <span><?php echo $joined?> Little J <?php if ($joined!=1) { echo "'s"; }?> taking part</span>
                         <div style="clear:both"></div>
                         <span>Ends: XX/XX/XX</span>
@@ -178,7 +178,7 @@
                     <h3><?php echo $category->category_title?></h3>
                     <div style="clear:both"></div>
                     <span><?php echo $category->category_description; ?></span>
-                    <div style="clear:both"></div>
+                    <div style="clear:both; padding: 5px;"></div>
                         <span><?php echo $joined?> Little J <?php if ($joined!=1) { echo "'s"; }?> taking part</span>
                         <div style="clear:both"></div>
                     <span>Ends: XX/XX/XX</span>
