@@ -99,7 +99,7 @@ class missions_Core {
 //        $query="select * from incident where user_id = ".$user->id;
 //		$reports = Database::instance()->query($query);
 
-        echo Kohana::debug(count($reports));
+//        echo Kohana::debug(count($reports));
 
 
         missions_Core::check_missions($user, $pending_missions, $reports);
