@@ -94,14 +94,7 @@ class Mission_Model extends ORM
 
 	public static function users_pending_missions($user)
 	{
-
-        $query="select * from mission 
-            left join mission_users 
-            on mission_id = id 
-            where (mission_id is null or user_id != ".$user->id.") and level = ".$user->level;
-
-        // Get assigned badge ids 
-		$pending_missions = Database::instance()->query($query);
+		$pending_missions = missions_Core::get_pending_missions($user);
 
         $missions = array();
 		foreach($pending_missions as $pending_mission)
@@ -121,10 +114,8 @@ class Mission_Model extends ORM
                                            'description'=>$mission->description);
 			}
 		}
-
 		return $arr;
 	}
-
 
 
 }

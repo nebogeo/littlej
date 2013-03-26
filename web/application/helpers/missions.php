@@ -72,10 +72,17 @@ class missions_Core {
 	public static function get_pending_missions($user) 
     {
         // get pending missions for the user's current level
-        $query="select * from mission 
-            left join mission_users 
-            on mission_id = id 
-            where (mission_id is null or user_id != ".$user->id.") and level = ".$user->level;
+//        $query="select * from mission 
+//            left join mission_users 
+//            on mission_id = id 
+//            where (mission_id is null or user_id != ".$user->id.") and level = ".$user->level;
+
+        $query="select * from mission as m 
+                left join (select * from mission_users 
+                where user_id = ".$user->id.") as completed
+                on completed.mission_id = m.id 
+                where m.level = ".$user->level." and user_id is null";
+
 		return Database::instance()->query($query);
     }
 

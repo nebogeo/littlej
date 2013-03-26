@@ -137,10 +137,17 @@
     <div>
         <h3>Your assignments</h3><br/>
         <div class="assignments-container">
-            <h3>something</h3>
-            <div style="clear:both"></div>
-            <span>blah blah</span>
-        </div>
+            <div style="float:left;">
+                <h3>something</h3>
+                <div style="clear:both"></div>
+                <span>blah blah</span>
+                <div style="clear:both"></div>
+                <span>Ends: 00/00/00</span>
+            </div>
+            <div style="float:right;">
+                <a href="">Add report</a>
+            </div>
+         </div>
     </div>
 
     <div>
@@ -150,9 +157,16 @@
     foreach($categories as $category) 
     {?>
         <div class="assignments-container">
-            <h3><?php echo $category->category_title?></h3>
-            <div style="clear:both"></div>
-            <span><?php echo $category->category_description; ?></span>
+            <div style="float:left;">
+                <h3><?php echo $category->category_title?></h3>
+                <div style="clear:both"></div>
+                <span><?php echo $category->category_description; ?></span>
+                <div style="clear:both"></div>
+                <span>Ends: 00/00/00</span>
+            </div>
+            <div style="float:right;">
+                <a href="take_assignment">Accept</a>
+            </div>
         </div>
         <?php 
     } ?>
