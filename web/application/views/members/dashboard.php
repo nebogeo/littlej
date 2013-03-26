@@ -152,7 +152,7 @@
                         <div style="clear:both"></div>
                         <span><?php echo $category->category_description; ?></span>
                         <div style="clear:both"></div>
-                        <span><?php echo $joined?> Little J <?php if ($joined>1) { echo "'s"; }?> taking part</span>
+                        <span><?php echo $joined?> Little J <?php if ($joined!=1) { echo "'s"; }?> taking part</span>
                         <div style="clear:both"></div>
                         <span>Ends: XX/XX/XX</span>
                     </div>
@@ -179,7 +179,7 @@
                     <div style="clear:both"></div>
                     <span><?php echo $category->category_description; ?></span>
                     <div style="clear:both"></div>
-                        <span><?php echo $joined?> Little J <?php if ($joined>1) { echo "'s"; }?> taking part</span>
+                        <span><?php echo $joined?> Little J <?php if ($joined!=1) { echo "'s"; }?> taking part</span>
                         <div style="clear:both"></div>
                     <span>Ends: XX/XX/XX</span>
                 </div>
