@@ -40,6 +40,7 @@ class missions_Core {
                 ->where('media_type', 1)
                 ->find_all();
             $c+=count($photos);
+
         }
         return $c;
     }
