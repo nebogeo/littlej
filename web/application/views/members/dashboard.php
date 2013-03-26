@@ -147,14 +147,14 @@
                 $joined = Assignment_Model::count_joined($category->id);
                 ?>
                 <div class="assignments-container">
-                    <div style="float:left;">
-                        <h3><?php echo $category->category_title?></h3>
-                        <div style="clear:both"></div>
-                        <span><?php echo $category->category_description; ?></span>
-                        <div style="clear:both; padding: 5px;"></div>
+                    <h3><?php echo $category->category_title?></h3> 
+                    <div style="float:right;">Ends: XX/XX/XX</div>
+                    <div style="padding: 5px; clear:both;"></div>
+                    <span><?php echo $category->category_description; ?></span>
+                    <div style="clear:both;  width:100%; padding: 5px;"></div>
+                    <div style="float:left; width:50%">
                         <span><?php echo $joined?> Little J <?php if ($joined!=1) { echo "'s"; }?> taking part</span>
                         <div style="clear:both"></div>
-                        <span>Ends: XX/XX/XX</span>
                     </div>
                     <div style="float:right;">
                         <a href="reports/edit">Submit story</a>
@@ -174,14 +174,14 @@
             $joined = Assignment_Model::count_joined($category->id);
             ?>
             <div class="assignments-container">
-                <div style="float:left;">
-                    <h3><?php echo $category->category_title?></h3>
-                    <div style="clear:both"></div>
-                    <span><?php echo $category->category_description; ?></span>
-                    <div style="clear:both; padding: 5px;"></div>
-                        <span><?php echo $joined?> Little J <?php if ($joined!=1) { echo "'s"; }?> taking part</span>
-                        <div style="clear:both"></div>
-                    <span>Ends: XX/XX/XX</span>
+                <h3><?php echo $category->category_title?></h3>
+                <div style="float:right;">Ends: XX/XX/XX</div>
+                <div style="padding: 5px; clear:both;"></div>
+                <span><?php echo $category->category_description; ?></span>
+                <div style="clear:both; width:100%; padding: 5px;"></div>
+                <div style="float:left; width:50%">
+                    <span><?php echo $joined?> Little J <?php if ($joined!=1) { echo "'s"; }?> taking part</span>
+                    <div style="clear:both;"></div>
                 </div>
                 <div style="float:right;">
                     <a href="<?php echo "assignment/join/".$category->id ?>" >Join in</a>
