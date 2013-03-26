@@ -32,17 +32,16 @@ class missions_Core {
 
     public static function count_photos($reports)
     {
+        $c=0;
         foreach($reports as $report) 
         {
             $photos = ORM::factory('media')
                 ->where('incident_id', $report->id)
                 ->where('media_type', 1)
                 ->find_all();
-            
-            return count($photos);
+            $c+=count($photos);
         }
-
-        return 0;
+        return $c;
     }
 
     public static function check_missions($user, $pending_missions, $reports) 
@@ -71,12 +70,6 @@ class missions_Core {
 
 	public static function get_pending_missions($user) 
     {
-        // get pending missions for the user's current level
-//        $query="select * from mission 
-//            left join mission_users 
-//            on mission_id = id 
-//            where (mission_id is null or user_id != ".$user->id.") and level = ".$user->level;
-
         $query="select * from mission as m 
                 left join (select * from mission_users 
                 where user_id = ".$user->id.") as completed
@@ -91,12 +84,12 @@ class missions_Core {
 	public static function calculate($user)	
 	{
         $pending_missions = missions_Core::get_pending_missions($user);
-        
+
         // get the reports whatever
         $reports = ORM::factory("incident")
             ->where("user_id", $user->id)
             ->find_all();
-        
+      
         missions_Core::check_missions($user, $pending_missions, $reports);
 
         // update user level when complete

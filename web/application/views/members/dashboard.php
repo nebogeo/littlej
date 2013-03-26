@@ -162,7 +162,7 @@
                 </div>
             <?php 
             }
-        } ?>
+        } ?> 
         <div style="clear:both;"></div>
    
         <h3>Open assignments for you</h3>
