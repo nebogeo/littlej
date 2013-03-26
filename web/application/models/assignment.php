@@ -44,6 +44,12 @@ class Assignment_Model extends ORM {
 		return Database::instance()->query($query);
     }
 
+	public static function count_joined($assignment_id) 
+    {
+        $query="select * from user_assignments where assignment = ".$assignment_id;
+		return count(Database::instance()->query($query));
+    }
+
 	public static function get_unjoined_open_assignments($user_id) 
     {
         $query="select * from category as c

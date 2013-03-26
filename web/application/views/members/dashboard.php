@@ -143,12 +143,16 @@
         else
         {
             foreach($categories as $category) 
-            { ?>
+            { 
+                $joined = Assignment_Model::count_joined($category->id);
+                ?>
                 <div class="assignments-container">
                     <div style="float:left;">
                         <h3><?php echo $category->category_title?></h3>
                         <div style="clear:both"></div>
                         <span><?php echo $category->category_description; ?></span>
+                        <div style="clear:both"></div>
+                        <span><?php echo $joined?> Little J <?php if ($joined>1) { echo "'s"; }?> taking part</span>
                         <div style="clear:both"></div>
                         <span>Ends: XX/XX/XX</span>
                     </div>
@@ -166,13 +170,17 @@
         $open_categories = Assignment_Model::get_unjoined_open_assignments($user->id);
 
         foreach($open_categories as $category) 
-        { ?>
+        { 
+            $joined = Assignment_Model::count_joined($category->id);
+            ?>
             <div class="assignments-container">
                 <div style="float:left;">
                     <h3><?php echo $category->category_title?></h3>
                     <div style="clear:both"></div>
                     <span><?php echo $category->category_description; ?></span>
                     <div style="clear:both"></div>
+                        <span><?php echo $joined?> Little J <?php if ($joined>1) { echo "'s"; }?> taking part</span>
+                        <div style="clear:both"></div>
                     <span>Ends: XX/XX/XX</span>
                 </div>
                 <div style="float:right;">
