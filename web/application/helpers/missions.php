@@ -70,6 +70,12 @@ class missions_Core {
 
 	public static function get_pending_missions($user) 
     {
+        // get pending missions for the user's current level
+//        $query="select * from mission 
+//            left join mission_users 
+//            on mission_id = id 
+//            where (mission_id is null or user_id != ".$user->id.") and level = ".$user->level;
+
         $query="select * from mission as m 
                 left join (select * from mission_users 
                 where user_id = ".$user->id.") as completed
@@ -90,6 +96,12 @@ class missions_Core {
             ->where("user_id", $user->id)
             ->find_all();
       
+//        $query="select * from incident where user_id = ".$user->id;
+//		$reports = Database::instance()->query($query);
+
+        echo Kohana::debug(count($reports));
+
+
         missions_Core::check_missions($user, $pending_missions, $reports);
 
         // update user level when complete
