@@ -180,8 +180,6 @@ function send(pos) {
     var date = now.format("m/d/Y");
     var hour = now.format("H")%12;
     var min = now.format("i");
-    
-    alert(hour);
 
     var loc = "unknown";
     if (pos.address) {
@@ -212,6 +210,6 @@ function send(pos) {
         person_last: last_name
         
     }, function (data) {
-        alert("sent...");
+        alert("sent report...");
     });
 }
