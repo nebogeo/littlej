@@ -117,6 +117,58 @@ class category_Core {
 
 		return $html;
 	}
+
+
+	public static function form_dropdown($form_field, array $selected_categories = array(), $columns = 1, $enable_parents = FALSE, $show_hidden = FALSE)
+	{
+		$category_data = self::get_category_tree_data(FALSE, $show_hidden);
+		
+		$html = '';
+
+		// Validate columns
+		$columns = (int) $columns;
+		if ($columns == 0)
+		{
+			$columns = 1;
+		}
+
+		$categories_total = count($category_data);
+
+		// Format categories for column display.
+		// Column number
+		$this_col = 1;
+
+		// Maximum number of elements per column
+		$maxper_col = round($categories_total / $columns);
+
+        $html .= '<select class="littlej" name='.$form_field.'[]>';
+
+		foreach ($category_data as $category)
+		{
+            // don't include assignments
+            if ($category['category_id']!=13) 
+            {
+                $html .= '<option value="'.$category['category_id'].'">'.
+                    $category['category_title'].'</option>';
+
+                // Display child categories.
+                if (count($category['children']) > 0)
+                {
+                    $html .= '<ul>';
+                    foreach ($category['children'] as $child)
+                    {
+                        $html .= '<option value="'.$child['category_id'].'">'.
+                            $child['category_title'].'</option>';                    
+                    }
+                }
+            }
+        }
+        
+        $html .= "</select>";
+
+		return $html;
+	}
+
 	
 	/**
 	 * Generates a category tree view - recursively iterates
