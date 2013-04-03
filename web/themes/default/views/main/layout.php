@@ -8,6 +8,8 @@
 		</div>
 	<?php endif; ?>
 
+
+
 		<!-- right column -->
 		<div id="right" class="clearingfix">
 			

@@ -49,7 +49,7 @@
 	  <!-- mainmenu -->
 	  <div id="mainmenu" class="clearingfix">
 	    <ul>
-	      <?php nav::main_tabs($this_page); ?>
+<!--	      <?php nav::main_tabs($this_page); ?> -->
 	    </ul>
 	    
 	  </div>

@@ -19,7 +19,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo Kohana::lang('ui_main.reset_password');?></title>
-<link href="<?php echo url::file_loc('css'); ?>media/css/login.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo url::file_loc('css'); ?>media/css/global.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
