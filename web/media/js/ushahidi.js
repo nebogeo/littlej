@@ -5,7 +5,7 @@
  *
  * @requires media/js/OpenLayers.js
  */
-(function(){
+(function($){
 	
 	/**
 	 * Namespace: Ushahidi
@@ -1160,4 +1160,4 @@
 		}
 	}
 
-})();
+})(jQuery);

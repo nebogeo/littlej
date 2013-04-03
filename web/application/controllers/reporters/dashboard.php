@@ -20,11 +20,28 @@ class Dashboard_Controller extends Reporters_Controller {
 		parent::__construct();
 	}
 
+
 	function index()
 	{
 		$this->template->content = new View('reporters/dashboard');
 		$this->template->content->title = Kohana::lang('ui_admin.dashboard');
 		$this->template->this_page = 'dashboard';
+
+
+		// Map and Slider Blocks
+		$div_map = new View('main/map');
+		$div_timeline = new View('main/timeline');
+
+		// Filter::map_main - Modify Main Map Block
+		Event::run('ushahidi_filter.map_main', $div_map);
+
+		// Filter::map_timeline - Modify Main Map Block
+		Event::run('ushahidi_filter.map_timeline', $div_timeline);
+
+		$this->template->content->div_map = $div_map;
+		$this->template->content->div_timeline = $div_timeline;
+
+
 
 		// User
 		$this->template->content->user = $this->user;
@@ -112,10 +129,133 @@ class Dashboard_Controller extends Reporters_Controller {
 		);
 
 		// Javascript Header
+		$this->template->map_enabled = TRUE;
+		$this->template->colorpicker_enabled = TRUE;
+		$this->template->treeview_enabled = TRUE;
+		$this->template->json2_enabled = TRUE;
+
 		$this->template->protochart_enabled = TRUE;
-		$this->template->js = new View('admin/stats/stats_js');
+
+
+		$db = new Database();
+        $geometries = array();
+
+					// Get Geometries via SQL query as ORM can't handle Spatial Data
+					$sql = "SELECT AsText(geometry) as geometry, geometry_label, 
+						geometry_comment, geometry_color, geometry_strokewidth 
+						FROM ".Kohana::config('database.default.table_prefix')."geometry";
+					$query = $db->query($sql);
+					foreach ( $query as $item )
+					{
+						$geometry = array(
+							"geometry" => $item->geometry,
+							"label" => $item->geometry_label,
+							"comment" => $item->geometry_comment,
+							"color" => $item->geometry_color,
+							"strokewidth" => $item->geometry_strokewidth
+						);
+						$geometries[] = json_encode($geometry);
+					}
+
+
+
+//		$this->template->js = new View('admin/stats/stats_js');
+		$this->template->js = new View('reports/reporter_dash_js');
+
+		$this->template->js->geometries = $geometries;
+
+		$this->template->js->default_map = Kohana::config('settings.default_map');
+		$this->template->js->default_zoom = Kohana::config('settings.default_zoom');
+        $this->template->js->latitude = Kohana::config('settings.default_lat');
+        $this->template->js->longitude = Kohana::config('settings.default_lon');
+        $this->template->js->incident_zoom = Kohana::config('settings.default_zoom');
+        $this->template->js->edit_mode = FALSE;
+
+        $this->template->js->marker_radius = 4;
+        $this->template->js->marker_opacity = 4;
+        $this->template->js->marker_stroke_width = 2;
+        $this->template->js->marker_stroke_opacity = 4;
+
+
+		$this->template->js->active_startDate = 0;
+		$this->template->js->active_endDate = 0;
+		$this->template->js->blocks_per_row = Kohana::config('settings.blocks_per_row');
+
 
 		$this->template->content->failure = '';
+
+		// Get Default Color
+		$this->template->content->default_map_all = Kohana::config('settings.default_map_all');
+		// Get default icon
+		$this->template->content->default_map_all_icon = '';
+		if (Kohana::config('settings.default_map_all_icon_id'))
+		{
+			$icon_object = ORM::factory('media')->find(Kohana::config('settings.default_map_all_icon_id'));
+			$this->template->content->default_map_all_icon = Kohana::config('upload.relative_directory')."/".$icon_object->media_medium;
+		}
+
+
+
+
+
+		// Get locale
+		$l = Kohana::config('locale.language.0');
+
+        // Get all active top level categories
+		$parent_categories = array();
+		$all_parents = ORM::factory('category')
+		    ->where('category_visible', '1')
+		    ->where('parent_id', '0')
+		    ->find_all();
+
+		foreach ($all_parents as $category)
+		{
+			// Get The Children
+			$children = array();
+			foreach ($category->children as $child)
+			{
+				$child_visible = $child->category_visible;
+				if ($child_visible)
+				{
+					// Check for localization of child category
+					$display_title = Category_Lang_Model::category_title($child->id,$l);
+
+					$ca_img = ($child->category_image != NULL)
+					    ? url::convert_uploaded_to_abs($child->category_image)
+					    : NULL;
+					
+					$children[$child->id] = array(
+						$display_title,
+						$child->category_color,
+						$ca_img
+					);
+				}
+			}
+
+			// Check for localization of parent category
+			$display_title = Category_Lang_Model::category_title($category->id,$l);
+
+			// Put it all together
+			$ca_img = ($category->category_image != NULL)
+			    ? url::convert_uploaded_to_abs($category->category_image)
+			    : NULL;
+
+			$parent_categories[$category->id] = array(
+				$display_title,
+				$category->category_color,
+				$ca_img,
+				$children
+			);
+		}
+		$this->template->content->categories = $parent_categories;
+
+
+
+
+
+
+
+
 
 		// Build dashboard chart
 
@@ -131,6 +271,33 @@ class Dashboard_Controller extends Reporters_Controller {
 		$data = array('Reports'=>$incident_data);
 		$options = array('xaxis'=>array('mode'=>'"time"'));
 		$this->template->content->report_chart = protochart::chart('report_chart',$data,$options,array('Reports'=>'CC0000'),410,310);
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+		
+		// Inline Javascript
+		$this->template->content->date_picker_js = $this->_date_picker_js();
+		$this->template->content->color_picker_js = $this->_color_picker_js();
+		
+		// Pack Javascript
+		$myPacker = new javascriptpacker($this->template->js , 'Normal', FALSE, FALSE);
+		$this->template->js = $myPacker->pack();
+
+*/
+
+
+
 	}
 }
 ?>
