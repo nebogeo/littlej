@@ -347,12 +347,15 @@ class User_Model extends Auth_User_Model {
 	 */
 	public function dashboard()
 	{
+		if ($this->has(ORM::factory('role','reporter')))
+			return 'reporters';
+
 		if ($this->has_permission('admin_ui'))
 			return 'admin';
 		
 		if ($this->has_permission('member_ui'))
 			return 'members';
-		
+
 		// Just in case someone has a login only role
 		if ($this->has(ORM::factory('role','login')))
 			return '';
