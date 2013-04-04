@@ -81,18 +81,12 @@
 	z-index: 10;
 	right: 100px;
 	text-align: left;
-	border: 1px solid #FFFFFF;
+	border: 1px solid #444444;
 	border-top: 0px;
 	background: #585858;
 	padding: 5px 0;
 	float:right;
 	top:30px;
-	
-	-moz-box-shadow: 1px 1px 1px #CCC;
-	-webkit-box-shadow: 1px 1px 1px #CCC;
-	-o-box-shadow: 1px 1px 1px #CCC;
-	
-	box-shadow: 1px 1px 1px #CCC;
 }
 
 #header_nav_right li .header_nav_dropdown ul {

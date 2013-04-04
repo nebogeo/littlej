@@ -13,7 +13,7 @@
 		<li class="header_nav_user header_nav_has_dropdown">
 		<?php if($loggedin_user != FALSE){ ?>
 
-			<a href="<?php echo url::site().$loggedin_role;?>"><span class="header_nav_label"><?php echo htmlentities($loggedin_user->username, ENT_QUOTES, "UTF-8"); ?></span> <img alt="<?php echo htmlentities($loggedin_user->username, ENT_QUOTES, "UTF-8"); ?>" src="<?php echo htmlentities(members::gravatar($loggedin_user->email, 20), ENT_QUOTES); ?>" width="20" /></a>
+			<a href="<?php echo url::site().$loggedin_role;?>"><span class="header_nav_label"><?php echo htmlentities($loggedin_user->name, ENT_QUOTES, "UTF-8"); ?></span> <img src="<?php echo htmlentities(members::gravatar($loggedin_user->email, 20), ENT_QUOTES); ?>" width="20" /></a>
 
 			<ul class="header_nav_dropdown" style="display:none;">
 			<?php if($loggedin_role != ""){ ?>
@@ -21,7 +21,7 @@
 
 				<li><a href="<?php echo url::site().$loggedin_role;?>"><?php echo Kohana::lang('ui_main.your_dashboard'); ?></a></li>
 			<?php } ?>
-				<li><a href="<?php echo url::site();?>profile/user/<?php echo $loggedin_user->username; ?>"><?php echo Kohana::lang('ui_main.view_public_profile'); ?></a></li>
+<!--				<li><a href="<?php echo url::site();?>profile/user/<?php echo $loggedin_user->username; ?>"><?php echo Kohana::lang('ui_main.view_public_profile'); ?></a></li> -->
 
 				<li><a href="<?php echo url::site();?>logout"><em><?php echo Kohana::lang('ui_admin.logout');?></em></a></li>
 

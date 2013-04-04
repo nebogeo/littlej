@@ -24,13 +24,6 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 
 <div id="openid_login_container">
 
-	<div id="ushahidi_site_name" class="ui-corner-all">
-    	<div id="logo">
-			<h1><?php echo $site_name; ?></h1>
-			<span><?php echo $site_tagline; ?></span>
-		</div>
-    </div>
-
     <?php if ($message): ?>
 		<div class="<?php echo $message_class; ?> ui-corner-all">&#8226;&nbsp;<?php echo $message; ?></div>
 	<?php endif; ?>
