@@ -36,19 +36,6 @@
             </ul>
         </div>
 		<?php } ?>
-        <?php
-		if (isset($user->username) AND // Only show if it's set
-		   ($user->username != '' OR $user->username != NULL) AND // Don't show if the user hasn't set a username
-           (valid::email($user->username) == false) AND // Don't show if it's a valid email address because it won't work
-		   ($user->public_profile == 1) // Only show if they've set their profile to be public
-		   )
-		    { ?>
-		    <div class="member_info_row"><span class="member_info_label"><?php echo Kohana::lang('ui_main.public_profile_url');?></span>:
-			    <br/><a href="<?php echo url::base().'profile/user/'.$user->username; ?>"><?php echo url::base().'profile/user/'.$user->username; ?></a>
-			</div>
-			<?php
-			}
-			?>
 		</div>
 	</div>
 </div>
