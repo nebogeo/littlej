@@ -21,9 +21,12 @@
     <div class="member_profile">
     <div class="member_photo"><img src="<?php echo members::gravatar($user->email); ?>" width="80" /></div>
     <div class="member_info">
-    <div class="member_info_row"><span class="member_info_label"><?php echo Kohana::lang('ui_admin.name');?>:</span> <?php echo html::specialchars($user->name); ?></div>
-     
-    <?php if(count($user->openid) > 0) { ?>
+    <div>Hello <b><?php echo html::specialchars($user->name); ?></b>,
+     according to our records, you are currently a:<br/> 
+    <span style="font-size:200%"><?php echo $level_name ?></span>
+</div>
+
+<!--    <?php if(count($user->openid) > 0) { ?>
         <div class="member_info_row"><span class="member_info_label"><?php echo Kohana::lang('ui_admin.openids');?></span>:
             <ul>
                 <?php
@@ -36,6 +39,7 @@
             </ul>
         </div>
 		<?php } ?>
+-->
 		</div>
 	</div>
 </div>
@@ -43,8 +47,19 @@
 <!-- mission, level status -->
 
 <div style="float:right; width:50%">     
-    Your status<br/> 
-    <span style="font-size:200%"><?php echo $level_name ?></span>
+    
+     <b><?php echo count($pending_missions)?> 
+     <?php if (count($pending_missions)>1) { echo "goals"; } else { echo "goal"; } ?></b>
+             to promotion! <!-- <?php echo $next_level_name ?>! -->  <br/>
+     
+     <?php
+     if(count($pending_missions) > 0) {
+         $mission = reset($pending_missions); ?>
+         Next goal: <span style="color:#ec008c;"><?php echo $mission['name']; ?></span> <br/> 
+         <i>Hint: <?php echo $mission['description']; ?></i>                       
+     <?php } ?>
+
+
     <div id="progressbar">
         <div id='indicator' style='width:
             <?php $total=count($completed_missions)+count($pending_missions);
@@ -59,17 +74,6 @@
             ?>%' >
          </div>
      </div>
-     <?php echo count($pending_missions)?> 
-     <?php if (count($pending_missions)>1) { echo "goals"; } else { echo "goal"; } ?>
-             to promotion! <!-- <?php echo $next_level_name ?>! -->  <br/>
-     
-     <?php
-     if(count($pending_missions) > 0) {
-         $mission = reset($pending_missions); ?>
-         Next goal: <span style="color:#ec008c;"><?php echo $mission['name']; ?></span> <br/> 
-         <i>Hint: <?php echo $mission['description']; ?></i>                       
-     <?php } ?>
-
  </div>
 
 <!-- dashboard counts etc -->
