@@ -1,6 +1,6 @@
 <div id="header_nav">
 	<ul id="header_nav_left">
-		<li><span class="bignext">&raquo;</span><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></li>
+		<li><img src="<?php echo url::file_loc('img'); ?>media/img/icon.png"><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></li>
 		<?php
 		// Action::header_nav - Add items to header nav area
 		Event::run('ushahidi_action.header_nav');

@@ -85,7 +85,16 @@ class Reporters_Controller extends Template_Controller
 		$this->template->impact_json = '';
 
 		// Generate main tab navigation list.
-		$this->template->main_tabs = members::main_tabs();
+		$this->template->main_tabs =
+            array(
+                'dashboard' => Kohana::lang('ui_admin.dashboard'),
+                //'reports' => Kohana::lang('ui_admin.my_reports'),
+                //'assignment' => "Assignments",
+                //'checkins' => Kohana::lang('ui_admin.my_checkins'),
+                // 'alerts' => Kohana::lang('ui_admin.my_alerts'),
+                // 'private' => Kohana::lang('ui_admin.private_messages')
+                );
+
 
 		$this->template->this_page = "";
 

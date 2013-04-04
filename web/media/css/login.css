@@ -9,8 +9,15 @@ body {
 	background-image:url(../img/bg.jpg);
 
 }
+
+@font-face {
+    font-family: 'Rokkitt';
+    src: url('../../../themes/littlej/images/Rokkitt.otf');
+}
+
+
 body, td {
-	font: 13px "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
+    font-family: "Rokkitt";
 }
 
 
