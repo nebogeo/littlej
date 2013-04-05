@@ -613,6 +613,22 @@ class Login_Controller extends Template_Controller {
 			$this->template->header_nav->loggedin_user = Auth::instance()->get_user();
 		}
 		$this->template->header_nav->site_name = Kohana::config('settings.site_name');
+
+
+		// Get banner image and pass to the header
+		if (Kohana::config('settings.site_banner_id') != NULL)
+		{
+			$banner = ORM::factory('media')->find(Kohana::config('settings.site_banner_id'));
+			$this->template->banner = url::convert_uploaded_to_abs($banner->media_link);
+		}
+		else
+		{
+			$this->template->banner = NULL;
+		}
+
+
+
+
 	}
 
 	/**

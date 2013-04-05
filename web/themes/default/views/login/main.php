@@ -21,6 +21,8 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 <body>
 
 <?php echo $header_nav; ?>
+			
+<a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
 
 <div id="openid_login_container">
 

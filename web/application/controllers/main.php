@@ -150,6 +150,8 @@ class Main_Controller extends Template_Controller {
 
     public function index()
     {
+        url::redirect(url::site().'login');
+ 
         $this->template->header->this_page = 'home';
         $this->template->content = new View('main/layout');
 
