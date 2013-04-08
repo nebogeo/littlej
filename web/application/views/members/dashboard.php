@@ -76,6 +76,10 @@
      </div>
  </div>
 
+<form action="reports/edit">
+     <input type="submit" value="Add a report" class="story_button" style="font-size:200%; width:98%; margin:10px;">
+</form>
+
 <!-- dashboard counts etc -->
 
 <div class="dash-container">
