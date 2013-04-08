@@ -228,7 +228,8 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
     </div>
 </div>
 
+<div align=center>
 <img src="<?php echo url::file_loc('img'); ?>media/img/logo-block.png">
-
+</div>
 </body>
 </html>
