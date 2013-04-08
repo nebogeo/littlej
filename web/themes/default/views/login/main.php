@@ -22,10 +22,20 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 
 <?php echo $header_nav; ?>
 
-    <div id="openid_login_container">
-    <div align=center style="width:100%; margin:40px;">			
+    <div align=center id="openid_login_container">
+
+    <div style="margin:40px;">			
     <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
     </div>
+
+    <div align=center id="openid_login" class="ui-corner-all" style="float:none; font-size:120%; width:78%; margin:20px;">
+    <p>
+    Little J is a new platform that allows you to become the reporter and work alongside the Port Talbot Magnet team to create the stories that matter to you.
+    </p><p>
+    Help test Little J by joining and giving feedback on what works, what doesn't and suggestions for making it a tool that you would use on a regular basis.
+    </p></div>
+
+<div style="clear:both; align=none;">
 
     <?php if ($message): ?>
 		<div class="<?php echo $message_class; ?> ui-corner-all">&#8226;&nbsp;<?php echo $message; ?></div>
@@ -38,6 +48,7 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 		<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
+
 
 	<?php if (isset($_GET["reset"])): ?>
 	<div id="password_reset_change_form" class="ui-corner-all">
@@ -210,5 +221,14 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 	<?php endif; ?>
 
 </div>
+<div style="clear:both;"></div>
+
+    <div align=center id="openid_login" class="ui-corner-all" style="float:none; font-size:120%; width:78%; margin:20px;">
+    Little J is a research and development project funded through <a href="http://react-hub.org.uk/">REACT</a> and the <a href="http://ahrc.ac.uk/">Arts and Humanities Research Council</a> investigating the future of print. The project is jointly run by <a href="http://www.cardiff.ac.uk/jomec/">Cardiff University Journalism Department</a>, the <a href="http://www.communityjournalism.co.uk/en/">Centre for Community Journalism</a> and creative agency <a href="http://wearebehaviour.com/">Behaviour</a>.
+    </div>
+</div>
+
+<img src="<?php echo url::file_loc('img'); ?>media/img/logo-block.png">
+
 </body>
 </html>
