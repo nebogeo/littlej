@@ -23,7 +23,7 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 <?php echo $header_nav; ?>
 
     <div id="openid_login_container">
-    <div align=center style="width:100%">			
+    <div align=center style="width:100%; margin:40px;">			
     <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
     </div>
 
