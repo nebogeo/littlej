@@ -174,8 +174,8 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 	<div id="create_account" class="ui-corner-all">
 
 		<h2><a href="javascript:toggle('signin_new');"><?php echo Kohana::lang('ui_main.login_signup_click'); ?></a></h2>
-
 		<?php echo Kohana::lang('ui_main.login_signup_text'); ?>
+
 		<div id="signin_new" class="signin_select ui-corner-all" style="margin-top:10px;">
 			<?php echo form::open(NULL,  array('id' => "usernew_form")); ?>
 				<input type="hidden" name="action" value="new">
@@ -204,7 +204,16 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 						Event::run('ushahidi_action.login_new_user_form');
 					?>
 					<tr>
-						<td><input type="submit" id="submit" name="submit" value="<?php echo Kohana::lang('ui_main.login_signup');?>" class="login_btn new_submit" /></td>
+						<td>
+
+<p>
+Please be aware that this is a beta version of the Little J website which is still undergoing final testing before its official release.
+</p>
+<p>
+Any information you submit through Little J will be viewed by members of the Port Talbot Magnet journalist team with the intention to be used in print or online publications. You will be credited for any submissions used and by submitting your information you agree that it can be used for this purpose.
+</p>
+
+<input type="submit" id="submit" name="submit" value="<?php echo Kohana::lang('ui_main.login_signup');?>" class="login_btn new_submit" /></td>
 					</tr>
 				</table>
 			<?php echo form::close(); ?>
@@ -221,6 +230,9 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 	<?php endif; ?>
 
 </div>
+
+<div style="clear:both;"></div>
+
 <div style="clear:both;"></div>
 
     <div align=center id="openid_login" class="ui-corner-all" style="float:none; font-size:120%; width:78%; margin:20px;">
