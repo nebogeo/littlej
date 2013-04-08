@@ -68,7 +68,9 @@
 				<span><?php echo $site_tagline; ?></span>
 			</div>
 			<?php else: ?>
+            <center>
 			<a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
+            </centre>
 			<?php endif; ?>
 			<!-- / logo -->
 
