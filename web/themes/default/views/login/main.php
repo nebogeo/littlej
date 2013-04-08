@@ -28,7 +28,7 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
     <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
     </div>
 
-    <div align=center id="openid_login" class="ui-corner-all" style="float:none; font-size:120%; width:78%; margin:20px;">
+    <div align=center class="front_page_text">
     <p>
     Little J is a new platform that allows you to become the reporter and work alongside the Port Talbot Magnet team to create the stories that matter to you.
     </p><p>
@@ -235,7 +235,8 @@ Any information you submit through Little J will be viewed by members of the Por
 
 <div style="clear:both;"></div>
 
-    <div align=center id="openid_login" class="ui-corner-all" style="float:none; font-size:120%; width:78%; margin:20px;">
+
+<div align=center class="front_page_text">
     Little J is a research and development project funded through <a href="http://react-hub.org.uk/">REACT</a> and the <a href="http://ahrc.ac.uk/">Arts and Humanities Research Council</a> investigating the future of print. The project is jointly run by <a href="http://www.cardiff.ac.uk/jomec/">Cardiff University Journalism Department</a>, the <a href="http://www.communityjournalism.co.uk/en/">Centre for Community Journalism</a> and creative agency <a href="http://wearebehaviour.com/">Behaviour</a>.
     </div>
 </div>

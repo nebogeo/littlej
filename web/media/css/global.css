@@ -989,3 +989,15 @@ border:1px solid #ff2596; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
  background-image: -o-linear-gradient(top, #ff2a98, #bc0062);
  background-image: linear-gradient(to bottom, #ff2a98, #bc0062);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ff2a98, endColorstr=#bc0062);
 }
+
+
+.front_page_text {
+  font-size:120%; 
+  width:78%; 
+  margin:20px; 
+  color:#ffffff;
+}
+
+.front_page_text a {
+    color: #ffffff;
+}
