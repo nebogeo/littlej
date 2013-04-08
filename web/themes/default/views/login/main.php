@@ -21,10 +21,11 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 <body>
 
 <?php echo $header_nav; ?>
-			
-<a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
 
-<div id="openid_login_container">
+    <div id="openid_login_container">
+    <div align=center style="width:100%">			
+    <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
+    </div>
 
     <?php if ($message): ?>
 		<div class="<?php echo $message_class; ?> ui-corner-all">&#8226;&nbsp;<?php echo $message; ?></div>
