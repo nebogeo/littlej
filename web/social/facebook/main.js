@@ -147,7 +147,7 @@ $.ajaxSetup({
     }
 });
 
-//var fb = new fb_interface(api_key);
+var fb = new fb_interface(api_key);
 
 function send_to(url) {
 
