@@ -15,7 +15,7 @@ class category_Core {
 	private static function display_category_checkbox($category, $selected_categories, $form_field, $enable_parents = FALSE)
 	{
 		$html = '';
-		
+
 		$cid = $category['category_id'];
 
 		// Category is selected.
@@ -24,7 +24,7 @@ class category_Core {
 		$disabled = "";
 		if (!$enable_parents AND count($category['children']) > 0)
 		{
-			$disabled = " disabled=\"disabled\"";	
+			$disabled = " disabled=\"disabled\"";
 		}
 
 		$html .= "<label>";
@@ -47,7 +47,7 @@ class category_Core {
 
 	/**
 	 * Display category tree with input checkboxes for forms
-	 * 
+	 *
 	 * @param string $form_field form field name
 	 * @param array $selected_categories Categories that should be already selected
 	 * @param int $columns number of columns to display
@@ -57,7 +57,7 @@ class category_Core {
 	public static function form_tree($form_field, array $selected_categories = array(), $columns = 1, $enable_parents = FALSE, $show_hidden = FALSE)
 	{
 		$category_data = self::get_category_tree_data(FALSE, $show_hidden);
-		
+
 		$html = '';
 
 		// Validate columns
@@ -89,7 +89,7 @@ class category_Core {
 			// Display parent category.
 			$html .= '<li title="'.$category['category_description'].'">';
 			$html .= category::display_category_checkbox($category, $selected_categories, $form_field, $enable_parents);
-			
+
 			// Display child categories.
 			if (count($category['children']) > 0)
 			{
@@ -122,8 +122,11 @@ class category_Core {
 	public static function form_dropdown($form_field, array $selected_categories = array(), $columns = 1, $enable_parents = FALSE, $show_hidden = FALSE)
 	{
 		$category_data = self::get_category_tree_data(FALSE, $show_hidden);
-		
+
 		$html = '';
+
+                // ignore assignments and source ids list
+                $ignored_parent_categories = array(13,16);
 
 		// Validate columns
 		$columns = (int) $columns;
@@ -146,10 +149,20 @@ class category_Core {
 		foreach ($category_data as $category)
 		{
             // don't include assignments
-            if ($category['category_id']!=13) 
-            {
-                $html .= '<option value="'.$category['category_id'].'">'.
-                    $category['category_title'].'</option>';
+            if (!in_array($category['category_id'],
+                          $ignored_parent_categories)) {
+
+              $default = "";
+
+              // is the category selected?
+              // todo, what about multiples?
+              if (in_array($category['category_id'],
+                           $selected_categories)) {
+                $default="selected = \"selected\"";
+              }
+
+              $html .= '<option value="'.$category['category_id'].'" '.$default.' >'.
+                $category['category_title'].'</option>';
 
                 // Display child categories.
                 if (count($category['children']) > 0)
@@ -158,18 +171,18 @@ class category_Core {
                     foreach ($category['children'] as $child)
                     {
                         $html .= '<option value="'.$child['category_id'].'">'.
-                            $child['category_title'].'</option>';                    
+                            $child['category_title'].'</option>';
                     }
                 }
             }
         }
-        
+
         $html .= "</select>";
 
 		return $html;
 	}
 
-	
+
 	/**
 	 * Generates a category tree view - recursively iterates
 	 *
@@ -178,11 +191,11 @@ class category_Core {
 	public static function get_category_tree_view()
 	{
 		$category_data = self::get_category_tree_data(TRUE);
-		
+
 		// Generate and return the HTML
 		return self::_generate_treeview_html($category_data);
 	}
-	
+
 	/**
 	 * Get categories as an tree array
 	 * @param bool Get category count?
@@ -191,16 +204,16 @@ class category_Core {
 	 **/
 	public static function get_category_tree_data($count = FALSE, $include_hidden = FALSE)
 	{
-		
+
 		// To hold the category data
 		$category_data = array();
-		
+
 		// Database table prefix
 		$table_prefix = Kohana::config('database.default.table_prefix');
-		
+
 		// Database instance
 		$db = new Database();
-		
+
 		// Fetch the other categories
 		if ($count)
 		{
@@ -225,7 +238,7 @@ class category_Core {
 				. (!$include_hidden ? "AND (c_parent.category_visible = 1 OR c.parent_id = 0)" : "") // Parent must be visible, or must be top level
 				. "ORDER BY c.category_position ASC";
 		}
-		
+
 		// Create nested array - all in one pass
 		foreach ($db->query($sql) as $category)
 		{
@@ -234,14 +247,14 @@ class category_Core {
 			{
 			$category->report_count = 0;
 			}
-			
+
 			// If this is a parent category, just add it to the array
 			if ($category->parent_id == 0)
 			{
 				// save children and report_count if already been created.
 				$children = isset($category_data[$category->id]['children']) ? $category_data[$category->id]['children'] : array();
 				$report_count = isset($category_data[$category->id]['report_count']) ? $category_data[$category->id]['report_count'] : 0;
-				
+
 				$category_data[$category->id] = array(
 					'category_id' => $category->id,
 					'category_title' => htmlentities(Category_Lang_Model::category_title($category->id), ENT_QUOTES, "UTF-8"),
@@ -272,7 +285,7 @@ class category_Core {
 						'report_count' => 0
 					);
 				}
-				
+
 				// Add children
 				$category_data[$category->parent_id]['children'][$category->id] = array(
 					'category_id' => $category->id,
@@ -292,7 +305,7 @@ class category_Core {
 
 		return $category_data;
 	}
-	
+
 	/**
 	 * Traverses an array containing category data and returns a tree view
 	 *
@@ -303,24 +316,24 @@ class category_Core {
 	{
 		// To hold the treeview HTMl
 		$tree_html = "";
-		
+
 		foreach ($category_data as $id => $category)
 		{
 			// Determine the category class
 			$category_class = ($category['parent_id'] > 0)? " class=\"report-listing-category-child\"" : "";
-			
+
 			$category_image = $category['category_image_thumb'] ? html::image(array('src'=> url::convert_uploaded_to_abs($category['category_image_thumb']), 'style'=>'float:left;padding-right:5px;')) : NULL;
-			
+
 			$tree_html .= "<li".$category_class.">"
 							. "<a href=\"#\" class=\"cat_selected\" id=\"filter_link_cat_".$id."\" title=\"{$category['category_description']}\">"
 							. "<span class=\"item-swatch\" style=\"background-color: #".$category['category_color']."\">$category_image</span>"
 							. "<span class=\"item-title\">".strip_tags($category['category_title'])."</span>"
 							. "<span class=\"item-count\">".$category['report_count']."</span>"
 							. "</a></li>";
-							
+
 			$tree_html .= self::_generate_treeview_html($category['children']);
 		}
-		
+
 		// Return
 		return $tree_html;
 	}

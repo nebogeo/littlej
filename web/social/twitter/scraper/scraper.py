@@ -72,6 +72,7 @@ def main():
     last=load_latest();
     while 1:
         last=search_tweets(last,"Port Talbot")
+        print("last="+last)
         save_latest(last)
 #        print last
         time.sleep(20)
