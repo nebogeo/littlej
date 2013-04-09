@@ -1,6 +1,6 @@
 # littlej tweet scanner, looks for a hashtag, sends them to ushahidi
 
-# todo: 
+# todo:
 # * record time of last tweet persistently
 # * upload photographs
 
@@ -75,6 +75,6 @@ def main():
         save_latest(last)
 #        print last
         time.sleep(20)
-    
+
 
 main()

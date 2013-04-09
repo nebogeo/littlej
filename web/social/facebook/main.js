@@ -44,7 +44,7 @@ Date.replaceChars = {
     m: function() { return (this.getMonth() < 9 ? '0' : '') + (this.getMonth() + 1); },
     M: function() { return Date.replaceChars.shortMonths[this.getMonth()]; },
     n: function() { return this.getMonth() + 1; },
-    t: function() { var d = new Date(); return new Date(d.getFullYear(), d.getMonth(), 0).getDate() }, // Fixed now, gets #days of date
+    t: function() { var d = new Date(); return new Date(d.getFullYear(), d.getMonth(), 0).getDate(); }, // Fixed now, gets #days of date
     // Year
     L: function() { var year = this.getFullYear(); return (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)); },   // Fixed now
     o: function() { var d  = new Date(this.valueOf());  d.setDate(d.getDate() - ((this.getDay() + 6) % 7) + 3); return d.getFullYear();}, //Fixed now
@@ -89,8 +89,8 @@ Date.replaceChars = {
 // facebook stuff
 
 function fb_interface(appid)
-{   
-    if (appid!="") 
+{
+    if (appid!="")
     {
         var fb=this;
         $(document).ready(function() {
@@ -98,7 +98,7 @@ function fb_interface(appid)
             fb.login();
 	    });
     }
-    
+
     this.accessToken=false;
     this.uid=false;
     this.me=null;
@@ -114,7 +114,7 @@ function fb_interface(appid)
     {
         var fb=this;
         console.log("attempting login");
-        
+
         FB.getLoginStatus(function(response) {
             if (response.status=="connected") {
                 console.log("logged in already...");
@@ -133,7 +133,7 @@ function fb_interface(appid)
 		        }, {
                     scope:'user_about_me'
                 });
-	        }		
+	        }
 	    });
     }
 }
@@ -147,11 +147,11 @@ $.ajaxSetup({
     }
 });
 
-var fb = new fb_interface(api_key);
+//var fb = new fb_interface(api_key);
 
-function send_to(url) {       
+function send_to(url) {
 
-    if (navigator.geolocation && 
+    if (navigator.geolocation &&
         document.getElementById("location").checked) {
         navigator.geolocation.getCurrentPosition(function (pos) {
             send(pos);
@@ -159,10 +159,10 @@ function send_to(url) {
     }
     else {
         send({
-            coords: 
+            coords:
             {
-                latitude:0, 
-                longitude:0 
+                latitude:0,
+                longitude:0
             },
             address:
             {
@@ -172,11 +172,31 @@ function send_to(url) {
     }
 }
 
+function build_categories(id) {
+    var g=$.post("/json/categories", {}, function (data) {
+        var select = document.getElementById(id);
+        data.forEach(function(cat) {
+            // don't add the route categories
+            if (cat.title!="Route" &&
+                cat.title!="Twitter" &&
+                cat.title!="Facebook" &&
+                cat.title!="Android App" &&
+                cat.title!="Site") {
+
+                var option=document.createElement("option");
+                option.text=cat.title;
+                option.value=cat.id;
+                select.add(option,null);
+            }
+        });
+    });
+}
+
 function send(pos) {
     var now = new Date();
     var hours = now.getHours();
     var ampm = hours >= 12 ? 'pm' : 'am';
-    
+
     var date = now.format("m/d/Y");
     var hour = ((now.format("H")-1)%12)+1;
     var min = now.format("i");
@@ -194,6 +214,9 @@ function send(pos) {
         last_name=fb.me.last_name;
     }
 
+    var e = document.getElementById("categories");
+    var category_selected = e.options[e.selectedIndex].value;
+
     var g=$.post("/api", {
         task:"report",
         incident_title: document.getElementById("entry").value,
@@ -202,14 +225,14 @@ function send(pos) {
         incident_hour: hour,
         incident_minute: min,
         incident_ampm: ampm,
-        incident_category: "1",
+        incident_category: "18, "+category_selected,
         latitude: pos.coords.latitude,
         longitude: pos.coords.longitude,
         location_name: loc,
-        person_first: first_name, 
+        person_first: first_name,
         person_last: last_name
-        
+
     }, function (data) {
-        alert("sent report...");
+        alert("Thanks. Your report has been sent over to the main Little J site and the Port Talbot Magnet journalists will review it very soon.");
     });
 }

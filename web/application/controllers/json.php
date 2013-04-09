@@ -68,23 +68,23 @@ class Json_Controller extends Template_Controller {
 	{
 		$this->geojson('clusters');
 	}
-	
+
 	/**
 	 * Generate geojson
-	 * 
+	 *
 	 * @param string $type type of geojson to generate. Valid options are: 'clusters' and 'markers'
 	 **/
 	protected function geojson($type)
 	{
 		$color = Kohana::config('settings.default_map_all');
 		$icon = "";
-		
+
 		if (Kohana::config('settings.default_map_all_icon_id'))
 		{
 			$icon_object = ORM::factory('media')->find(Kohana::config('settings.default_map_all_icon_id'));
 			$icon = url::convert_uploaded_to_abs($icon_object->media_medium);
 		}
-		
+
 		// Category ID
 		$category_id = (isset($_GET['c']) AND intval($_GET['c']) > 0) ? intval($_GET['c']) : 0;
 		// Get the category colour
@@ -113,22 +113,22 @@ class Json_Controller extends Template_Controller {
 			    ? reports::fetch_incidents(TRUE)
 			    : reports::fetch_incidents();
 		}
-		
+
 		// Run event ushahidi_filter.json_alter_markers
 		// This allows a plugin to alter $markers
 		// Plugins can add or remove markers as needed
 		Event::run('ushahidi_filter.json_alter_markers', $markers);
-		
+
 		// Get geojson features array
 		$function = "{$type}_geojson";
 		$json_features = $this->$function($markers, $category_id, $color, $icon);
-		
+
 		$this->render_geojson($json_features);
 	}
 
 	/**
 	 * Render geojson features array to geojson and output
-	 * 
+	 *
 	 * @param array $json_features geojson features array
 	 **/
 	protected function render_geojson($json_features)
@@ -136,19 +136,19 @@ class Json_Controller extends Template_Controller {
 		// Run event ushahidi_filter.json_features
 		// Allow plugins to alter json array before its rendered
 		Event::run('ushahidi_filter.json_features', $json_features);
-		
+
 		$json = json_encode(array(
 			"type" => "FeatureCollection",
 			"features" => $json_features
 		));
-		
+
 		header('Content-type: application/json; charset=utf-8');
 		echo $json;
 	}
 
 	/**
 	 * Generate GEOJSON from incidents
-	 * 
+	 *
 	 * @param ORM_Iterator|Database_Result|array $incidents collection of incidents
 	 * @param int $category_id
 	 * @param string $color
@@ -158,13 +158,13 @@ class Json_Controller extends Template_Controller {
 	protected function markers_geojson($incidents, $category_id, $color, $icon, $include_geometries = TRUE)
 	{
 		$json_features = array();
-		
+
 		// Extra params for markers only
 		// Get the incidentid (to be added as first marker)
 		$first_incident_id = (isset($_GET['i']) AND intval($_GET['i']) > 0)? intval($_GET['i']) : 0;
-		
+
 		$media_type = (isset($_GET['m']) AND intval($_GET['m']) > 0)? intval($_GET['m']) : 0;
-		
+
 		foreach ($incidents as $marker)
 		{
 			// Handle both reports::fetch_incidents() response and actual ORM objects
@@ -184,7 +184,7 @@ class Json_Controller extends Template_Controller {
 				// No location - skip this report
 				continue;
 			}
-			
+
 			// Get thumbnail
 			$thumb = "";
 			$media = ORM::factory('incident', $marker->id)->media;
@@ -243,7 +243,7 @@ class Json_Controller extends Template_Controller {
 			{
 				array_push($json_features, $json_item);
 			}
-			
+
 			// Get Incident Geometries
 			if ($include_geometries)
 			{
@@ -257,15 +257,15 @@ class Json_Controller extends Template_Controller {
 				}
 			}
 		}
-		
+
 		Event::run('ushahidi_filter.json_index_features', $json_features);
-		
+
 		return $json_features;
 	}
 
 	/**
 	 * Generate clustered GEOJSON from incidents
-	 * 
+	 *
 	 * @param ORM_Iterator|Database_Result|array $incidents collection of incidents
 	 * @param int $category_id
 	 * @param string $color
@@ -275,18 +275,18 @@ class Json_Controller extends Template_Controller {
 	protected function clusters_geojson($incidents, $category_id, $color, $icon)
 	{
 		$json_features = array();
-		
+
 		// Extra params for clustering
 		// Start date
 		$start_date = (isset($_GET['s']) AND intval($_GET['s']) > 0) ? intval($_GET['s']) : NULL;
-		
+
 		// End date
 		$end_date = (isset($_GET['e']) AND intval($_GET['e']) > 0) ? intval($_GET['e']) : NULL;
-		
+
 		// Get Zoom Level
 		$zoomLevel = (isset($_GET['z']) AND !empty($_GET['z'])) ? (int) $_GET['z'] : 8;
 		$distance = (10000000 >> $zoomLevel) / 100000;
-		
+
 		// Get markers array
 		if ($incidents instanceof ORM_Iterator)
 		{
@@ -309,7 +309,7 @@ class Json_Controller extends Template_Controller {
 		{
 			$marker	 = array_pop($markers);
 			$cluster = array();
-			
+
 			// Handle both reports::fetch_incidents() response and actual ORM objects
 			$marker->id = isset($marker->incident_id) ? $marker->incident_id : $marker->id;
 			if (isset($marker->latitude) AND isset($marker->longitude))
@@ -347,14 +347,14 @@ class Json_Controller extends Template_Controller {
 					// No location - skip this report
 					continue;
 				}
-				
+
 				// This function returns the distance between two markers, at a defined zoom level.
 				// $pixels = $this->_pixelDistance($marker['latitude'], $marker['longitude'],
 				// $target['latitude'], $target['longitude'], $zoomLevel);
 
 				$pixels = abs($marker_longitude - $target_longitude) +
 					abs($marker_latitude - $target_latitude);
-					
+
 				// If two markers are closer than defined distance, remove compareMarker from array and add to cluster.
 				if ($pixels < $distance)
 				{
@@ -386,12 +386,12 @@ class Json_Controller extends Template_Controller {
 
 			// Number of Items in Cluster
 			$cluster_count = count($cluster);
-			
+
 			// Get the time filter
 			$time_filter = ( ! empty($start_date) AND ! empty($end_date))
 				? "&s=".$start_date."&e=".$end_date
 				: "";
-			
+
 			// Build query string for title link, passing through any GET params
 			// This allows plugins to extend more easily
 			$query = http_build_query(array_merge(
@@ -401,11 +401,11 @@ class Json_Controller extends Template_Controller {
 				),
 				$_GET
 			));
-			
+
 			// Build out the JSON string
 			$link = url::site("reports/index/?$query");
 			$item_name = $this->get_title(Kohana::lang('ui_main.reports_count', $cluster_count), $link);
-			
+
 			$json_item = array();
 			$json_item['type'] = 'Feature';
 			$json_item['properties'] = array(
@@ -428,11 +428,11 @@ class Json_Controller extends Template_Controller {
 
 		// Pass single points to standard markers json
 		$json_features = array_merge($json_features, $this->markers_geojson($singles, $category_id, $color, $icon, FALSE));
-		
-		// 
+
+		//
 		// E.Kala July 27, 2011
 		// @todo Parking this geometry business for review
-		// 
+		//
 		/*
 		//Get Incident Geometries
 		$geometry = $this->_get_geometry($marker->incident_id, $marker->incident_title, $marker->incident_date);
@@ -444,15 +444,15 @@ class Json_Controller extends Template_Controller {
 			}
 		}
 		*/
-		
+
 		Event::run('ushahidi_filter.json_cluster_features', $json_features);
-		
+
 		return $json_features;
 	}
 
 	/**
 	 * Retrieve Single Marker (and its neighbours)
-	 * 
+	 *
 	 * @param int $incident_id
 	 */
 	public function single($incident_id = 0)
@@ -474,8 +474,8 @@ class Json_Controller extends Template_Controller {
 		{
 			throw new Kohana_404_Exception();
 		}
-		
-		// Get geojson features for main incident (including geometry) 
+
+		// Get geojson features for main incident (including geometry)
 		$json_features = $this->markers_geojson(array($marker), 0, null, null, TRUE);
 
 		// Get the neigbouring incidents & their json (without geometries)
@@ -553,11 +553,11 @@ class Json_Controller extends Template_Controller {
 			    . 'FROM '.$this->table_prefix.'incident_category ic '
 			    . 'INNER JOIN '.$this->table_prefix.'category c ON (ic.category_id = c.id) '
 			    . 'WHERE (c.id = :cid OR c.parent_id = :cid)';
-			
+
 			$params[':cid'] = $category_id;
 			$incident_id_in .= " AND incident.id IN ( $query ) ";
 		}
-		
+
 		// Apply start and end date filters
 		if (isset($_GET['s']) AND isset($_GET['e']))
 		{
@@ -586,12 +586,12 @@ class Json_Controller extends Template_Controller {
 		    . 'FROM '.$this->table_prefix.'incident '
 		    . 'WHERE incident_active = 1 '.$incident_id_in.' '
 		    . 'GROUP BY '.$groupby_date_text;
-		
+
 		foreach ($db->query($query, $params) as $items)
 		{
 			array_push($graph_data[0]['data'], array($items->time * 1000, $items->number));
 		}
-		
+
 		// If no data fake a flat line graph
 		// This is so jqplot still plots something
 		if (count($graph_data[0]['data']) == 0)
@@ -606,7 +606,7 @@ class Json_Controller extends Template_Controller {
 		header('Content-type: application/json; charset=utf-8');
 		echo json_encode($graph_data);
 	}
-	
+
 
 	/**
 	 * Read in new layer KML via file_get_contents
@@ -650,6 +650,18 @@ class Json_Controller extends Template_Controller {
 		}
 	}
 
+
+        public function categories() {
+          $categories = Database::instance()->query("select * from category");
+          $json = array();
+          foreach ($categories as $category) {
+            array_push($json, array( "id" => $category->id,
+                                     "title" => $category->category_title));
+          }
+          header('Content-type: application/json; charset=utf-8');
+          echo json_encode($json);
+        }
+
 	/**
 	 * Get Geometry JSON
 	 * @param int $incident_id
@@ -673,13 +685,13 @@ class Json_Controller extends Template_Controller {
 				$title = ($item->geometry_label) ? $item->geometry_label : $incident_title;
 				$link =  url::base()."reports/view/".$incident_id;
 				$item_name = $this->get_title($title, $link);
-					
-				$fillcolor = ($item->geometry_color) ? 
+
+				$fillcolor = ($item->geometry_color) ?
 					utf8tohtml::convert($item->geometry_color,TRUE) : "ffcc66";
-					
-				$strokecolor = ($item->geometry_color) ? 
+
+				$strokecolor = ($item->geometry_color) ?
 					utf8tohtml::convert($item->geometry_color,TRUE) : "CC0000";
-					
+
 				$strokewidth = ($item->geometry_strokewidth) ? $item->geometry_strokewidth : "3";
 
 				$json_item = array();
@@ -722,7 +734,7 @@ class Json_Controller extends Template_Controller {
 
 		$db = new Database();
 		// Get Incident Geometries via SQL query as ORM can't handle Spatial Data
-		$sql = "SELECT id, incident_id, AsText(geometry) as geometry, geometry_label, 
+		$sql = "SELECT id, incident_id, AsText(geometry) as geometry, geometry_label,
 			geometry_comment, geometry_color, geometry_strokewidth FROM ".$this->table_prefix."geometry";
 		$query = $db->query($sql);
 
@@ -795,7 +807,7 @@ class Json_Controller extends Template_Controller {
 			// Handle both reports::fetch_incidents() response and actual ORM objects
 			$latitude = isset($marker->latitude) ? $marker->latitude : $marker->location->latitude;
 			$longitude = isset($marker->longitude) ? $marker->longitude : $marker->location->longitude;
-			
+
 			if ($latitude < $south)
 			{
 				$south = $latitude;
@@ -832,7 +844,7 @@ class Json_Controller extends Template_Controller {
 			"ne"=>$ne
 		);
 	}
-	
+
 	/**
 	 * Get encoded title linked to url
 	 * @param string $title - Item title

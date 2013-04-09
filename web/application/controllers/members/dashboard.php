@@ -35,7 +35,7 @@ class Dashboard_Controller extends Members_Controller {
 		// Get Badges
 		$this->template->content->badges = Badge_Model::users_badges($this->user->id);
 
-        missions::calculate($this->user);
+                missions::calculate($this->user);
 
 		// Get Missions
 		$this->template->content->completed_missions = Mission_Model::users_completed_missions($this->user);
@@ -44,7 +44,7 @@ class Dashboard_Controller extends Members_Controller {
 		$this->template->content->level_name = Level_Names_Model::get_level_name($this->user->level);
 		$this->template->content->next_level_name = Level_Names_Model::get_level_name($this->user->level+1);
 
-        $this->template->content->total_photos = Missions_Core::count_photos(ORM::factory('incident')->where("user_id", $this->user->id)->find_all());
+                $this->template->content->total_photos = Missions_Core::count_photos(ORM::factory('incident')->where("user_id", $this->user->id)->find_all());
 
 		// Retrieve Dashboard Counts...
 		// Total Reports
