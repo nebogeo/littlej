@@ -13,16 +13,16 @@
  * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
  */
 ?>
-     
+
 <!-- user info -->
-     
+
 <div class="box" style="padding:10px; margin: 0px;">
     <div style="float:left; width:50%">
     <div class="member_profile">
     <div class="member_photo"><img src="<?php echo members::gravatar($user->email); ?>" width="80" /></div>
     <div class="member_info">
     <div>Hello <b><?php echo html::specialchars($user->name); ?></b>,
-     according to our records, you are currently a:<br/> 
+     according to our records, you are currently a:<br/>
     <span style="font-size:200%"><?php echo $level_name ?></span>
 </div>
 
@@ -46,24 +46,24 @@
 
 <!-- mission, level status -->
 
-<div style="float:right; width:50%">     
-    
-     <b><?php echo count($pending_missions)?> 
+<div style="float:right; width:50%">
+
+     <b><?php echo count($pending_missions)?>
      <?php if (count($pending_missions)>1) { echo "goals"; } else { echo "goal"; } ?></b>
              to promotion! <!-- <?php echo $next_level_name ?>! -->  <br/>
-     
+
      <?php
      if(count($pending_missions) > 0) {
          $mission = reset($pending_missions); ?>
-         Next goal: <span style="color:#ec008c;"><?php echo $mission['name']; ?></span> <br/> 
-         <i>Hint: <?php echo $mission['description']; ?></i>                       
+         Next goal: <span style="color:#ec008c;"><?php echo $mission['name']; ?></span> <br/>
+         <i>Hint: <?php echo $mission['description']; ?></i>
      <?php } ?>
 
 
     <div id="progressbar">
         <div id='indicator' style='width:
             <?php $total=count($completed_missions)+count($pending_missions);
-            if ($total>0) 
+            if ($total>0)
             {
                 echo (count($completed_missions)/$total*100);
             }
@@ -95,7 +95,7 @@
     <div class="dash-stats">
     <div class="dash-number"><?php echo $total_photos; ?></div>
     Photos</div>
-                 
+
     <div class="dash-stats">
     <div class="dash-number">0</div>
     Video</div>
@@ -118,7 +118,7 @@
 			        <br/><strong><?php echo $badge['name']; ?></strong>
 		    	</div>
                <?php
-            } 
+            }
         } else {
             echo Kohana::lang('ui_main.sorry_no_badges');
         } ?>
@@ -130,19 +130,19 @@
 <div style="width:50%; float:left; background:#fff;">
     <div>
         <h3>Your assignments</h3><br/>
-        <?php 
+        <?php
         $categories = Assignment_Model::get_assignments($user->id);
         if (count($categories)==0){
             echo "<div class=\"assignments-container\">No assignments yet...</div>";
         }
         else
         {
-            foreach($categories as $category) 
-            { 
+            foreach($categories as $category)
+            {
                 $joined = Assignment_Model::count_joined($category->id);
                 ?>
                 <div class="assignments-container">
-                    <h3><?php echo $category->category_title?></h3> 
+                    <h3><?php echo $category->category_title?></h3>
                     <div style="float:right;">Ends: XX/XX/XX</div>
                     <div style="padding: 5px; clear:both;"></div>
                     <span><?php echo $category->category_description; ?></span>
@@ -155,17 +155,17 @@
                         <a href="reports/edit">Submit story</a>
                     </div>
                 </div>
-            <?php 
+            <?php
             }
-        } ?> 
+        } ?>
         <div style="clear:both;"></div>
-   
+
         <h3>Open assignments for you</h3>
         <?php
         $open_categories = Assignment_Model::get_unjoined_open_assignments($user->id);
 
-        foreach($open_categories as $category) 
-        { 
+        foreach($open_categories as $category)
+        {
             $joined = Assignment_Model::count_joined($category->id);
             ?>
             <div class="assignments-container">
@@ -182,21 +182,21 @@
                     <a href="<?php echo "assignment/join/".$category->id ?>" >Join in</a>
                 </div>
             </div>
-            <?php 
+            <?php
         } ?>
         </div>
     </div>
 </div>
 
 <!-- latest activity, reports -->
-        
+<!--
 <div class="info-container" style="background: #fff;">
     <div class="i-c-head">
         <h3>Latest Activity</h3>
 		<ul>
 			<li class="none-separator"><a href="<?php echo url::site() . 'members/reports' ?>"><?php echo Kohana::lang('ui_main.view_all');?></a></li>
 			<li><a href="#" class="rss-icon"><?php echo Kohana::lang('ui_main.rss');?></a></li>
-		</ul>	
+		</ul>
     </div>
     <?php
     if ($reports_total == 0)
@@ -214,7 +214,7 @@
         $incident_date = $incident->incident_date;
         $incident_date = date('g:i A', strtotime($incident->incident_date));
         $incident_mode = $incident->incident_mode;	// Mode of submission... WEB/SMS/EMAIL?
-        
+
         if ($incident_mode == 1)
         {
             $submit_mode = "mail";
@@ -231,7 +231,7 @@
         {
             $submit_mode = "twitter";
         }
-        
+
         // Incident Status
         $incident_approved = $incident->incident_active;
         if ($incident_approved == '1')
@@ -242,7 +242,7 @@
         {
             $incident_approved = "none";
         }
-        
+
         $incident_verified = $incident->incident_verified;
         if ($incident_verified == '1')
         {
@@ -266,7 +266,4 @@
 	 } ?>
     <a href="<?php echo url::site() . 'members/reports' ?>" class="view-all"><?php echo Kohana::lang('ui_main.view_all_reports');?></a>
 </div>
-
-
-
-
+-->
