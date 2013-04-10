@@ -54,7 +54,7 @@
 							</li>
 							<?php endif; ?>
 						</ul>
-						
+
 						<div class="sort_by">
 							<?php print form::open(NULL, array('method' => 'get', 'class' => 'sort-form')); ?>
 							<?php echo Kohana::lang('ui_main.sort_by'); ?>
@@ -64,7 +64,7 @@
 								'datemodify' => Kohana::lang('ui_admin.date_modified'),
 								'dateadd' => Kohana::lang('ui_admin.date_added'),
 								'title' => Kohana::lang('ui_admin.report_title'),
-							), $order_field); 
+							), $order_field);
 							echo form::input(array(
 									'type'  => 'hidden',
 									'name'  => 'sort',
@@ -90,17 +90,17 @@
 						</ul>
 					</div>
 				<?php endif; ?>
-				
+
 				<?php if ($form_saved): ?>
 					<!-- green-box -->
 					<div class="green-box" id="submitStatus">
-						<h3><?php echo Kohana::lang('ui_main.reports');?> 
-							<?php echo $form_action; ?> 
+						<h3><?php echo Kohana::lang('ui_main.reports');?>
+							<?php echo $form_action; ?>
 							<a href="#" id="hideMessage" class="hide"><?php echo Kohana::lang('ui_main.hide_this_message'); ?></a>
 						</h3>
 					</div>
 				<?php endif; ?>
-				
+
 				<!-- report-table -->
 				<?php print form::open(NULL, array('id' => 'reportMain', 'name' => 'reportMain')); ?>
 					<input type="hidden" name="action" id="action" value="">
@@ -143,17 +143,17 @@
 									$incident_description = text::limit_chars(strip_tags($incident->incident_description), 150, "...", true);
 									$incident_date = $incident->incident_date;
 									$incident_date = date('Y-m-d', strtotime($incident->incident_date));
-									
+
 									// Mode of submission... WEB/SMS/EMAIL?
 									$incident_mode = $incident->incident_mode;
-									
+
 									// Get the incident ORM
 									$incident_orm = ORM::factory('incident', $incident_id);
-									
+
 									// Get the person submitting the report
 									$incident_person = $incident_orm->incident_person;
 									$submit_by = NULL;
-									
+
 									//XXX incident_Mode will be discontinued in favour of $service_id
 									if ($incident_mode == 1)	// Submitted via WEB
 									{
@@ -164,7 +164,7 @@
 											// Report was submitted by a visitor
 											$submit_by = $incident_person->person_first . " " . $incident_person->person_last;
 										}
-										
+
 										// If $submit_by is empty, check for user id
 										if (trim($submit_by) == "" AND $incident_orm->user_id)	// Report Was Submitted By authenticated user
 										{
@@ -186,16 +186,16 @@
 										$submit_mode = "TWITTER";
 										$submit_by = $incident_orm->message->message_from;
 									}
-									
+
 									// If $submit_by is still empty, set it to Unknown
 									if (trim($submit_by) == "")
 									{
 										$submit_by = Kohana::lang('ui_admin.unknown');
 									}
-									
+
 									// Incident location
 									$incident_location = $incident->location_id ? $incident->location_name : Kohana::lang('ui_main.none');
-									
+
 									// Retrieve Incident Categories
 									$incident_category = "";
 									if ($incident_orm->incident_category->count() > 0)
@@ -209,19 +209,19 @@
 									{
 										$incident_category .= Kohana::lang('ui_main.none');
 									}
-									
+
 									// Incident Status
 									$incident_approved = $incident->incident_active;
 									$incident_verified = $incident->incident_verified;
-									
+
 									// Get Edit Log
 									$edit_count = $incident_orm->verify->count();
 									$edit_css = ($edit_count == 0) ? "post-edit-log-gray" : "post-edit-log-blue";
-									
+
 									$edit_log  = "<div class=\"".$edit_css."\">"
 										. "<a href=\"javascript:showLog('edit_log_".$incident_id."')\">".Kohana::lang('ui_admin.edit_log').":</a> (".$edit_count.")</div>"
 										. "<div id=\"edit_log_".$incident_id."\" class=\"post-edit-log\"><ul>";
-									
+
 									foreach ($incident_orm->verify as $verify)
 									{
 										$edit_log .= "<li>".Kohana::lang('ui_admin.edited_by')." ".html::specialchars($verify->user->name)." : ".$verify->verified_date."</li>";
@@ -233,7 +233,7 @@
 									$incident_translation  = "<div class=\"post-trans-new\">"
 											. "<a href=\"" . url::base() . 'admin/reports/translate/?iid='.$incident_id."\">"
 											. utf8::strtoupper(Kohana::lang('ui_main.add_translation')).":</a></div>";
-											
+
 									foreach ($incident_orm->incident_lang as $translation)
 									{
 										$incident_translation .= "<div class=\"post-trans\">"
@@ -251,19 +251,14 @@
 										<td class="col-2">
 											<div class="post">
 												<div class="incident-id"><a href="<?php echo url::site() . 'admin/reports/edit/' . $incident_id; ?>" class="more">#<?php echo $incident_id; ?></a></div>
-												<h4>
 													<a href="<?php echo url::site() . 'admin/reports/edit/' . $incident_id; ?>" class="more">
 														<?php echo $incident_title; ?>
 													</a>
-												</h4>
-												<p><?php echo $incident_description; ?>... 
-													<a href="<?php echo url::base() . 'admin/reports/edit/' . $incident_id; ?>" class="more">
-														<?php echo Kohana::lang('ui_main.more');?>
-													</a>
-												</p>
+
+
 											</div>
 											<ul class="info">
-												<li class="none-separator"><?php echo Kohana::lang('ui_main.location');?>: 
+												<li class="none-separator"><?php echo Kohana::lang('ui_main.location');?>:
 													<strong><?php echo html::specialchars($incident_location); ?></strong>
 												</li>
 												<li><?php echo Kohana::lang('ui_main.submitted_by', array($submit_by, $submit_mode));?>
@@ -276,7 +271,7 @@
 											</ul>
 											<?php
 											echo $edit_log;
-											
+
 											// Action::report_extra_admin - Add items to the report list in admin
 											Event::run('ushahidi_action.report_extra_admin', $incident);
 											?>
@@ -294,13 +289,13 @@
 													<a href="#" onclick="reportAction('a','APPROVE', '<?php echo $incident_id; ?>');">
 														<?php echo Kohana::lang('ui_main.approve');?>
 													</a>
-													<?php endif; ?>	
+													<?php endif; ?>
 												</li>
 												<?php endif; ?>
 												<?php if (Auth::instance()->has_permission('reports_verify')): ?>
 												<li>
 													<?php if ($incident_verified): ?>
-													<a href="#" class="status_yes" 
+													<a href="#" class="status_yes"
 													    onclick="reportAction('v','VERIFY', '<?php echo $incident_id; ?>');"><?php echo Kohana::lang('ui_main.verify');?>
 													</a>
 													<?php else: ?>

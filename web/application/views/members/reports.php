@@ -142,35 +142,35 @@
 										$incident_category .= "<a href=\"#\">" . $category->category->category_title . "</a>&nbsp;&nbsp;";
 									}
 									?>
-									<tr>
-										<td class="col-1"><input name="incident_id[]" id="incident" value="<?php echo $incident_id; ?>" type="checkbox" class="check-box"/></td>
-										<td class="col-2">
-											<div class="post">
-												<h4><a href="<?php echo url::site() . 'members/reports/edit/' . $incident_id; ?>" class="more"><?php echo $incident_title; ?></a></h4>
-												<p><?php echo $incident_description; ?>... <a href="<?php echo url::base() . 'members/reports/edit/' . $incident_id; ?>" class="more"><?php echo Kohana::lang('ui_main.more');?></a></p>
-											</div>
-											<ul class="info">
-												<li class="none-separator"><?php echo Kohana::lang('ui_main.location');?>: <strong><?php echo html::specialchars($incident_location); ?></strong>,<strong><?php if ($country_id !=0) { echo $countries[$country_id];}?></strong></li>
-												<li><?php echo Kohana::lang('ui_main.submitted_by');?> <strong><?php echo html::specialchars($submit_by); ?></strong> via <strong><?php echo html::specialchars($submit_mode); ?></strong></li>
-											</ul>
-											<ul class="links">
-												<li class="none-separator"><?php echo Kohana::lang('ui_main.categories');?>:<?php echo $incident_category; ?></li>
-											</ul>
-											<?php
-											// Action::report_extra_admin - Add items to the report list in admin
-											Event::run('ushahidi_action.report_extra_members', $incident);
-											?>
-										</td>
-										<td class="col-3"><?php echo $incident_date; ?></td>
-										<td class="col-4">
-											<ul>
-												<li class="none-separator"><a href="#" class="del" onclick="reportAction('d','DELETE', '<?php echo $incident_id; ?>');"><?php echo Kohana::lang('ui_main.delete');?></a></li>
-											</ul>
-										</td>
-									</tr>
-									<?php
-								}
-								?>
+<tr>
+   <td class="col-1"><input name="incident_id[]" id="incident" value="<?php echo $incident_id; ?>" type="checkbox" class="check-box"/></td>
+     <td class="col-2">
+       <div class="post">
+       <a href="<?php echo url::site() . 'members/reports/edit/' . $incident_id; ?>"><?php echo $incident_title; ?></a>
+    </div>
+
+<?php echo Kohana::lang('ui_main.location');?>: <?php echo html::specialchars($incident_location); ?>,<?php if ($country_id !=0) { echo $countries[$country_id];}?>
+<br/>
+<?php echo $incident_category; ?>
+<?php
+    // Action::report_extra_admin - Add items to the report list in admin
+    Event::run('ushahidi_action.report_extra_members', $incident);
+?>
+</td>
+<td class="col-3">
+       <?php echo $incident_date; ?>
+</td>
+
+  <td class="col-4">
+    <ul>
+      <li class="none-separator"><a href="#" class="del" onclick="reportAction('d','DELETE', '<?php echo $incident_id; ?>');"><?php echo Kohana::lang('ui_main.delete');?></a></li>
+    </ul>
+  </td>
+</tr>
+
+<?php
+}
+?>
 							</tbody>
 						</table>
 					</div>

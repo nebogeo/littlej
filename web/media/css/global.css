@@ -189,7 +189,7 @@ form#header_nav_userforgot_form {
 
 #indicator
 {
-  background-color:#EC008C;  
+  background-color:#EC008C;
   height:28px;
   margin:0;
   border-radius: 5px;
@@ -200,7 +200,7 @@ form#header_nav_userforgot_form {
     float: left;
     width: 100%;
     background: #fff;
-//    border: 1px solid #f00; 
+//    border: 1px solid #f00;
 }
 
 .dash-stats {
@@ -252,7 +252,7 @@ form#header_nav_userforgot_form {
 .regular_checkbox:active, .regular_checkbox:checked:active {
     box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
 }
- 
+
 .regular_checkbox:checked {
     background-color: #e9ecee;
     border: 1px solid #adb8c0;
@@ -272,7 +272,7 @@ form#header_nav_userforgot_form {
 .big_checkbox {
     padding: 18px;
 }
- 
+
 .big_checkbox:checked:after {
     font-size: 28px;
     left: 6px;
@@ -544,7 +544,7 @@ div.report-details{
 .report_detail .r_date { background: transparent url(../images/icon_sprite.png) -4px -133px no-repeat; }
 
 .report-when-where { color:#908B88; margin-bottom:10px; }
-.report-when-where span { padding:3px 5px 3px 18px;  } 
+.report-when-where span { padding:3px 5px 3px 18px;  }
 
 div.report-category-list {
     border-top:1px dotted #C0C2B8;
@@ -569,8 +569,8 @@ div.report-category-list a span.r_cat-box { height:16px; width:16px; display:inl
 
 div.report-media { padding:10px 0; border-bottom:1px dotted #C0C2B8;; }
 
-#report-images { } 
-#report-video { padding:10px 0 0 0; } 
+#report-images { }
+#report-video { padding:10px 0 0 0; }
 #report-video ol { overflow:auto; }
 #report-video ol li { float:left; display:list-item; list-style-position:inside; margin-right:10px; }
 
@@ -594,7 +594,7 @@ div.report-description-text .feature_comment{
     background-color:#fffded;
 }
 div.report-description-text .feature_label{
-    font-weight:bold;    
+    font-weight:bold;
 }
 
 div.report-description-text .feature_comment{
@@ -626,7 +626,7 @@ div.report-comments h5 {
 div.report-comment-box {
     margin-bottom:15px;
     padding:5px 0 0 10px;
-    
+
 }
 
 div.comment-block {
@@ -663,7 +663,7 @@ div.report-media-box-tabs a {
 div.report-media-box-tabs a:hover { text-decoration:none; cursor:pointer; color:#333; }
 div.report-media-box-tabs .report-tab-selected { }
 div.report-media-box-tabs .report-tab-selected a { background:#C0C2B8; color:#333; }
-div.report-media-box-tabs .report-tab-selected a:hover { text-decoration:none; } 
+div.report-media-box-tabs .report-tab-selected a:hover { text-decoration:none; }
 
 div.report-media-box-content {
     clear: both;
@@ -677,14 +677,14 @@ div.report-media-box {
 ul.map-toggles { overflow:auto; }
 ul.map-toggles li { display:none; float:right; list-style-type: none; }
 
-ul.map-toggles li a, 
+ul.map-toggles li a,
 ul.map-toggles li a:active { display:inline-block; padding:3px 5px 3px 17px; outline:none; }
 
 a.wider-map { background:transparent url(../images/icon_sprite.png) -4px -202px no-repeat; }
 a.taller-map { background:transparent url(../images/icon_sprite.png) -4px -221px no-repeat; }
 a.shorter-map { background:transparent url(../images/icon_sprite.png) -4px -241px no-repeat; }
 a.smaller-map { background:transparent url(../images/icon_sprite.png) -4px -182px no-repeat; }
-    
+
 div.report-additional-reports { padding-top: 5px; border-bottom:1px dotted #C0C2B8; }
 div.report-additional-reports .rb_report {  }
 
@@ -788,6 +788,7 @@ table.table-list{
 
 table.table-list, table.table-list td{
     border-collapse: collapse;
+    font-size: 100%;
 }
 
 table.table-list thead th{
@@ -795,7 +796,7 @@ table.table-list thead th{
     padding: 5px;
     text-align: left;
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 150%;
 }
 
 table.table-list thead th.title{
@@ -816,7 +817,6 @@ table.table-list thead th.date{
 
 table.table-list tbody tr td{
     padding: 5px;
-    font-size: 11px;
     border-bottom: #EEEEEE 1px solid;
     vertical-align: top;
 }
@@ -864,7 +864,6 @@ div.incident-notation ul li{
 
 
 .more{
-    float: right;
     margin: 20px 20px 10px 10px;
     color: #004276;
     font-weight: bold;
@@ -992,12 +991,16 @@ border:1px solid #ff2596; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 
 
 .front_page_text {
-  font-size:120%; 
-  width:78%; 
-  margin:20px; 
+  font-size:120%;
+  width:78%;
+  margin:20px;
   color:#ffffff;
 }
 
 .front_page_text a {
     color: #ffffff;
+}
+
+.content-block {
+    width: 100%;
 }
