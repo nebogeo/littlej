@@ -13,7 +13,7 @@
  * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
  */
 ?>
-     
+
 <!-- user info -->
 <!-- content -->
 <div class="content-container">
@@ -25,7 +25,7 @@
     <div class="member_photo"><img src="<?php echo members::gravatar($user->email); ?>" width="80" /></div>
     <div class="member_info">
     <div class="member_info_row"><span class="member_info_label"><?php echo Kohana::lang('ui_admin.name');?>:</span> <?php echo html::specialchars($user->name); ?></div>
- 
+
     <?php if(count($user->openid) > 0) { ?>
         <div class="member_info_row"><span class="member_info_label"><?php echo Kohana::lang('ui_admin.openids');?></span>:
             <ul>
@@ -47,7 +47,7 @@
 
 <!-- the map -->
 <div style="float:left; width:80%;">
-	<?php								
+	<?php
 	// Map and Timeline Blocks
     echo $div_map;
 	?>
@@ -57,12 +57,12 @@
 <div style="float:right; width:20%">
 	<!-- filters box -->
 	<div id="the-filters" class="map-menu-box">
-			
+
 		<?php
 		// Action::main_sidebar_pre_filters - Add Items to the Entry Page before filters
 		Event::run('ushahidi_action.main_sidebar_pre_filters');
 		?>
-				
+
 		<!-- report category filters -->
 		<div id="report-category-filter" style="background:#E7E3DA;">
 			<h3>Filter by category</h3>
@@ -105,13 +105,13 @@
 							));
 						$color_css = '';
 					}
-	
+
 					echo '<li>'
 					    . '<a href="#" id="cat_'. $category .'" title="'.$category_description.'">'
 					    . '<span '.$color_css.'>'.$category_image.'</span>'
 					    . '<span class="category-title">'.$category_title.'</span>'
 					    . '</a>';
-	
+
 					// Get Children
 					echo '<div class="hide" id="child_'. $category .'">';
 					if (sizeof($category_info[3]) != 0)
@@ -125,7 +125,7 @@
 							    ? url::convert_uploaded_to_abs($child_info[2])
 							    : NULL;
 							$child_description = htmlentities(Category_Lang_Model::category_description($child), ENT_QUOTES, "UTF-8");
-							
+
 							$color_css = 'class="swatch" style="background-color:#'.$child_color.'"';
 							if ($child_info[2] != NULL)
 							{
@@ -135,7 +135,7 @@
 								));
 								$color_css = '';
 							}
-	
+
 							echo '<li style="padding-left:20px;">'
 							    . '<a href="#" id="cat_'. $child .'" title="'.$child_description.'">'
 							    . '<span '.$color_css.'>'.$child_image.'</span>'
@@ -183,8 +183,3 @@
 
 </div>
 <!-- content -->
-
-
-
-
-

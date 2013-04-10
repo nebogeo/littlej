@@ -1,16 +1,16 @@
-<?php 
+<?php
 /**
  * Layout for the members interface.
  *
  * PHP version 5
- * LICENSE: This source file is subject to LGPL license 
+ * LICENSE: This source file is subject to LGPL license
  * that is available through the world-wide-web at the following URI:
  * http://www.gnu.org/copyleft/lesser.html
- * @author     Ushahidi Team <team@ushahidi.com> 
+ * @author     Ushahidi Team <team@ushahidi.com>
  * @package    Ushahidi - http://source.ushahididev.com
  * @module     Member View
  * @copyright  Ushahidi - http://www.ushahidi.com
- * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
+ * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
  */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -26,7 +26,7 @@
 		html::stylesheet(url::file_loc('css').'media/css/ie6', '', TRUE)
 		."<![endif]-->";
 
-	
+
 	// Load jQuery
 	echo html::script(url::file_loc('js').'media/js/jquery', TRUE);
 	echo html::script(url::file_loc('js').'media/js/jquery.form', TRUE);
@@ -38,7 +38,7 @@
 	echo html::script(url::file_loc('js').'media/js/jquery.jqplot.min', TRUE);
 	echo html::stylesheet(url::file_loc('css').'media/css/jquery.hovertip-1.0', '', TRUE);
 
-	
+
 	// Load OpenLayers
 	if ($map_enabled)
 	{
@@ -50,14 +50,14 @@
 		echo html::script(url::file_loc('js').'media/js/ushahidi', TRUE);
 		echo html::stylesheet(url::file_loc('css').'media/css/openlayers','',TRUE);
 	}
-	
+
 	echo "<script type=\"text/javascript\">
 		$(function() {
 			if($('.tooltip[title]') != null)
 			$('.tooltip[title]').hovertip();
 		});
 	</script>";
-	
+
 	// Load Flot
 	if ($flot_enabled)
 	{
@@ -82,7 +82,7 @@
 		echo '<![endif]-->';
 		echo html::script(url::file_loc('js').'media/js/protochart/ProtoChart', TRUE);
 	}
- 
+
 	// Load Raphael
 	if($raphael_enabled)
 	{
@@ -94,26 +94,26 @@
 		echo '</script>';
 		echo html::script(url::file_loc('js').'media/js/raphael-ushahidi-impact', TRUE);
 	}
-	
+
 	// Load ColorPicker
 	if ($colorpicker_enabled)
 	{
 		echo html::stylesheet(url::file_loc('css').'media/css/colorpicker', '', TRUE);
 		echo html::script(url::file_loc('js').'media/js/colorpicker', TRUE);
 	}
-	
+
 	// Load TinyMCE
 	if ($editor_enabled)
 	{
 		echo html::script(url::file_loc('js').'media/js/tinymce/tiny_mce', TRUE);
 	}
-	
+
 	// JSON2 for IE+
 	if ($json2_enabled)
 	{
 		echo html::script(url::file_loc('js').'media/js/json2', TRUE);
 	}
-	
+
 	// Load AutoComplete Plugin
 	if ($autocomplete_enabled)
 	{
@@ -128,11 +128,11 @@
 	// Header Nav
 	echo html::script(url::file_loc('js').'media/js/global', TRUE);
 	echo html::stylesheet(url::file_loc('css').'media/css/global','',TRUE);
-	
+
 	// Render CSS and Javascript Files from Plugins
 	echo plugin::render('stylesheet');
 	echo plugin::render('javascript');
-	
+
 	// Action::header_scripts_member - Additional Inline Scripts
 	Event::run('ushahidi_action.header_scripts_member');
 	?>
@@ -149,7 +149,7 @@
 				 .val('')
 				 .removeAttr('checked')
 				 .removeAttr('selected');
-				
+
 			}else{
 				$("#addedit").show(400);
 			}
@@ -182,10 +182,10 @@
 			<div class="nav-holder">
 				<ul class="main-nav">
 					<?php foreach($main_tabs as $page => $tab_name): ?>
-						<li><a href="<?php echo url::site(); ?>members/<?php echo $page; ?>" <?php if($this_page==$page) echo 'class="active"' ;?>><?php echo $tab_name; ?></a></li>
+						<li><a href="<?php echo url::site(); ?>reporters/<?php echo $page; ?>" <?php if($this_page==$page) echo 'class="active"' ;?>><?php echo $tab_name; ?></a></li>
 					<?php endforeach; ?>
 				</ul>
-			</div> 
+			</div>
 		</div>
 		<!-- content -->
 		<div id="content">

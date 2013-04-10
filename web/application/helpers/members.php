@@ -19,12 +19,14 @@ class members_Core {
 			'dashboard' => Kohana::lang('ui_admin.dashboard'),
 			'reports' => Kohana::lang('ui_admin.my_reports'),
             'assignment' => "Assignments",
+            'help' => "Help"
+
             //'checkins' => Kohana::lang('ui_admin.my_checkins'),
 			// 'alerts' => Kohana::lang('ui_admin.my_alerts'),
 			// 'private' => Kohana::lang('ui_admin.private_messages')
 		);
 	}
-	
+
 	/**
      * Generate Report Sub Tab Menus
      * @param string $this_sub_page
@@ -43,7 +45,7 @@ class members_Core {
 			: "<a href=\"".url::base()."members/reports/edit\">".Kohana::lang('ui_main.create_report')."</a>";
 
         echo $menu;
-        
+
         // Action::nav_admin_reports - Add items to the admin reports navigation tabs
         Event::run('ushahidi_action.nav_members_reports', $this_sub_page);
     }
@@ -59,15 +61,15 @@ class members_Core {
         $menu = "";
 
         $menu .= ($this_sub_page == "view")
-			? Kohana::lang('ui_admin.view_private') 
+			? Kohana::lang('ui_admin.view_private')
 			: "<a href=\"".url::base()."members/private\">".Kohana::lang('ui_admin.view_private')."</a>";
 
         $menu .= ($this_sub_page == "new")
-			? Kohana::lang('ui_admin.new_private') 
+			? Kohana::lang('ui_admin.new_private')
 			: "<a href=\"".url::base()."members/private/send\">".Kohana::lang('ui_admin.new_private')."</a>";
 
         echo $menu;
-        
+
         // Action::nav_members_private - Add items to the members private messages navigation tabs
         Event::run('ushahidi_action.nav_members_private', $this_sub_page);
     }
@@ -83,20 +85,20 @@ class members_Core {
         $menu = "";
 
         $menu .= ($this_sub_page == "view")
-			? Kohana::lang('ui_admin.my_alerts') 
+			? Kohana::lang('ui_admin.my_alerts')
 			: "<a href=\"".url::base()."members/alerts\">".Kohana::lang('ui_admin.my_alerts')."</a>";
 
 			// $menu .= ($this_sub_page == "edit")
-			// 	? Kohana::lang('ui_admin.new_alert') 
+			// 	? Kohana::lang('ui_admin.new_alert')
 			// 	: "<a href=\"".url::base()."members/alerts/edit\">".Kohana::lang('ui_admin.new_alert')."</a>";
 
         echo $menu;
-        
+
         // Action::nav_members_alerts - Add items to the members alerts navigation tabs
         Event::run('ushahidi_action.nav_members_alerts', $this_sub_page);
     }
-	
-	
+
+
 	/**
 	 * Get either a Gravatar URL or complete image tag for a specified email address.
 	 *
@@ -114,7 +116,7 @@ class members_Core {
 		$url = 'https://secure.gravatar.com/avatar/'
 			. md5(strtolower(trim( $email)))
 			. "?s=$s&d=$d&r=$r";
-			
+
 		if ($img)
 		{
 			$url = '<img src="' . $url . '"';

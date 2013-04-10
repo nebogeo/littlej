@@ -1,16 +1,16 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * This main controller for the Members section 
+ * This main controller for the Members section
  *
  * PHP version 5
- * LICENSE: This source file is subject to LGPL license 
+ * LICENSE: This source file is subject to LGPL license
  * that is available through the world-wide-web at the following URI:
  * http://www.gnu.org/copyleft/lesser.html
- * @author	   Ushahidi Team <team@ushahidi.com> 
+ * @author	   Ushahidi Team <team@ushahidi.com>
  * @package    Ushahidi - http://source.ushahididev.com
  * @subpackage Controllers
  * @copyright  Ushahidi - http://www.ushahidi.com
- * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
+ * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
  */
 
 class Reporters_Controller extends Template_Controller
@@ -28,12 +28,12 @@ class Reporters_Controller extends Template_Controller
 
 	// Table Prefix
 	protected $table_prefix;
-    
+
     protected $release;
 
 	public function __construct()
 	{
-		parent::__construct();	
+		parent::__construct();
 
 		// Load cache
 		$this->cache = new Cache;
@@ -62,7 +62,7 @@ class Reporters_Controller extends Template_Controller
 		$this->table_prefix = Kohana::config('database.default.table_prefix');
 
 		$this->template->admin_name = $this->user->name;
-		
+
 		// Retrieve Default Settings
 		$this->template->site_name = Kohana::config('settings.site_name');
 		$this->template->api_url = Kohana::config('settings.api_url');
@@ -88,6 +88,7 @@ class Reporters_Controller extends Template_Controller
 		$this->template->main_tabs =
             array(
                 'dashboard' => Kohana::lang('ui_admin.dashboard'),
+                'help' => "Help"
                 //'reports' => Kohana::lang('ui_admin.my_reports'),
                 //'assignment' => "Assignments",
                 //'checkins' => Kohana::lang('ui_admin.my_checkins'),
@@ -117,4 +118,3 @@ class Reporters_Controller extends Template_Controller
 	}
 
 } // End Admin
-
