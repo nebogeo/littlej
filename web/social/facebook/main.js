@@ -108,7 +108,7 @@ function fb_interface(appid)
         FB.api('/me', function(response) {
             fb.me = response;
         });
-    }
+    };
 
     this.login=function()
     {
@@ -147,6 +147,7 @@ $.ajaxSetup({
     }
 });
 
+
 var fb = new fb_interface(api_key);
 
 function send_to(url) {
@@ -161,8 +162,8 @@ function send_to(url) {
         send({
             coords:
             {
-                latitude:0,
-                longitude:0
+                latitude:51.57122,
+                longitude:-3.85354
             },
             address:
             {

@@ -42,7 +42,7 @@ def send(tweet,time):
     #print tweet["text"].encode("ascii","ignore")
     ampm="pm"
     if time.hour<12: ampm="am"
-    latlon=[0,0]
+    latlon=[51.57122,-3.85354]
     if tweet["geo"]!=None and tweet["geo"]["type"]=='Point':
         latlon=tweet["geo"]["coordinates"]
 
