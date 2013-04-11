@@ -18,7 +18,6 @@
 <!-- content -->
 <div class="content-container">
 
-
 <div class="box" style="padding:10px; margin: 0px;">
     <div style="float:left; width:50%">
     <div class="member_profile">
@@ -65,7 +64,7 @@
 
 		<!-- report category filters -->
 		<div id="report-category-filter" style="background:#E7E3DA;">
-			<h3>Filter by category</h3>
+			<h3 style="padding:10px;">Desks</h3>
             <br/>
 			<ul id="category_switch" class="category-filters">
 			<?php
@@ -152,8 +151,9 @@
 			<!-- / category filters -->
 		</div>
 
+
 		<!-- report type filters -->
-		<div id="report-type-filter" class="filters" style="background:#E7E3DA;">
+<!--		<div id="report-type-filter" class="filters" style="background:#E7E3DA;">
 			<h3>Filter by type</h3><br/>
 			<ul class="category-filters">
 				<li><a id="media_0" class="active" href="#"><span><?php echo Kohana::lang('ui_main.reports'); ?></span></a></li>
@@ -168,9 +168,12 @@
     			Event::run('ushahidi_action.map_main_filters');
 	    		?>
 			</div>
+-->
 		</div>
     </div>
 </div>
+
+<div style="clear:both;"></div>
 
 
 	<!-- content blocks -->

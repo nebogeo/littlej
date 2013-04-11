@@ -3,10 +3,12 @@
 		<!-- start reports block -->
 		<div class="big-block">
 			<h1 class="heading">
-				<?php echo Kohana::lang('ui_main.showing_reports_from', array(date('M d, Y', $oldest_timestamp), date('M d, Y', $latest_timestamp))); ?> 
+				<?php echo Kohana::lang('ui_main.showing_reports_from', array(date('M d, Y', $oldest_timestamp), date('M d, Y', $latest_timestamp))); ?>
 				<a href="#" class="btn-change-time ic-time"><?php echo Kohana::lang('ui_main.change_date_range'); ?></a>
 			</h1>
-			
+
+                wewewe
+
 			<div id="tooltip-box">
 				<div class="tt-arrow"></div>
 				<ul class="inline-links">
@@ -31,7 +33,7 @@
 						</a>
 					</li>
 				</ul>
-				
+
 				<p class="labeled-divider"><span><?php echo Kohana::lang('ui_main.choose_date_range'); ?>:</span></p>
 				<?php echo form::open(NULL, array('method' => 'get')); ?>
 					<table>
@@ -57,11 +59,11 @@
 					<?php echo $report_listing_view; ?>
 				</div>
 				<!-- end #reports-box -->
-				
+
 				<div id="filters-box">
 					<h2><?php echo Kohana::lang('ui_main.filter_reports_by'); ?></h2>
 					<div id="accordion">
-						
+
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('c', 'fl-categories');"><?php echo Kohana::lang('ui_main.clear')?></a>
 							<a class="f-title" href="#"><?php echo Kohana::lang('ui_main.category')?></a>
@@ -84,8 +86,8 @@
 								<?php echo $category_tree_view; ?>
 							</ul>
 						</div>
-						
-						<h3>	
+
+						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('radius', 'f-location-box');removeParameterKey('start_loc', 'f-location-box');">
 								<?php echo Kohana::lang('ui_main.clear')?>
 							</a>
@@ -94,7 +96,7 @@
 							<?php echo $alert_radius_view; ?>
 							<p></p>
 						</div>
-						
+
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('mode', 'fl-incident-mode');">
 								<?php echo Kohana::lang('ui_main.clear')?>
@@ -109,7 +111,7 @@
 										<span class="item-title"><?php echo Kohana::lang('ui_main.web_form'); ?></span>
 									</a>
 								</li>
-							
+
 							<?php foreach ($services as $id => $name): ?>
 								<?php
 									$item_class = "";
@@ -127,7 +129,7 @@
 
 							</ul>
 						</div>
-						
+
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('m', 'fl-media');"><?php echo Kohana::lang('ui_main.clear')?></a>
 							<a class="f-title" href="#"><?php echo Kohana::lang('ui_main.media');?></a>
@@ -155,7 +157,7 @@
 								</li>
 							</ul>
 						</div>
-						
+
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('v', 'fl-verification');">
 								<?php echo Kohana::lang('ui_main.clear'); ?>
@@ -176,7 +178,7 @@
 										<span class="item-title"><?php echo Kohana::lang('ui_main.unverified'); ?></span>
 									</a>
 								</li>
-								
+
 							</ul>
 						</div>
 						<h3>
@@ -187,7 +189,7 @@
 						</h3>
 						<div class="f-customFields-box">
 							<?php echo $custom_forms_filter; ?>
-							
+
 						</div>
 						<?php
 							// Action, allows plugins to add custom filters
@@ -195,17 +197,17 @@
 						?>
 					</div>
 					<!-- end #accordion -->
-					
+
 					<div id="filter-controls">
 						<p>
-							<a href="#" class="small-link-button reset" id="reset_all_filters"><?php echo Kohana::lang('ui_main.reset_all_filters'); ?></a> 
+							<a href="#" class="small-link-button reset" id="reset_all_filters"><?php echo Kohana::lang('ui_main.reset_all_filters'); ?></a>
 							<a href="#" id="applyFilters" class="filter-button"><?php echo Kohana::lang('ui_main.filter_reports'); ?></a>
 						</p>
-					</div>          
+					</div>
 				</div>
 				<!-- end #filters-box -->
 			</div>
-      
+
 			<div style="display:none">
 				<?php
 					// Filter::report_stats - The block that contains reports list statistics
@@ -216,7 +218,7 @@
 
 		</div>
 		<!-- end reports block -->
-		
+
 	</div>
 	<!-- end content-bg -->
 </div>

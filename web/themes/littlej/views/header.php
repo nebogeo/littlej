@@ -39,7 +39,9 @@
   <!-- top bar-->
   <!-- / searchbox -->
 
+<center>
 <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
+</center>
 
 	<!-- wrapper -->
 	<div class="rapidxwpr floatholder">
@@ -51,7 +53,7 @@
 	    <ul>
 <!--	      <?php nav::main_tabs($this_page); ?> -->
 	    </ul>
-	    
+
 	  </div>
 	  <!-- / mainmenu -->
 	  </div>
