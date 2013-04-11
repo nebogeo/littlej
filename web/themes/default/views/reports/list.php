@@ -149,12 +149,14 @@
 					<div class="r_details">
 						<h3><a class="r_title" href="<?php echo $incident_url; ?>">
 								<?php echo htmlentities($incident_title, ENT_QUOTES, "UTF-8"); ?>
-                                <?php echo "by ".$user_name; ?>
 							</a>
 							<a href="<?php echo "$incident_url#discussion"; ?>" class="r_comments">
 								<?php echo $comment_count; ?></a>
 								<?php echo $incident_verified; ?>
 							</h3>
+
+                    <b><?php echo "From ".$user_name; ?></b>
+
 						<p class="r_date r-3 bottom-cap"><?php echo $incident_date; ?></p>
 						<div class="r_description"> <?php echo $incident_description; ?>
 						  <a class="btn-show btn-more" href="#incident_<?php echo $incident_id ?>"><?php echo Kohana::lang('ui_main.more_information'); ?> &raquo;</a>
