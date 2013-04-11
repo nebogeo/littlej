@@ -5,7 +5,7 @@
 		<tr>
 			<th scope="col"><?php echo Kohana::lang('ui_main.title'); ?></th>
 			<th scope="col">Name</th>
-			<th scope="col"><?php echo Kohana::lang('ui_main.location'); ?></th>
+			<th scope="col">Desks</th>
 			<th scope="col"><?php echo Kohana::lang('ui_main.date'); ?></th>
 		</tr>
 	</thead>
@@ -26,6 +26,12 @@
 			$incident_location = $incident->location->location_name;
 			$incident_username = $incident->user->name;
 
+            $cats = "";
+            foreach($incident->category as $cat)
+            {
+                $cats .= $cat->category_title." ";
+            }
+
             if ($incident_username=="")
             {
                 $incident_username="anonymous";
@@ -44,7 +50,7 @@
 		<tr>
 			<td><a href="<?php echo url::site() . 'reports/view/' . $incident_id; ?>"> <?php echo html::specialchars($incident_title) ?></a></td>
 			<td><?php echo html::specialchars($incident_username) ?></td>
-			<td><?php echo html::specialchars($incident_location) ?></td>
+			<td><?php echo $cats ?></td>
 			<td><?php echo $incident_date; ?></td>
 		</tr>
 		<?php
