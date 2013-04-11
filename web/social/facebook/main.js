@@ -148,28 +148,36 @@ $.ajaxSetup({
 });
 
 
-var fb = new fb_interface(api_key);
+fb = new fb_interface(api_key);
 
 function send_to(url) {
 
+    var default_loc = {
+        coords:
+        {
+            latitude:51.57122,
+            longitude:-3.85354
+        },
+        address:
+        {
+            city: "unknown"
+        }
+    };
+
     if (navigator.geolocation &&
         document.getElementById("location").checked) {
+	console.log("getting location...");
         navigator.geolocation.getCurrentPosition(function (pos) {
             send(pos);
-        });
+        },
+						 function () {
+						     console.log("failed to get location...");
+						     send(default_loc);
+						 },
+						 {timeout:10000});
     }
     else {
-        send({
-            coords:
-            {
-                latitude:51.57122,
-                longitude:-3.85354
-            },
-            address:
-            {
-                city: "unknown"
-            }
-        });
+        send(default_loc);
     }
 }
 
@@ -217,6 +225,8 @@ function send(pos) {
 
     var e = document.getElementById("categories");
     var category_selected = e.options[e.selectedIndex].value;
+
+    console.log("sending...");
 
     var g=$.post("/api", {
         task:"report",
