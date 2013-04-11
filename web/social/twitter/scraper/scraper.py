@@ -25,7 +25,7 @@ def save_latest(time):
     f.close()
 
 def search_tweets(last,query):
-    search = urllib.urlopen("http://search.twitter.com/search.json?q="+query)
+    search = urllib.urlopen("http://search.twitter.com/search.json?q=\""+query+"\"&src=hash")
     result = search.read();
     dict = simplejson.loads(result)
     latest=last
@@ -39,7 +39,7 @@ def search_tweets(last,query):
 
 def send(tweet,time):
     ## only if geotagged with a point
-    #print tweet["text"].encode("ascii","ignore")
+    print tweet["text"].encode("ascii","ignore")
     ampm="pm"
     if time.hour<12: ampm="am"
     latlon=[51.57122,-3.85354]
@@ -60,7 +60,7 @@ def send(tweet,time):
                            "longitude": str(latlon[1]),
                            "location_name": "No location",
                            "person_first": tweet["from_user_name"].encode("ascii","ignore"),
-                           "person_last": ""});
+                           "person_last": tweet["from_user"].encode("ascii","ignore")});
     #    print url
     #    print data
     sock = urllib.urlopen(url,data)
@@ -72,7 +72,7 @@ def main():
 #    last=parser.parse("2013-01-01 12:00:00 +0000");
     thelast=load_latest();
     while 1:
-        thelast=search_tweets(thelast,"#littlej")
+        thelast=search_tweets(thelast,"%23littlej")
         save_latest(thelast)
         time.sleep(20)
 
