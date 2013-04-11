@@ -40,14 +40,14 @@ class Reports_Controller extends Main_Controller {
 			url::redirect('login');
 		}
 
-                // only reporters can see this page
-                $access = false;
+        // only reporters can see this page
+        $access = false;
 
-                foreach($this->user->roles as $role) {
-                  if ($role->id==5) {
-                    $access = true;
-                  }
-                }
+        foreach($this->user->roles as $role) {
+            if ($role->id==5) {
+                $access = true;
+            }
+        }
 
 		if ( ! $access)
 		{

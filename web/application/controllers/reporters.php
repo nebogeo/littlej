@@ -52,12 +52,12 @@ class Reporters_Controller extends Template_Controller
 		}
 
 		// Check if user has the right to see the user dashboard
-		if( ! $this->auth->has_permission('member_ui'))
+/*		if( ! $this->auth->has_permission('member_ui'))
 		{
 			// This user isn't allowed in the admin panel
 			url::redirect('/');
 		}
-
+*/
 		// Set Table Prefix
 		$this->table_prefix = Kohana::config('database.default.table_prefix');
 
