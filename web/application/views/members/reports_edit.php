@@ -310,9 +310,9 @@
 			</div>
             <div class="btns-add-report">
               <ul>
-			    <li><a href="#" class="btn_save"><?php echo utf8::strtoupper(Kohana::lang('ui_main.save_report'));?></a></li>
-				<li><a href="#" class="btn_save_close"><?php echo utf8::strtoupper(Kohana::lang('ui_main.save_close'));?></a></li>
-				<li><a href="<?php echo url::base().'members/reports/';?>" class="btns_red"><?php echo utf8::strtoupper(Kohana::lang('ui_main.cancel'));?></a>&nbsp;&nbsp;&nbsp;</li>
+<!--			    <li><a href="#" class="btn_save"><?php echo utf8::strtoupper(Kohana::lang('ui_main.save_report'));?></a></li> -->
+				<li><a href="#" class="btn_save_close">Send</a></li>
+				<li><a href="<?php echo url::base().'members/reports/';?>" class="btns_red">Cancel</a>&nbsp;&nbsp;&nbsp;</li>
 				<?php if ($id): ?>
 				<li><a href="<?php echo $previous_url;?>" class="btns_gray">&laquo; <?php echo utf8::strtoupper(Kohana::lang('ui_main.previous'));?></a></li>
 				<li><a href="<?php echo $next_url;?>" class="btns_gray"><?php echo utf8::strtoupper(Kohana::lang('ui_main.next'));?> &raquo;</a></li>

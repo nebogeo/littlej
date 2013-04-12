@@ -24,8 +24,8 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 
     <div align=center id="openid_login_container">
 
-    <div style="margin:40px;">			
-    <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
+    <div style="margin:40px;">
+    <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" border="0"/></a>
     </div>
 
     <div align=center class="front_page_text">
@@ -124,7 +124,7 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 					<tr>
 						<td><input type="submit" id="submit" name="submit" value="<?php echo Kohana::lang('ui_main.login'); ?>" class="login_btn" /></td>
 					</tr>
-					
+
 					<tr>
 						<td><a href="javascript:toggle('signin_forgot');"> <?php echo Kohana::lang('ui_main.forgot_password');?></a></td>
 					</tr>
@@ -132,7 +132,7 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 				</table>
 			<?php echo form::close(); ?>
 		</div>
-		
+
 		<div id="signin_forgot" class="signin_select ui-corner-all" style="margin-top:10px;">
 			<?php echo form::open(NULL, array('id'=>"userforgot_form")); ?>
 				<input type="hidden" name="action" value="forgot">
@@ -199,7 +199,7 @@ echo html::script(url::file_loc('js').'media/js/global', TRUE);
 						<td><strong><?php echo Kohana::lang('ui_main.password_again'); ?>:</strong><br />
 						<?php print form::password('password_again', $form['password_again'], 'class="login_text new_password_again"'); ?></td>
 					</tr>
-					<?php 
+					<?php
 						//for plugins that want to add some extra stuff to this lovely view
 						Event::run('ushahidi_action.login_new_user_form');
 					?>
@@ -223,7 +223,7 @@ Any information you submit through Little J will be viewed by members of the Por
 
 	<?php if (kohana::config('riverid.enable') == TRUE): ?>
 	<div style="text-align:center;margin-top:20px;" id="openid_login" class="ui-corner-all">
-		<small><?php echo $riverid_information; ?> 
+		<small><?php echo $riverid_information; ?>
 			<a href="<?php echo $riverid_url; ?>"><?php echo Kohana::lang('ui_main.more_information'); ?></a>
 		</small>
 	</div>
