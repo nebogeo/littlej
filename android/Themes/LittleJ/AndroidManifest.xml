@@ -12,8 +12,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="foam.littlej.android.app"
-    android:versionCode="31"
-    android:versionName="3.1.6" >
+    android:versionCode="33"
+    android:versionName="3.1.8" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -389,6 +389,46 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+
     </application>
+
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:resizeable="true"   />
+
+    <compatible-screens>
+
+    <!-- small size screens -->
+    <screen android:screenSize="small" android:screenDensity="ldpi" />
+    <screen android:screenSize="small" android:screenDensity="mdpi" />
+    <screen android:screenSize="small" android:screenDensity="hdpi" />
+    <screen android:screenSize="small" android:screenDensity="xhdpi" />
+
+    <!--Only hdpi and xhdpi for normal size screens -->
+    <screen android:screenSize="normal" android:screenDensity="ldpi" />
+    <screen android:screenSize="normal" android:screenDensity="mdpi" />
+    <screen android:screenSize="normal" android:screenDensity="hdpi" />
+    <screen android:screenSize="normal" android:screenDensity="xhdpi" />
+
+    <!-- all large size screens -->
+    <screen android:screenSize="large" android:screenDensity="ldpi" />
+    <screen android:screenSize="large" android:screenDensity="mdpi" />
+    <screen android:screenSize="large" android:screenDensity="hdpi" />
+    <screen android:screenSize="large" android:screenDensity="xhdpi" />
+
+    <!-- all xlarge size screens -->
+    <screen android:screenSize="xlarge" android:screenDensity="ldpi" />
+    <screen android:screenSize="xlarge" android:screenDensity="mdpi" />
+    <screen android:screenSize="xlarge" android:screenDensity="hdpi" />
+    <screen android:screenSize="xlarge" android:screenDensity="xhdpi" />
+
+    <!-- Special case for Nexus 7 -->
+    <screen android:screenSize="large" android:screenDensity="213" />
+
+    </compatible-screens>
 
 </manifest>

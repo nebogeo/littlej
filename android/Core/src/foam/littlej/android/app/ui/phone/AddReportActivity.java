@@ -280,7 +280,7 @@ public class AddReportActivity extends
 		if (button.getId() == R.id.btnPicture) {
 			// get a file name for the photo to be uploaded
 			photoName = Util.getDateTime() + ".jpg";
-			
+
 			//keep a copy of the filename for later reuse
 			Preferences.fileName = photoName;
 			Preferences.saveSettings(AddReportActivity.this);
@@ -400,7 +400,7 @@ public class AddReportActivity extends
 	private OpenGeoSmsDao mOgsDao;
 	/**
 	 * Post to local database
-	 * 
+	 *
 	 * @author henryaddo
 	 */
 	private boolean addReport() {
@@ -408,6 +408,7 @@ public class AddReportActivity extends
 		File[] pendingPhotos = PhotoUtils.getPendingPhotos(this);
 
 		Report report = new Report();
+
 
 		report.setTitle(view.mIncidentTitle.getText().toString());
 		report.setDescription(view.mIncidentDesc.getText().toString());
@@ -456,7 +457,7 @@ public class AddReportActivity extends
 
 	/**
 	 * Edit existing report
-	 * 
+	 *
 	 * @author henryaddo
 	 */
 	private void setSavedReport(int reportId) {
@@ -481,7 +482,7 @@ public class AddReportActivity extends
 			mVectorCategories
 					.add(String.valueOf(reportCategory.getCategoryId()));
 		}
-		
+
 		setSelectedCategories(mVectorCategories);
 
 		// set the photos
@@ -889,7 +890,7 @@ public class AddReportActivity extends
 
 	/**
 	 * Sets the selected categories for submission
-	 * 
+	 *
 	 * @param aSelectedCategories
 	 */
 	private void setSelectedCategories(Vector<String> aSelectedCategories) {
@@ -919,7 +920,7 @@ public class AddReportActivity extends
 
 	/**
 	 * Get check selected categories
-	 * 
+	 *
 	 * @param aSelectedCategories
 	 */
 	private boolean[] setCheckedCategories() {
@@ -1005,7 +1006,7 @@ public class AddReportActivity extends
 			Preferences.loadSettings(AddReportActivity.this);
 			photoName = Preferences.fileName;
 			if (requestCode == REQUEST_CODE_CAMERA) {
-				
+
 				Uri uri = PhotoUtils.getPhotoUri(photoName, this);
 				Bitmap bitmap = PhotoUtils.getCameraPhoto(this, uri);
 				PhotoUtils.savePhoto(this, bitmap, photoName);
@@ -1013,7 +1014,7 @@ public class AddReportActivity extends
 						bitmap.getWidth(), bitmap.getHeight()));
 
 			} else if (requestCode == REQUEST_CODE_IMAGE) {
-				
+
 				Bitmap bitmap = PhotoUtils
 						.getGalleryPhoto(this, data.getData());
 				PhotoUtils.savePhoto(this, bitmap, photoName);
@@ -1118,7 +1119,7 @@ public class AddReportActivity extends
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see android.widget.ViewSwitcher.ViewFactory#makeView()
 	 */
 	@Override
@@ -1135,7 +1136,7 @@ public class AddReportActivity extends
 
 	/**
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see android.widget.AdapterView.OnItemClickListener#onItemClick(android.widget
 	 *      .AdapterView, android.view.View, int, long)
 	 */
@@ -1165,7 +1166,7 @@ public class AddReportActivity extends
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * foam.littlej.android.app.activities.BaseEditMapActivity#onDiscardChanges
 	 * ()

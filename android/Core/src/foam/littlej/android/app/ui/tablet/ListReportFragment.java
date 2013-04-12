@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import android.util.Log;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -581,7 +582,9 @@ public class ListReportFragment
 				mParams.put("incident_minute", time[1]);
 				mParams.put("incident_ampm", dates[2].toLowerCase());
 
-				mParams.put("incident_category", report.getCategories());
+                Log.i("LITTLEJ",report.getCategories()+", 20");
+
+				mParams.put("incident_category", report.getCategories()+", 20");
 				mParams.put("latitude", report.getLatitude());
 				mParams.put("longitude", report.getLongitude());
 				mParams.put("location_name", report.getLocation());

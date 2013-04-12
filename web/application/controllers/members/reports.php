@@ -15,7 +15,7 @@
  */
 
 class Reports_Controller extends Members_Controller {
-	
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -62,16 +62,16 @@ class Reports_Controller extends Members_Controller {
 		if (isset($_GET['k']))
 		{
 			// Brute force input sanitization
-			// Phase 1 - Strip the search string of all non-word characters 
+			// Phase 1 - Strip the search string of all non-word characters
 			$keyword_raw = preg_replace('/[^\w+]\w*/', '', $_GET['k']);
-			
+
 			// Strip any HTML tags that may have been missed in Phase 1
 			$keyword_raw = strip_tags($keyword_raw);
-			
+
 			// Phase 3 - Invoke Kohana's XSS cleaning mechanism just incase an outlier wasn't caught
 			// in the first 2 steps
 			$keyword_raw = $this->input->xss_clean($keyword_raw);
-			
+
 			$filter .= " AND (".$this->_get_searchstring($keyword_raw).")";
 		}
 		else
@@ -83,7 +83,7 @@ class Reports_Controller extends Members_Controller {
 		$form_error = FALSE;
 		$form_saved = FALSE;
 		$form_action = "";
-		
+
 		if ($_POST)
 		{
 			// Setup validation
@@ -99,7 +99,7 @@ class Reports_Controller extends Members_Controller {
 			if ($post->validate())
 			{
 				// Delete Action
-				if ($post->action == 'd')	
+				if ($post->action == 'd')
 				{
 					foreach ($post->incident_id as $item)
 					{
@@ -122,7 +122,7 @@ class Reports_Controller extends Members_Controller {
 							ORM::factory('incident_lang')->where('incident_id',$incident_id)->delete_all();
 
 							// Delete Photos From Directory
-							foreach (ORM::factory('media')->where('incident_id',$incident_id)->where('media_type', 1) as $photo) 
+							foreach (ORM::factory('media')->where('incident_id',$incident_id)->where('media_type', 1) as $photo)
 							{
 								deletePhoto($photo->id);
 							}
@@ -183,9 +183,9 @@ class Reports_Controller extends Members_Controller {
 		{
 			$location_ids[] = $incident->location_id;
 		}
-		
+
 		// Check if location_ids is not empty
-		if (count($location_ids ) > 0 ) 
+		if (count($location_ids ) > 0 )
 		{
 			$locations_result = ORM::factory('location')->in('id',implode(',',$location_ids))->find_all();
 			$locations = array();
@@ -276,7 +276,7 @@ class Reports_Controller extends Members_Controller {
 			'incident_information' => ''
 		);
 
-		// Copy the form as errors, so the errors will be stored with keys 
+		// Copy the form as errors, so the errors will be stored with keys
 		// corresponding to the form field names
 		$errors = $form;
 		$form_error = FALSE;
@@ -291,7 +291,7 @@ class Reports_Controller extends Members_Controller {
 		$form['incident_hour'] = date('h');
 		$form['incident_minute'] = date('i');
 		$form['incident_ampm'] = date('a');
-		
+
 		// Initialize custom field array
 		$form_id = $form['form_id'];
 		$form['custom_field'] = customforms::get_custom_form_fields($id, $form_id, TRUE);
@@ -303,7 +303,7 @@ class Reports_Controller extends Members_Controller {
 		$this->template->content->hour_array = $this->_hour_array();
 		$this->template->content->minute_array = $this->_minute_array();
 		$this->template->content->ampm_array = $this->_ampm_array();
-		
+
 		$this->template->content->stroke_width_array = $this->_stroke_width_array();
 
 		// Get Countries
@@ -319,7 +319,7 @@ class Reports_Controller extends Members_Controller {
 			$countries[$country->id] = $this_country;
 		}
 		$this->template->content->countries = $countries;
-		
+
 		// Initialize Default Value for Hidden Field Country Name, just incase Reverse Geo coding yields no result
 		$form['country_name'] = $countries[$form['country_id']];
 
@@ -329,14 +329,14 @@ class Reports_Controller extends Members_Controller {
 		{
 			$forms[$custom_forms->id] = $custom_forms->form_title;
 		}
-		
+
 		$this->template->content->forms = $forms;
 
 		// Retrieve thumbnail photos (if edit);
 		//XXX: fix _get_thumbnails
 		$this->template->content->incident = $this->_get_thumbnails($id);
-		
-		
+
+
 		// Are we creating this report from a Checkin?
 		if (isset($_GET['cid']) AND ! empty($_GET['cid']) ) {
 
@@ -371,14 +371,14 @@ class Reports_Controller extends Members_Controller {
 				}
 			}
 		}
-		
+
 
 		// Check, has the form been submitted, if so, setup validation
 		if ($_POST)
 		{
 			// Instantiate Validation, use $post, so we don't overwrite $_POST fields with our own things
 			$post = array_merge($_POST,$_FILES);
-			
+
 			if (reports::validate($post))
 			{
 				// STEP 1: SAVE LOCATION
@@ -387,11 +387,15 @@ class Reports_Controller extends Members_Controller {
 
 				// STEP 2: SAVE INCIDENT
 				$incident = new Incident_Model($id);
+
+                // add category to indicate report has come from the site
+                array_push($post->incident_category,"17");
+
 				reports::save_report($post, $incident, $location->id);
 
 				// STEP 2b: SAVE INCIDENT GEOMETRIES
 				reports::save_report_geometry($post, $incident);
-				
+
 				// STEP 3: SAVE CATEGORIES
 				reports::save_category($post, $incident);
 
@@ -403,7 +407,7 @@ class Reports_Controller extends Members_Controller {
 
 				// STEP 6: SAVE PERSONAL INFORMATION
 				reports::save_personal_info($post, $incident);
-				
+
 				// If creating a report from a checkin
 				if (isset($checkin_id) AND $checkin_id != "")
 				{
@@ -412,7 +416,7 @@ class Reports_Controller extends Members_Controller {
 					{
 						$checkin->incident_id = $incident->id;
 						$checkin->save();
-					
+
 						// Attach all the media items in this checkin to the report
 						foreach ($checkin->media as $media)
 						{
@@ -488,11 +492,11 @@ class Reports_Controller extends Members_Controller {
 							$incident_photo[] = $media->media_link;
 						}
 					}
-					
+
 					// Get Geometries via SQL query as ORM can't handle Spatial Data
-					$sql = "SELECT AsText(geometry) as geometry, geometry_label, 
-						geometry_comment, geometry_color, geometry_strokewidth 
-						FROM ".Kohana::config('database.default.table_prefix')."geometry 
+					$sql = "SELECT AsText(geometry) as geometry, geometry_label,
+						geometry_comment, geometry_color, geometry_strokewidth
+						FROM ".Kohana::config('database.default.table_prefix')."geometry
 						WHERE incident_id = ?";
 					$query = $db->query($sql, $id);
 					foreach ( $query as $item )
@@ -506,7 +510,7 @@ class Reports_Controller extends Members_Controller {
 						);
 						$form['geometry'][] = json_encode($geometry);
 					}
-					
+
 					// Combine Everything
 					$incident_arr = array(
 						'location_id' => $incident->location->id,
@@ -575,7 +579,7 @@ class Reports_Controller extends Members_Controller {
 		$this->template->colorpicker_enabled = TRUE;
 		$this->template->treeview_enabled = TRUE;
 		$this->template->json2_enabled = TRUE;
-		
+
 		$this->template->js = new View('reports/submit_edit_js');
 		$this->template->js->edit_mode = FALSE;
 		$this->template->js->default_map = Kohana::config('settings.default_map');
@@ -591,19 +595,19 @@ class Reports_Controller extends Members_Controller {
 			$this->template->js->latitude = $form['latitude'];
 			$this->template->js->longitude = $form['longitude'];
 		}
-		
+
 		$this->template->js->incident_zoom = $form['incident_zoom'];
 		$this->template->js->geometries = $form['geometry'];
 
 		// Inline Javascript
 		$this->template->content->date_picker_js = $this->_date_picker_js();
 		$this->template->content->color_picker_js = $this->_color_picker_js();
-		
+
 		// Pack Javascript
 		$myPacker = new javascriptpacker($this->template->js , 'Normal', FALSE, FALSE);
 		$this->template->js = $myPacker->pack();
 	}
-	
+
 
 	/**
 	* Delete Photo
@@ -659,13 +663,13 @@ class Reports_Controller extends Members_Controller {
 	{
 		return $ampm_array = array('pm'=>Kohana::lang('ui_admin.pm'),'am'=>Kohana::lang('ui_admin.am'));
 	}
-	
+
 	private function _stroke_width_array()
 	{
 		for ($i = 0.5; $i <= 8 ; $i += 0.5)
 		{
 			$stroke_width_array["$i"] = $i;
-		}	
+		}
 		return $stroke_width_array;
 	}
 
@@ -810,7 +814,7 @@ class Reports_Controller extends Members_Controller {
 		'at', 'or', 'as', 'was', 'so', 'if', 'out', 'not');
 
 		$keywords = explode(' ', $keyword_raw);
-		
+
 		if (is_array($keywords) && !empty($keywords))
 		{
 			array_change_key_case($keywords, CASE_LOWER);
