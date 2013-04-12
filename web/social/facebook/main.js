@@ -190,6 +190,9 @@ function build_categories(id) {
                 cat.title!="Twitter" &&
                 cat.title!="Facebook" &&
                 cat.title!="Android App" &&
+                cat.title!="SMS" &&
+                cat.title!="Trusted" &&
+                cat.title!="Assignments" &&
                 cat.title!="Site") {
 
                 var option=document.createElement("option");

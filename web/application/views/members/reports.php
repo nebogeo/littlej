@@ -149,7 +149,7 @@
        <a href="<?php echo url::site() . 'members/reports/edit/' . $incident_id; ?>"><?php echo $incident_title; ?></a>
     </div>
 
-<?php echo Kohana::lang('ui_main.location');?>: <?php echo html::specialchars($incident_location); ?>,<?php if ($country_id !=0) { echo $countries[$country_id];}?>
+<?php echo Kohana::lang('ui_main.location');?>: <?php echo html::specialchars($incident_location); ?>, <?php if ($country_id !=0) { echo $countries[$country_id];}?>
 <br/>
 <?php echo $incident_category; ?>
 <?php
