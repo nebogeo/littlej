@@ -1,16 +1,16 @@
-<?php 
+<?php
 /**
  * Reports edit view page.
  *
  * PHP version 5
- * LICENSE: This source file is subject to LGPL license 
+ * LICENSE: This source file is subject to LGPL license
  * that is available through the world-wide-web at the following URI:
  * http://www.gnu.org/copyleft/lesser.html
- * @author     Ushahidi Team <team@ushahidi.com> 
+ * @author     Ushahidi Team <team@ushahidi.com>
  * @package    Ushahidi - http://source.ushahididev.com
  * @module     API Controller
  * @copyright  Ushahidi - http://www.ushahidi.com
- * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
+ * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
  */
 ?>
 			<div class="bg">
@@ -45,22 +45,11 @@
 								<h3><?php echo Kohana::lang('ui_main.report_saved');?></h3>
 							</div>
 						<?php endif; ?>
-						
+
 						<div class="head">
 							<h3><?php echo $id ? Kohana::lang('ui_main.edit_report') : Kohana::lang('ui_main.new_report'); ?></h3>
-							<div class="btns" style="float:right;">
-								<ul>
-									<li><a href="#" class="btn_save"><?php echo utf8::strtoupper(Kohana::lang('ui_main.save_report'));?></a></li>
-									<li><a href="#" class="btn_save_close"><?php echo utf8::strtoupper(Kohana::lang('ui_main.save_close'));?></a></li>
-									<li><a href="<?php echo url::base().'members/reports/';?>" class="btns_red"><?php echo utf8::strtoupper(Kohana::lang('ui_main.cancel'));?></a>&nbsp;&nbsp;&nbsp;</li>
-									<?php if ($id): ?>
-									<li><a href="<?php echo $previous_url;?>" class="btns_gray">&laquo; <?php echo utf8::strtoupper(Kohana::lang('ui_main.previous'));?></a></li>
-									<li><a href="<?php echo $next_url;?>" class="btns_gray"><?php echo utf8::strtoupper(Kohana::lang('ui_main.next'));?> &raquo;</a></li>
-									<?php endif; ?>
-								</ul>
-							</div>
 						</div>
-						
+
 						<!-- f-col -->
 						<div class="f-col">
 							<?php
@@ -69,7 +58,7 @@
 							?>
 
 							<div class="row">
-								<h4>What category would you like to put on your report?</h4> 
+								<h4>What category would you like to put on your report?</h4>
 			                    <div class="report_category">
                         	    <?php
                                         $selected_categories = array();
@@ -91,7 +80,7 @@
 							<?php if (!($id)): ?>
 								<div class="row" id="datetime_default">
 									<h4>
-                                    When did this happen?  
+                                    When did this happen?
 									<?php echo Kohana::lang('ui_main.today_at').' '.$form['incident_hour']
 										.":".$form['incident_minute']." ".$form['incident_ampm']; ?>
 
@@ -102,8 +91,8 @@
 							<div class="row <?php if (!($id)) echo "hide"; ?> " id="datetime_edit">
 								<div class="date-box">
 									<h4>When did this happen?</h4>
-									<?php print form::input('incident_date', $form['incident_date'], ' class="text"; style="height:50%; font-size:90%;";'); ?>								
-									<?php print $date_picker_js; ?>				    
+									<?php print form::input('incident_date', $form['incident_date'], ' class="text"; style="height:50%; font-size:90%;";'); ?>
+									<?php print $date_picker_js; ?>
 								</div>
 								<div class="time">
 									<h4><?php echo Kohana::lang('ui_main.time');?> <span>(<?php echo Kohana::lang('ui_main.approximate');?>)</span></h4>
@@ -111,15 +100,15 @@
 									print '<span class="sel-holder">' .
 								    form::dropdown('incident_hour', $hour_array,
 									$form['incident_hour']) . '</span>';
-									
+
 									print '<span class="dots">:</span>';
-									
+
 									print '<span class="sel-holder">' .
 									form::dropdown('incident_minute',
 									$minute_array, $form['incident_minute']) .
 									'</span>';
 									print '<span class="dots">:</span>';
-									
+
 									print '<span class="sel-holder">' .
 									form::dropdown('incident_ampm', $ampm_array,
 									$form['incident_ampm']) . '</span>';
@@ -150,29 +139,29 @@
 										<div id="geometryLabeler">
 											<div id="geometryLabelComment">
 												<span id="geometryLabel">
-													<label><?php echo Kohana::lang('ui_main.geometry_label');?>:</label> 
+													<label><?php echo Kohana::lang('ui_main.geometry_label');?>:</label>
 													<?php print form::input('geometry_label', '', ' class="lbl_text"'); ?>
 												</span>
 												<span id="geometryComment">
-													<label><?php echo Kohana::lang('ui_main.geometry_comments');?>:</label> 
+													<label><?php echo Kohana::lang('ui_main.geometry_comments');?>:</label>
 													<?php print form::input('geometry_comment', '', ' class="lbl_text2"'); ?>
 												</span>
 											</div>
 											<div>
 												<span id="geometryColor">
-													<label><?php echo Kohana::lang('ui_main.geometry_color');?>:</label> 
+													<label><?php echo Kohana::lang('ui_main.geometry_color');?>:</label>
 													<?php print form::input('geometry_color', '', ' class="lbl_text"'); ?>
 												</span>
 												<span id="geometryStrokewidth">
-													<label><?php echo Kohana::lang('ui_main.geometry_strokewidth');?>:</label> 
+													<label><?php echo Kohana::lang('ui_main.geometry_strokewidth');?>:</label>
 													<?php print form::dropdown('geometry_strokewidth', $stroke_width_array, ''); ?>
 												</span>
 												<span id="geometryLat">
-													<label><?php echo Kohana::lang('ui_main.latitude');?>:</label> 
+													<label><?php echo Kohana::lang('ui_main.latitude');?>:</label>
 													<?php print form::input('geometry_lat', '', ' class="lbl_text"'); ?>
 												</span>
 												<span id="geometryLon">
-													<label><?php echo Kohana::lang('ui_main.longitude');?>:</label> 
+													<label><?php echo Kohana::lang('ui_main.longitude');?>:</label>
 													<?php print form::input('geometry_lon', '', ' class="lbl_text"'); ?>
 												</span>
 											</div>
@@ -180,14 +169,14 @@
 										<div id="geometryLabelerClose"></div>
 									</div>
 								</div>
-							</div>								
+							</div>
 
 							<?php
 							// Action::report_form_admin - Runs just after the report description
 							Event::run('ushahidi_action.report_form_admin', $id);
 							?>
 
-							
+
 							<div id="custom_forms">
 								<?php
 								foreach ($disp_custom_fields as $field_id => $field_property)
@@ -203,10 +192,10 @@
 												' id="custom_field_'.$field_id.'" class="text"');
 											echo '<script type="text/javascript">
 													$(document).ready(function() {
-													$("#custom_field_'.$field_id.'").datepicker({ 
-													showOn: "both", 
-													buttonImage: "'.url::file_loc('img').'media/img/icon-calendar.gif", 
-													buttonImageOnly: true 
+													$("#custom_field_'.$field_id.'").datepicker({
+													showOn: "both",
+													buttonImage: "'.url::file_loc('img').'media/img/icon-calendar.gif",
+													buttonImageOnly: true
 													});
 													});
 												</script>';
@@ -224,27 +213,27 @@
 									echo "</div>";
 								}
 								?>
-							</div>				
+							</div>
 
 							<div class="row">
 								<h4>What do you want to tell us?</h4>
                                 <span><ul>
                                 <li>Its really good to know if anyone else was involved and if you know their details.</li>
                                 <li>Did anyone else witness this, do you know their details?</li>
-                                <li>If you can put in as much detail as possible it will help confirm your report.</li>                                    
+                                <li>If you can put in as much detail as possible it will help confirm your report.</li>
                                 </ul></span>
 								<?php print form::textarea('incident_description', $form['incident_description'], ' rows="12" cols="40"'); ?>
 							</div>
 
-				
+
 							<!-- Photo Fields -->
 							<div class="row link-row">
 								<h4><?php echo Kohana::lang('ui_main.reports_photos');?></h4>
-								<?php								
+								<?php
     								if ($incident != "0")
                         			{
                         				// Retrieve Media
-                        				foreach($incident->media as $photo) 
+                        				foreach($incident->media as $photo)
                         				{
                         					if ($photo->media_type == 1)
                         					{
@@ -270,7 +259,7 @@
 								$this_field = "incident_photo";
 								$this_startid = "photo_id";
 								$this_field_type = "file";
-					
+
 								if (empty($form[$this_field]['name'][0]))
 								{
 									$i = 1;
@@ -282,7 +271,7 @@
 								else
 								{
 									$i = 0;
-									foreach ($form[$this_field]['name'] as $value) 
+									foreach ($form[$this_field]['name'] as $value)
 									{
 										print "<div ";
 										if ($i != 0) {
@@ -319,3 +308,14 @@
 				}
 				?>
 			</div>
+            <div class="btns-add-report">
+              <ul>
+			    <li><a href="#" class="btn_save"><?php echo utf8::strtoupper(Kohana::lang('ui_main.save_report'));?></a></li>
+				<li><a href="#" class="btn_save_close"><?php echo utf8::strtoupper(Kohana::lang('ui_main.save_close'));?></a></li>
+				<li><a href="<?php echo url::base().'members/reports/';?>" class="btns_red"><?php echo utf8::strtoupper(Kohana::lang('ui_main.cancel'));?></a>&nbsp;&nbsp;&nbsp;</li>
+				<?php if ($id): ?>
+				<li><a href="<?php echo $previous_url;?>" class="btns_gray">&laquo; <?php echo utf8::strtoupper(Kohana::lang('ui_main.previous'));?></a></li>
+				<li><a href="<?php echo $next_url;?>" class="btns_gray"><?php echo utf8::strtoupper(Kohana::lang('ui_main.next'));?> &raquo;</a></li>
+				<?php endif; ?>
+				</ul>
+			  </div>

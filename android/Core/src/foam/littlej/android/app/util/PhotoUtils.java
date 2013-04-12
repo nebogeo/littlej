@@ -1,21 +1,21 @@
-/** 
+/**
  ** Copyright (c) 2011 Ushahidi Inc
  ** All rights reserved
  ** Contact: team@ushahidi.com
  ** Website: http://www.ushahidi.com
- ** 
+ **
  ** GNU Lesser General Public License Usage
  ** This file may be used under the terms of the GNU Lesser
  ** General Public License version 3 as published by the Free Software
  ** Foundation and appearing in the file LICENSE.LGPL included in the
  ** packaging of this file. Please review the following information to
  ** ensure the GNU Lesser General Public License version 3 requirements
- ** will be met: http://www.gnu.org/licenses/lgpl.html.	
- **	
+ ** will be met: http://www.gnu.org/licenses/lgpl.html.
+ **
  **
  ** If you have questions regarding the use of this file, please contact
  ** Ushahidi developers at team@ushahidi.com.
- ** 
+ **
  **/
 
 package foam.littlej.android.app.util;
@@ -60,8 +60,8 @@ public class PhotoUtils {
 	// folder to save pending photos.
 	private static final String PENDING = "/pending";
 
-    private static final Boolean mExternalStorageAvailable = false;
-    private static final Boolean mExternalStorageWriteable = false;
+    private static Boolean mExternalStorageAvailable = false;
+    private static Boolean mExternalStorageWriteable = false;
 
 	public static int getScreenOrientation(Activity context) {
 		Display display = context.getWindowManager().getDefaultDisplay();
@@ -282,7 +282,7 @@ public class PhotoUtils {
 	 * Reference
 	 * http://stackoverflow.com/questions/2459916/how-to-make-an-imageview
 	 * -to-have-rounded-corners
-	 * 
+	 *
 	 * @param input
 	 *            Original bitmap.
 	 * @param cornerRadius

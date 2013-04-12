@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Reports Helper class.
  *
@@ -15,21 +15,21 @@
  * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
  */
 class reports_Core {
-	
+
 	/**
 	 * Maintains the list of parameters used for fetching incidents
 	 * in the fetch_incidents method
 	 * @var array
 	 */
 	public static $params = array();
-	
+
 	/**
 	 * Pagination object user in fetch_incidents method
 	 * @var Pagination
 	 */
 	public static $pagination = array();
-	
-			
+
+
 	/**
 	 * Validation of form fields
 	 *
@@ -41,7 +41,7 @@ class reports_Core {
 		// Exception handling
 		if ( ! isset($post) OR ! is_array($post))
 			return FALSE;
-		
+
 		// Create validation object
 		$post = Validation::factory($post)
 				->pre_filter('trim', TRUE)
@@ -51,17 +51,17 @@ class reports_Core {
 				->add_rules('incident_hour','required','between[1,12]')
 				->add_rules('incident_minute','required','between[0,59]')
 				->add_rules('incident_ampm','required');
-			
+
 		if (isset($post->incident_ampm) AND $post->incident_ampm != "am" AND $post->incident_ampm != "pm")
 		{
 			$post->add_error('incident_ampm','values');
 		}
-			
+
 		// Validate for maximum and minimum latitude values
 		$post->add_rules('latitude','required','between[-90,90]');
-		
-		// Validate for maximum and minimum longitude values		
-		$post->add_rules('longitude','required','between[-180,180]');	
+
+		// Validate for maximum and minimum longitude values
+		$post->add_rules('longitude','required','between[-180,180]');
 		$post->add_rules('location_name','required', 'length[3,200]');
 
 		//XXX: Hack to validate for no checkboxes checked
@@ -78,7 +78,7 @@ class reports_Core {
 		// Validate only the fields that are filled in
 		if ( ! empty($post->incident_news))
 		{
-			foreach ($post->incident_news as $key => $url) 
+			foreach ($post->incident_news as $key => $url)
 			{
 				if ( ! empty($url) AND ! valid::url($url))
 				{
@@ -90,7 +90,7 @@ class reports_Core {
 		// Validate only the fields that are filled in
 		if ( ! empty($post->incident_video))
 		{
-			foreach ($post->incident_video as $key => $url) 
+			foreach ($post->incident_video as $key => $url)
 			{
 				if (!empty($url) AND ! valid::url($url))
 				{
@@ -98,7 +98,7 @@ class reports_Core {
 				}
 			}
 		}
-		
+
 		// If deployment is a single country deployment, check that the location mapped is in the default country
 		if ( ! Kohana::config('settings.multi_country') AND isset($post->country_name))
 		{
@@ -108,7 +108,7 @@ class reports_Core {
 				$post->add_error('country_name','single_country', array(ORM::factory('country', Kohana::config('settings.default_country'))->country) );
 			}
 		}
-		
+
 		// Validate photo uploads
 		$post->add_rules('incident_photo', 'upload::valid', 'upload::type[gif,jpg,png,jpeg]', 'upload::size[2M]');
 
@@ -140,12 +140,12 @@ class reports_Core {
 		{
 			$post->person_email = '';
 		}
-		
+
 		$post->add_rules('location_id','numeric');
 		$post->add_rules('incident_active', 'between[0,1]');
 		$post->add_rules('incident_verified', 'between[0,1]');
 		$post->add_rules('incident_zoom', 'numeric');
-		
+
 		// Custom form fields validation
 		$errors = customforms::validate_custom_form_fields($post);
 
@@ -163,10 +163,10 @@ class reports_Core {
 		// Return
 		return $post->validate();
 	}
-	
+
 	/**
 	 * Function to save report location
-	 * 
+	 *
 	 * @param Validation $post
 	 * @param Location_Model $location Instance of the location model
 	 */
@@ -176,10 +176,10 @@ class reports_Core {
 		$country = isset($post->country_name)
 			? Country_Model::get_country_by_name($post->country_name)
 			: new Country_Model(Kohana::config('settings.default_country'));
-			
+
 		// Fetch the country id
 		$country_id = ( ! empty($country) AND $country->loaded)? $country->id : 0;
-		
+
 		// Assign country_id retrieved
 		$post->country_id = $country_id;
 		$location->location_name = $post->location_name;
@@ -188,11 +188,11 @@ class reports_Core {
 		$location->country_id = $country_id;
 		$location->location_date = date("Y-m-d H:i:s",time());
 		$location->save();
-		
+
 		// Garbage collection
 		unset ($country, $country_id);
 	}
-	
+
 	/**
 	 * Saves an incident
 	 *
@@ -210,15 +210,15 @@ class reports_Core {
 			// Throw exception
 			throw new Kohana_Exception('Invalid parameter types');
 		}
-		
+
 		// Verify that the location id exists
 		if ( ! Location_Model::is_valid_location($location_id))
 		{
 			throw new Kohana_Exception(sprintf('Invalid location id specified: ', $location_id));
 		}
-		
+
 		// Is this new or edit?
-		if ($incident->loaded)	
+		if ($incident->loaded)
 		{
 			// Edit
 			$incident->incident_datemodify = date("Y-m-d H:i:s",time());
@@ -228,23 +228,26 @@ class reports_Core {
 			// New
 			$incident->incident_dateadd = date("Y-m-d H:i:s",time());
 		}
-		
+
 		$incident->location_id = $location_id;
 		//$incident->locale = $post->locale;
 		if (isset($post->form_id))
 		{
 			$incident->form_id = $post->form_id;
 		}
-		
+
 
 		// Check if the user id has been specified
 		if ( ! $incident->loaded AND isset($_SESSION['auth_user']))
 		{
 			$incident->user_id = $_SESSION['auth_user']->id;
 		}
-		
+
 		$incident->incident_title = $post->incident_title;
 		$incident->incident_description = $post->incident_description;
+
+        // force all approved (as action seems flakey)
+        $incident->incident_active = true;
 
 		$incident_date=explode("/",$post->incident_date);
 		// Where the $_POST['date'] is a value posted by form in mm/dd/yyyy format
@@ -252,8 +255,8 @@ class reports_Core {
 
 		$incident_time = $post->incident_hour . ":" . $post->incident_minute . ":00 " . $post->incident_ampm;
 		$incident->incident_date = date( "Y-m-d H:i:s", strtotime($incident_date . " " . $incident_time) );
-				
-		
+
+
 		// Is this an Email, SMS, Twitter submitted report?
 		if ( ! empty($post->service_id))
 		{
@@ -278,7 +281,7 @@ class reports_Core {
 				$incident->incident_mode = 1;
 			}
 		}
-		
+
 		// Approval Status: Only set if user has permission
 		if (isset($post->incident_active) AND Auth::instance()->has_permission('reports_approve'))
 		{
@@ -289,7 +292,7 @@ class reports_Core {
 		{
 			$incident->incident_verified = $post->incident_verified;
 		}
-		
+
 		// Incident zoom
 		if ( ! empty($post->incident_zoom))
 		{
@@ -297,21 +300,21 @@ class reports_Core {
 		}
 		// Tag this as a report that needs to be sent out as an alert
 		if ($incident->incident_active == 1 AND $incident->incident_alert_status != 2)
-		{ 
+		{
 			// 2 = report that has had an alert sent
 			$incident->incident_alert_status = '1';
 		}
-		
+
 		// Remove alert if report is unactivated and alert hasn't yet been sent
 		if ($incident->incident_active == 0 AND $incident->incident_alert_status == 1)
 		{
 			$incident->incident_alert_status = '0';
 		}
-		
+
 		// Save the incident
 		$incident->save();
 	}
-	
+
 	/**
 	 * Function to record the verification/approval actions
 	 *
@@ -320,14 +323,14 @@ class reports_Core {
 	public static function verify_approve($incident)
 	{
 		// @todo Exception handling
-		
+
 		$verify = new Verify_Model();
 		$verify->incident_id = $incident->id;
-		
+
 		// Record 'Verified By' Action
 		$verify->user_id = $_SESSION['auth_user']->id;
 		$verify->verified_date = date("Y-m-d H:i:s",time());
-		
+
 		if ($incident->incident_active == 1)
 		{
 			$verify->verified_status = '1';
@@ -344,11 +347,11 @@ class reports_Core {
 		{
 			$verify->verified_status = '0';
 		}
-		
+
 		// Save
 		$verify->save();
-	} 
-	
+	}
+
 	/**
 	 * Function that saves incident geometries
 	 *
@@ -360,17 +363,17 @@ class reports_Core {
 	{
 		// Delete all current geometry
 		ORM::factory('geometry')->where('incident_id',$incident->id)->delete_all();
-		
-		if (isset($post->geometry)) 
+
+		if (isset($post->geometry))
 		{
 			// Database object
 			$db = new Database();
-			
+
 			// SQL for creating the incident geometry
 			$sql = "INSERT INTO ".Kohana::config('database.default.table_prefix')."geometry "
 				. "(incident_id, geometry, geometry_label, geometry_comment, geometry_color, geometry_strokewidth) "
 				. "VALUES(%d, GeomFromText('%s'), '%s', '%s', '%s', %s)";
-				
+
 			foreach($post->geometry as $item)
 			{
 				if ( ! empty($item))
@@ -397,7 +400,7 @@ class reports_Core {
 			}
 		}
 	}
-	
+
 	/**
 	 * Function to save incident categories
 	 *
@@ -408,7 +411,7 @@ class reports_Core {
 	{
 		// Delete Previous Entries
 		ORM::factory('incident_category')->where('incident_id', $incident->id)->delete_all();
-		
+
 		foreach ($post->incident_category as $item)
 		{
 			$incident_category = new Incident_Category_Model();
@@ -417,7 +420,7 @@ class reports_Core {
 			$incident_category->save();
 		}
 	}
-	
+
 	/**
 	 * Function to save news, photos and videos
 	 *
@@ -429,7 +432,7 @@ class reports_Core {
 	{
 		// Delete Previous Entries
 		ORM::factory('media')->where('incident_id',$incident->id)->where('media_type <> 1')->delete_all();
-		
+
 
 		// a. News
 		if (isset($post->incident_news))
@@ -478,7 +481,7 @@ class reports_Core {
 				$new_filename = $incident->id.'_'.$i.'_'.time();
 
 				$file_type = strrev(substr(strrev($filename),0,4));
-				
+
 				// IMAGE SIZES: 800X600, 400X300, 89X59
 				// Catch any errors from corrupt image files
 				try
@@ -499,21 +502,21 @@ class reports_Core {
 				{
 					// Do nothing. Too late to throw errors
 				}
-				
+
 				// Name the files for the DB
 				$media_link = $new_filename.$file_type;
 				$media_medium = $new_filename.'_m'.$file_type;
 				$media_thumb = $new_filename.'_t'.$file_type;
-					
+
 				// Okay, now we have these three different files on the server, now check to see
 				//   if we should be dropping them on the CDN
-				
+
 				if (Kohana::config("cdn.cdn_store_dynamic_content"))
 				{
 					$media_link = cdn::upload($media_link);
 					$media_medium = cdn::upload($media_medium);
 					$media_thumb = cdn::upload($media_thumb);
-					
+
 					// We no longer need the files we created on the server. Remove them.
 					$local_directory = rtrim(Kohana::config('upload.directory', TRUE), '/').'/';
 					unlink($local_directory.$new_filename.$file_type);
@@ -538,7 +541,7 @@ class reports_Core {
 			}
 		}
 	}
-	
+
 	/**
 	 * Function to save custom field values
 	 *
@@ -556,7 +559,7 @@ class reports_Core {
 								->where('form_field_id', $key)
 								->where('incident_id', $incident->id)
 								->find();
-													 
+
 				if ($form_response->loaded == true)
 				{
 					$form_response->form_field_id = $key;
@@ -572,9 +575,9 @@ class reports_Core {
 					$form_response->save();
 				}
 			}
-		}	
+		}
 	}
-	
+
 	/**
 	 * Function to save personal information
 	 *
@@ -586,19 +589,19 @@ class reports_Core {
 	{
 		// Delete Previous Entries
 		ORM::factory('incident_person')->where('incident_id',$incident->id)->delete_all();
-		
+
 		$person = new Incident_Person_Model();
 		$person->incident_id = $incident->id;
 		$person->person_first = $post->person_first;
 		$person->person_last = $post->person_last;
 		$person->person_email = $post->person_email;
 		$person->person_date = date("Y-m-d H:i:s",time());
-		$person->save();		
+		$person->save();
 	}
-	
+
 	/**
-	 * Helper function to fetch and optionally paginate the list of 
-	 * incidents/reports via the Incident Model using one or all of the 
+	 * Helper function to fetch and optionally paginate the list of
+	 * incidents/reports via the Incident Model using one or all of the
 	 * following URL parameters
 	 *	- category
 	 *	- location bounds
@@ -614,15 +617,15 @@ class reports_Core {
 	{
 		// Reset the paramters
 		self::$params = array();
-		
+
 		// Initialize the category id
 		$category_id = 0;
-		
+
 		$table_prefix = Kohana::config('database.default.table_prefix');
-		
+
 		// Fetch the URL data into a local variable
 		$url_data = $_GET;
-		
+
 		// Split selected parameters on ","
 		// For simplicity, always turn them into arrays even theres just one value
 		$exclude_params = array('c', 'v', 'm', 'mode', 'sw', 'ne', 'start_loc');
@@ -633,11 +636,11 @@ class reports_Core {
 				$url_data[$key] = explode(",", $value);
 			}
 		}
-		
+
 		//> BEGIN PARAMETER FETCH
-		// 
+		//
 		// Check for the category parameter
-		// 
+		//
 		if (isset($url_data['c']) AND is_array($url_data['c']))
 		{
 			// Sanitize each of the category ids
@@ -649,26 +652,26 @@ class reports_Core {
 					$category_ids[] = intval($c_id);
 				}
 			}
-			
+
 			// Check if there are any category ids
 			if (count($category_ids) > 0)
 			{
 				$category_ids = implode(",", $category_ids);
-			
+
 				array_push(self::$params,
 					'(c.id IN ('.$category_ids.') OR c.parent_id IN ('.$category_ids.'))',
 					'c.category_visible = 1'
 				);
 			}
 		}
-		
-		// 
+
+		//
 		// Incident modes
-		// 
+		//
 		if (isset($url_data['mode']) AND is_array($url_data['mode']))
 		{
 			$incident_modes = array();
-			
+
 			// Sanitize the modes
 			foreach ($url_data['mode'] as $mode)
 			{
@@ -677,33 +680,33 @@ class reports_Core {
 					$incident_modes[] = intval($mode);
 				}
 			}
-			
+
 			// Check if any modes exist and add them to the parameter list
 			if (count($incident_modes) > 0)
 			{
-				array_push(self::$params, 
+				array_push(self::$params,
 					'i.incident_mode IN ('.implode(",", $incident_modes).')'
 				);
 			}
 		}
-		
-		// 
+
+		//
 		// Location bounds parameters
-		// 
+		//
 		if (isset($url_data['sw']) AND isset($url_data['ne']))
 		{
 			$southwest = $url_data['sw'];
 			$northeast = $url_data['ne'];
-			
+
 			if ( count($southwest) == 2 AND count($northeast) == 2 )
 			{
 				$lon_min = (float) $southwest[0];
 				$lon_max = (float) $northeast[0];
 				$lat_min = (float) $southwest[1];
 				$lat_max = (float) $northeast[1];
-			
+
 				// Add the location conditions to the parameter list
-				array_push(self::$params, 
+				array_push(self::$params,
 					'l.latitude >= '.$lat_min,
 					'l.latitude <= '.$lat_max,
 					'l.longitude >= '.$lon_min,
@@ -711,16 +714,16 @@ class reports_Core {
 				);
 			}
 		}
-		
-		// 
+
+		//
 		// Location bounds - based on start location and radius
-		// 
+		//
 		if (isset($url_data['radius']) AND isset($url_data['start_loc']))
 		{
 			//if $url_data['start_loc'] is just comma delimited strings, then make it into an array
 			if (intval($url_data['radius']) > 0 AND is_array($url_data['start_loc']))
 			{
-				$bounds = $url_data['start_loc'];			
+				$bounds = $url_data['start_loc'];
 				if (count($bounds) == 2 AND is_numeric($bounds[0]) AND is_numeric($bounds[1]))
 				{
 					self::$params['radius'] = array(
@@ -731,29 +734,29 @@ class reports_Core {
 				}
 			}
 		}
-		
-		// 
+
+		//
 		// Check for incident date range parameters
-		// 
+		//
 		if (isset($url_data['from']) AND isset($url_data['to']))
 		{
 			$date_from = date('Y-m-d', strtotime($url_data['from']));
 			$date_to = date('Y-m-d', strtotime($url_data['to']));
-			
-			array_push(self::$params, 
+
+			array_push(self::$params,
 				'i.incident_date >= "'.$date_from.'"',
 				'i.incident_date <= "'.$date_to.'"'
 			);
 		}
-		
+
 		// Additional checks for date parameters specified in timestamp format
 		// This only affects those submitted from the main page
-		
+
 		// Start Date
 		if (isset($_GET['s']) AND intval($_GET['s']) > 0)
 		{
 			$start_date = intval($_GET['s']);
-			array_push(self::$params, 
+			array_push(self::$params,
 				'i.incident_date >= "'.date("Y-m-d H:i:s", $start_date).'"'
 			);
 		}
@@ -762,14 +765,14 @@ class reports_Core {
 		if (isset($_GET['e']) AND intval($_GET['e']))
 		{
 			$end_date = intval($_GET['e']);
-			array_push(self::$params, 
+			array_push(self::$params,
 				'i.incident_date <= "'.date("Y-m-d H:i:s", $end_date).'"'
 			);
 		}
-		
-		// 
+
+		//
 		// Check for media type parameter
-		// 
+		//
 		if (isset($url_data['m']) AND is_array($url_data['m']))
 		{
 			// An array of media filters has been specified
@@ -784,17 +787,17 @@ class reports_Core {
 			}
 			if (count($media_types) > 0)
 			{
-				array_push(self::$params, 
+				array_push(self::$params,
 					'i.id IN (SELECT DISTINCT incident_id FROM '
 						.$table_prefix.'media WHERE media_type IN ('.implode(",", $media_types).'))'
 				);
 			}
-			
+
 		}
-		
-		// 
+
+		//
 		// Check if the verification status has been specified
-		// 
+		//
 		if (isset($url_data['v']) AND is_array($url_data['v']))
 		{
 			$verified_status = array();
@@ -805,15 +808,15 @@ class reports_Core {
 					$verified_status[] = intval($verified);
 				}
 			}
-			
+
 			if (count($verified_status) > 0)
 			{
-				array_push(self::$params, 
+				array_push(self::$params,
 					'i.incident_verified IN ('.implode(",", $verified_status).')'
 				);
 			}
 		}
-		
+
 		//
 		// Check if they're filtering over custom form fields
 		//
@@ -822,7 +825,7 @@ class reports_Core {
 			$where_text = "";
 			$i = 0;
 			foreach ($url_data['cff'] as $field)
-			{			
+			{
 				$field_id = $field[0];
 				if (intval($field_id) < 1)
 					continue;
@@ -832,17 +835,17 @@ class reports_Core {
 				{
 					$field_value = implode(",", $field_value);
 				}
-								
+
 				$i++;
 				if ($i > 1)
 				{
 					$where_text .= " OR ";
 				}
-				
+
 				$where_text .= "(form_field_id = ".intval($field_id)
 					. " AND form_response = '".Database::instance()->escape_str(trim($field_value))."')";
 			}
-			
+
 			// Make sure there was some valid input in there
 			if ($i > 0)
 			{
@@ -852,7 +855,7 @@ class reports_Core {
 
 				$rows = $db->query('SELECT DISTINCT incident_id FROM '
 				    .$table_prefix.'form_response WHERE '.$where_text);
-				
+
 				$incident_ids = '';
 				foreach ($rows as $row)
 				{
@@ -873,12 +876,12 @@ class reports_Core {
 					array_push(self::$params, 'i.id IN (0)');
 				}
 			}
-			
+
 		} // End of handling cff
-		
+
 		// In case a plugin or something wants to get in on the parameter fetching fun
 		Event::run('ushahidi_filter.fetch_incidents_set_params', self::$params);
-		
+
 		//> END PARAMETER FETCH
 
 		// Check for order and sort params
@@ -896,32 +899,32 @@ class reports_Core {
 		{
 			$sort = (strtoupper($url_data['sort']) == 'ASC') ? 'ASC' : 'DESC';
 		}
-		
+
 		if ($paginate)
 		{
 			// Fetch incident count
 			$incident_count = Incident_Model::get_incidents(self::$params, false, $order_field, $sort, TRUE);
-			
+
 			// Set up pagination
 			$page_limit = (intval($items_per_page) > 0)
-			    ? $items_per_page 
+			    ? $items_per_page
 			    : intval(Kohana::config('settings.items_per_page'));
-					
+
 			$total_items = $incident_count->current()
 					? $incident_count->current()->report_count
 					: 0;
-			
+
 			$pagination = new Pagination(array(
 					'style' => 'front-end-reports',
 					'query_string' => 'page',
 					'items_per_page' => $page_limit,
 					'total_items' => $total_items
 				));
-			
+
 			Event::run('ushahidi_filter.pagination',$pagination);
-			
+
 			self::$pagination = $pagination;
-			
+
 			// Return paginated results
 			return Incident_Model::get_incidents(self::$params, self::$pagination, $order_field, $sort);
 		}
@@ -930,6 +933,6 @@ class reports_Core {
 			// Return
 			return Incident_Model::get_incidents(self::$params, false, $order_field, $sort);;
 		}
-	}	
+	}
 }
 ?>

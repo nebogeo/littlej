@@ -317,22 +317,22 @@ public class ListReportFragment
 	private void refreshReportLists() {
 
 		pendingReportAdapter.refresh();
-		fetchedReportAdapter.refresh();
+		//fetchedReportAdapter.refresh();
 		adapter = new ListReportAdapter(getActivity());
 		if (!pendingReportAdapter.isEmpty()) {
 			adapter.addView(pendingHeader());
 			adapter.addAdapter(pendingReportAdapter);
 			// add fetched report
-			adapter.addView(fetchedHeader());
-			adapter.addAdapter(fetchedReportAdapter);
+			//adapter.addView(fetchedHeader());
+			//adapter.addAdapter(fetchedReportAdapter);
 		} else {
-			adapter.addAdapter(fetchedReportAdapter);
+			//adapter.addAdapter(fetchedReportAdapter);
 		}
 		listView.setAdapter(adapter);
 	}
 
 	private void filterReportList() {
-		fetchedReportAdapter.getFilter().filter(filterTitle);
+		//fetchedReportAdapter.getFilter().filter(filterTitle);
 		pendingReportAdapter.getFilter().filter(filterTitle);
 		adapter = new ListReportAdapter(getActivity());
 		if (!pendingReportAdapter.isEmpty()) {
@@ -340,9 +340,9 @@ public class ListReportFragment
 			adapter.addAdapter(pendingReportAdapter);
 			// add fetched report
 			adapter.addView(fetchedHeader());
-			adapter.addAdapter(fetchedReportAdapter);
+			//adapter.addAdapter(fetchedReportAdapter);
 		} else {
-			adapter.addAdapter(fetchedReportAdapter);
+			//adapter.addAdapter(fetchedReportAdapter);
 		}
 		listView.setAdapter(adapter);
 
@@ -355,7 +355,7 @@ public class ListReportFragment
 	}
 
 	private void reportByCategoryList() {
-		fetchedReportAdapter.refresh(filterCategory);
+		//fetchedReportAdapter.refresh(filterCategory);
 		pendingReportAdapter.refresh(filterCategory);
 		adapter = new ListReportAdapter(getActivity());
 		if (!pendingReportAdapter.isEmpty()) {
@@ -363,9 +363,9 @@ public class ListReportFragment
 			adapter.addAdapter(pendingReportAdapter);
 			// add fetched report
 			adapter.addView(fetchedHeader());
-			adapter.addAdapter(fetchedReportAdapter);
+			//adapter.addAdapter(fetchedReportAdapter);
 		} else {
-			adapter.addAdapter(fetchedReportAdapter);
+			//adapter.addAdapter(fetchedReportAdapter);
 		}
 		listView.setAdapter(adapter);
 
@@ -761,7 +761,7 @@ public class ListReportFragment
 
 	/**
 	 * Launch Activity to view the details of a report.
-	 * 
+	 *
 	 * @param id
 	 *            The category id of the selected category.
 	 */

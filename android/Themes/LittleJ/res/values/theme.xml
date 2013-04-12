@@ -2,12 +2,12 @@
 
     <!-- DEPLOYMENT INFORMATION -->
     <string name="app_title">LittleJ</string>
-    <string name="deployment_url">http://littlej.borrowed-scenery.com</string>
-    <string name="team_url">http://littlej.borrowed-scenery.com</string>
-    <string name="media_url">http://littlej.borrowed-scenery.com</string>
-    <string name="twitter_url">http://twitter.com/iamlittlej</string>
+    <string name="deployment_url">http://www.littlej.org</string>
+    <string name="team_url">http://www.littlej.org</string>
+    <string name="media_url">http://www.littlej.org</string>
+    <string name="twitter_url">http://twitter.com/thisislittlej</string>
     <string name="facebook_url">http://www.facebook.com/littlej</string>
-    <string name="contact_url">http://littlej.borrowed-scenery.com</string>
+    <string name="contact_url">http://www.littlej.org</string>
 
     <!-- DEPLOYMENT PROVIDER AUTHORITIES. USUALLY PACKAGE NAME AND CLASS NAME Eg. foam.littlej.android.app.data.deploymentprovider -->
     <string name="provider_authorities">foam.littlej.android.app.data.deploymentprovider</string>
@@ -37,11 +37,11 @@
     <color name="button_background_color">#ffffff</color>
     <color name="button_stroke_color">#cac7c0</color>
     <color name="white_color">#FFFFFF</color>
-    
+
      <!-- Report listing screen -->
     <color name="filter_by_text_color">#7C2811</color>
     <color name="filter_by_background_color">#dde5ed</color> <!-- Report listing screen -->
-    
+
     <color name="verified_color">#25991C</color>
     <color name="black_color">#000000</color>
     <color name="gray_color">#736F6E</color>
@@ -69,7 +69,7 @@
     <color name="overlay_text_color">#aa000000</color>
     <color name="selectable_color">#28117c</color>
     <color name="text_value_color">#000000</color>
-    
+
     <color name="tab_medium">#2B2B2B</color>
     <color name="tab_dark">#000000</color>
     <color name="tab_transparent">#10ffffff</color>
@@ -84,7 +84,7 @@
     <dimen name="actionbar_height">45dip</dimen>
     <dimen name="actionbar_button_height">30dip</dimen>
     <dimen name="bottom_actionbar_height">65dip</dimen>
-    
+
 
     <!-- DEPLOYMENT TEXT -->
     <string name="about_text">LittleJ, Hyperlocal news for Port Talbot.</string>
