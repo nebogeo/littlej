@@ -46,13 +46,15 @@ def send(tweet,time):
     if tweet["geo"]!=None and tweet["geo"]["type"]=='Point':
         latlon=tweet["geo"]["coordinates"]
 
+    hour = ((time.hour-1)%12)+1;
+
     date="%02d"%time.month+"/"+"%02d"%time.day+"/"+str(time.year)
     url="http://www.littlej.org/api"
     data=urllib.urlencode({"task":"report",
                            "incident_title": tweet["text"].encode("ascii","ignore"),
                            "incident_description": "From Twitter",
                            "incident_date": date,
-                           "incident_hour": time.hour%12,
+                           "incident_hour": hour,
                            "incident_minute": time.minute,
                            "incident_ampm": ampm,
                            "incident_category": "19",
